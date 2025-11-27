@@ -152,15 +152,7 @@ def main(Aincrease):
                                                                                                     z_grupo,nos_grupo,dh,torre,dalpha,Posicao_Antenna,
                                                                                                     Massa_Antenna,AreaDirection,equipline,Ant,1,rho_gelo,vb,z0,zmin)
         
-        # ops.reactions()
-        # reaction_1 = ops.nodeReaction(1)
-        # print(f"Reações no nó 1: Rx = {reaction_1[0]} N, Ry = {reaction_1[1]} N, Rz = {reaction_1[2]} N")
-        # reaction_1 = ops.nodeReaction(2)
-        # print(f"Reações no nó 25: Rx = {reaction_1[0]} N, Ry = {reaction_1[1]} N, Rz = {reaction_1[2]} N")
-        # reaction_1 = ops.nodeReaction(3)
-        # print(f"Reações no nó 37: Rx = {reaction_1[0]} N, Ry = {reaction_1[1]} N, Rz = {reaction_1[2]} N")
-        # reaction_1 = ops.nodeReaction(4)
-        # print(f"Reações no nó 37: Rx = {reaction_1[0]} N, Ry = {reaction_1[1]} N, Rz = {reaction_1[2]} N")
+
     N_basal=np.abs(np.sum(F_nos[:4,:,2]))
     #for i in range(ops.getNodes()):
 

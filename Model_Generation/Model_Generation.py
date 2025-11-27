@@ -4,7 +4,8 @@ from Model_Generation.Node_Filters import Node_Filter_NCN,Node_Filter_Montante_T
 from Sections_Materials.Section_Properties import Section,get_fu_fy
 from Utilities.Utilities import angulo_entre_vetores
 from Utilities.Utilities_ops import comprimentos_elementos_array
-def Model_Generation(Nodes_Matrix, Elements_Matrix):    
+def Model_Generation(Nodes_Matrix, Elements_Matrix):  
+    ##Geração do modelo  
     Node_Type=np.zeros(len(Nodes_Matrix)+1).astype(str)
 
     nos_grupo, z_grupo,Node_Type,coords=Node_Filter_NCN(Nodes_Matrix)
