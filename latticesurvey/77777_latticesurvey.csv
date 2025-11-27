@@ -1,0 +1,244 @@
+Nodes
+ID,Title,X,Y,Z,Type
+1,Tower Foundation Connection 1 - Shaft 1,1143.154,1980.000,0.000,Tower Foundation
+2,Tower Foundation Connection 2 - Shaft 1,1143.154,-1980.000,0.000,Tower Foundation
+3,Tower Foundation Connection 3 - Shaft 1,-2286.307,0.000,0.000,Tower Foundation
+4,Connection Bracings 4 - Shaft 1,1039.231,1800.000,3000.000,Connection Bracer
+5,Connection Bracings 5 - Shaft 1,1039.231,-1800.000,3000.000,Connection Bracer
+6,Connection Bracings 6 - Shaft 1,-2078.461,0.000,3000.000,Connection Bracer
+7,Connection Shaft 7 - Shaft 1,935.307,1620.000,6000.000,Connection Shaft
+8,Connection Shaft 8 - Shaft 1,935.307,-1620.000,6000.000,Connection Shaft
+9,Connection Shaft 9 - Shaft 1,-1870.615,0.000,6000.000,Connection Shaft
+10,Connection Bracings 10 - Shaft 2,831.384,1440.000,9000.000,Connection Bracer
+11,Connection Bracings 11 - Shaft 2,831.384,-1440.000,9000.000,Connection Bracer
+12,Connection Bracings 12 - Shaft 2,-1662.769,0.000,9000.000,Connection Bracer
+13,Connection Shaft 13 - Shaft 2,727.461,1260.000,12000.000,Connection Shaft
+14,Connection Shaft 14 - Shaft 2,727.461,-1260.000,12000.000,Connection Shaft
+15,Connection Shaft 15 - Shaft 2,-1454.923,0.000,12000.000,Connection Shaft
+16,Connection Bracings 16 - Shaft 3,727.461,1260.000,15000.000,Connection Bracer
+17,Connection Bracings 17 - Shaft 3,727.461,-1260.000,15000.000,Connection Bracer
+18,Connection Bracings 18 - Shaft 3,-1454.923,0.000,15000.000,Connection Bracer
+19,Connection Shaft 19 - Shaft 3,727.461,1260.000,18000.000,Connection Shaft
+20,Connection Shaft 20 - Shaft 3,727.461,-1260.000,18000.000,Connection Shaft
+21,Connection Shaft 21 - Shaft 3,-1454.923,0.000,18000.000,Connection Shaft
+22,Connection Bracings 22 - Shaft 4,727.461,1260.000,21000.000,Connection Bracer
+23,Connection Bracings 23 - Shaft 4,727.461,-1260.000,21000.000,Connection Bracer
+24,Connection Bracings 24 - Shaft 4,-1454.923,0.000,21000.000,Connection Bracer
+25,Connection Shaft 25 - Shaft 4,727.461,1260.000,24000.000,Connection Shaft
+26,Connection Shaft 26 - Shaft 4,727.461,-1260.000,24000.000,Connection Shaft
+27,Connection Shaft 27 - Shaft 4,-1454.923,0.000,24000.000,Connection Shaft
+28,Connection Bracings 28 - Shaft 5,727.461,1260.000,27000.000,Connection Bracer
+29,Connection Bracings 29 - Shaft 5,727.461,-1260.000,27000.000,Connection Bracer
+30,Connection Bracings 30 - Shaft 5,-1454.923,0.000,27000.000,Connection Bracer
+31,Connection Shaft 31 - Shaft 5,727.461,1260.000,30000.000,Connection Shaft
+32,Connection Shaft 32 - Shaft 5,727.461,-1260.000,30000.000,Connection Shaft
+33,Connection Shaft 33 - Shaft 5,-1454.923,0.000,30000.000,Connection Shaft
+34,Connection Shaft 34 - Shaft 6,727.461,1260.000,32000.000,Connection Shaft
+35,Connection Shaft 35 - Shaft 6,727.461,-1260.000,32000.000,Connection Shaft
+36,Connection Shaft 36 - Shaft 6,-1454.923,0.000,32000.000,Connection Shaft
+
+Lines
+ID,Title,Start_Node_ID,End_Node_ID,Type,Type_of_Profile,Line_Profile,Steel_Type,Is_Welded,N_Bolts,Type_of_Shape,Top_Bars,Middle_Bars
+1,Leg 1 - Shaft 1,1,4,Leg,pipe,Ø 168.3x4.5,S355,0,0,Alternating Diagonal,yes,yes
+2,Leg 2 - Shaft 1,2,5,Leg,pipe,Ø 168.3x4.5,S355,0,0,Alternating Diagonal,yes,yes
+3,Leg 3 - Shaft 1,3,6,Leg,pipe,Ø 168.3x4.5,S355,0,0,Alternating Diagonal,yes,yes
+4,Leg 4 - Shaft 1,4,7,Leg,pipe,Ø 168.3x4.5,S355,0,0,Alternating Diagonal,yes,yes
+5,Leg 5 - Shaft 1,5,8,Leg,pipe,Ø 168.3x4.5,S355,0,0,Alternating Diagonal,yes,yes
+6,Leg 6 - Shaft 1,6,9,Leg,pipe,Ø 168.3x4.5,S355,0,0,Alternating Diagonal,yes,yes
+7,Diagonal Bar 7 - Shaft 1,1,5,Diagonal Bar,pipe,Ø 88.9x3.2,S235,Yes,0,Alternating Diagonal,yes,yes
+8,Diagonal Bar 8 - Shaft 1,2,6,Diagonal Bar,pipe,Ø 88.9x3.2,S235,Yes,0,Alternating Diagonal,yes,yes
+9,Diagonal Bar 9 - Shaft 1,3,4,Diagonal Bar,pipe,Ø 88.9x3.2,S235,Yes,0,Alternating Diagonal,yes,yes
+10,Diagonal Bar 10 - Shaft 1,5,7,Diagonal Bar,pipe,Ø 88.9x3.2,S235,Yes,0,Alternating Diagonal,yes,yes
+11,Diagonal Bar 11 - Shaft 1,6,8,Diagonal Bar,pipe,Ø 88.9x3.2,S235,Yes,0,Alternating Diagonal,yes,yes
+12,Diagonal Bar 12 - Shaft 1,4,9,Diagonal Bar,pipe,Ø 88.9x3.2,S235,Yes,0,Alternating Diagonal,yes,yes
+13,Horizontal Bar 13 - Shaft 1,7,8,Horizontal Bar,angle,L60x60x6,S235,No,1,Alternating Diagonal,yes,yes
+14,Horizontal Bar 14 - Shaft 1,8,9,Horizontal Bar,angle,L60x60x6,S235,No,1,Alternating Diagonal,yes,yes
+15,Horizontal Bar 15 - Shaft 1,9,7,Horizontal Bar,angle,L60x60x6,S235,No,1,Alternating Diagonal,yes,yes
+16,Horizontal Bar 16 - Shaft 1,4,5,Horizontal Bar,angle,L60x60x6,S235,No,1,Alternating Diagonal,yes,yes
+17,Horizontal Bar 17 - Shaft 1,5,6,Horizontal Bar,angle,L60x60x6,S235,No,1,Alternating Diagonal,yes,yes
+18,Horizontal Bar 18 - Shaft 1,6,4,Horizontal Bar,angle,L60x60x6,S235,No,1,Alternating Diagonal,yes,yes
+19,Leg 19 - Shaft 2,7,10,Leg,pipe,Ø 114.3x8.0,S235,0,0,Alternating Diagonal,yes,yes
+20,Leg 20 - Shaft 2,8,11,Leg,pipe,Ø 114.3x8.0,S235,0,0,Alternating Diagonal,yes,yes
+21,Leg 21 - Shaft 2,9,12,Leg,pipe,Ø 114.3x8.0,S235,0,0,Alternating Diagonal,yes,yes
+22,Leg 22 - Shaft 2,10,13,Leg,pipe,Ø 114.3x8.0,S235,0,0,Alternating Diagonal,yes,yes
+23,Leg 23 - Shaft 2,11,14,Leg,pipe,Ø 114.3x8.0,S235,0,0,Alternating Diagonal,yes,yes
+24,Leg 24 - Shaft 2,12,15,Leg,pipe,Ø 114.3x8.0,S235,0,0,Alternating Diagonal,yes,yes
+25,Diagonal Bar 25 - Shaft 2,7,11,Diagonal Bar,pipe,Ø 76.1x2.9,S235,Yes,0,Alternating Diagonal,yes,yes
+26,Diagonal Bar 26 - Shaft 2,8,12,Diagonal Bar,pipe,Ø 76.1x2.9,S235,Yes,0,Alternating Diagonal,yes,yes
+27,Diagonal Bar 27 - Shaft 2,9,10,Diagonal Bar,pipe,Ø 76.1x2.9,S235,Yes,0,Alternating Diagonal,yes,yes
+28,Diagonal Bar 28 - Shaft 2,11,13,Diagonal Bar,pipe,Ø 76.1x2.9,S235,Yes,0,Alternating Diagonal,yes,yes
+29,Diagonal Bar 29 - Shaft 2,12,14,Diagonal Bar,pipe,Ø 76.1x2.9,S235,Yes,0,Alternating Diagonal,yes,yes
+30,Diagonal Bar 30 - Shaft 2,10,15,Diagonal Bar,pipe,Ø 76.1x2.9,S235,Yes,0,Alternating Diagonal,yes,yes
+31,Horizontal Bar 31 - Shaft 2,13,14,Horizontal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,yes
+32,Horizontal Bar 32 - Shaft 2,14,15,Horizontal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,yes
+33,Horizontal Bar 33 - Shaft 2,15,13,Horizontal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,yes
+34,Horizontal Bar 34 - Shaft 2,10,11,Horizontal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,yes
+35,Horizontal Bar 35 - Shaft 2,11,12,Horizontal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,yes
+36,Horizontal Bar 36 - Shaft 2,12,10,Horizontal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,yes
+37,Leg 37 - Shaft 3,13,16,Leg,pipe,Ø 114.3x6.3,S235,0,0,Alternating Diagonal,yes,yes
+38,Leg 38 - Shaft 3,14,17,Leg,pipe,Ø 114.3x6.3,S235,0,0,Alternating Diagonal,yes,yes
+39,Leg 39 - Shaft 3,15,18,Leg,pipe,Ø 114.3x6.3,S235,0,0,Alternating Diagonal,yes,yes
+40,Leg 40 - Shaft 3,16,19,Leg,pipe,Ø 114.3x6.3,S235,0,0,Alternating Diagonal,yes,yes
+41,Leg 41 - Shaft 3,17,20,Leg,pipe,Ø 114.3x6.3,S235,0,0,Alternating Diagonal,yes,yes
+42,Leg 42 - Shaft 3,18,21,Leg,pipe,Ø 114.3x6.3,S235,0,0,Alternating Diagonal,yes,yes
+43,Diagonal Bar 43 - Shaft 3,13,17,Diagonal Bar,pipe,Ø 88.9x3.2,S235,Yes,0,Alternating Diagonal,yes,yes
+44,Diagonal Bar 44 - Shaft 3,14,18,Diagonal Bar,pipe,Ø 88.9x3.2,S235,Yes,0,Alternating Diagonal,yes,yes
+45,Diagonal Bar 45 - Shaft 3,15,16,Diagonal Bar,pipe,Ø 88.9x3.2,S235,Yes,0,Alternating Diagonal,yes,yes
+46,Diagonal Bar 46 - Shaft 3,17,19,Diagonal Bar,pipe,Ø 88.9x3.2,S235,Yes,0,Alternating Diagonal,yes,yes
+47,Diagonal Bar 47 - Shaft 3,18,20,Diagonal Bar,pipe,Ø 88.9x3.2,S235,Yes,0,Alternating Diagonal,yes,yes
+48,Diagonal Bar 48 - Shaft 3,16,21,Diagonal Bar,pipe,Ø 88.9x3.2,S235,Yes,0,Alternating Diagonal,yes,yes
+49,Horizontal Bar 49 - Shaft 3,19,20,Horizontal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,yes
+50,Horizontal Bar 50 - Shaft 3,20,21,Horizontal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,yes
+51,Horizontal Bar 51 - Shaft 3,21,19,Horizontal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,yes
+52,Horizontal Bar 52 - Shaft 3,16,17,Horizontal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,yes
+53,Horizontal Bar 53 - Shaft 3,17,18,Horizontal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,yes
+54,Horizontal Bar 54 - Shaft 3,18,16,Horizontal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,yes
+55,Leg 55 - Shaft 4,19,22,Leg,pipe,Ø 88.9x6.3,S235,0,0,Alternating Diagonal,yes,yes
+56,Leg 56 - Shaft 4,20,23,Leg,pipe,Ø 88.9x6.3,S235,0,0,Alternating Diagonal,yes,yes
+57,Leg 57 - Shaft 4,21,24,Leg,pipe,Ø 88.9x6.3,S235,0,0,Alternating Diagonal,yes,yes
+58,Leg 58 - Shaft 4,22,25,Leg,pipe,Ø 88.9x6.3,S235,0,0,Alternating Diagonal,yes,yes
+59,Leg 59 - Shaft 4,23,26,Leg,pipe,Ø 88.9x6.3,S235,0,0,Alternating Diagonal,yes,yes
+60,Leg 60 - Shaft 4,24,27,Leg,pipe,Ø 88.9x6.3,S235,0,0,Alternating Diagonal,yes,yes
+61,Diagonal Bar 61 - Shaft 4,19,23,Diagonal Bar,pipe,Ø 76.1x2.9,S235,Yes,0,Alternating Diagonal,yes,yes
+62,Diagonal Bar 62 - Shaft 4,20,24,Diagonal Bar,pipe,Ø 76.1x2.9,S235,Yes,0,Alternating Diagonal,yes,yes
+63,Diagonal Bar 63 - Shaft 4,21,22,Diagonal Bar,pipe,Ø 76.1x2.9,S235,Yes,0,Alternating Diagonal,yes,yes
+64,Diagonal Bar 64 - Shaft 4,23,25,Diagonal Bar,pipe,Ø 76.1x2.9,S235,Yes,0,Alternating Diagonal,yes,yes
+65,Diagonal Bar 65 - Shaft 4,24,26,Diagonal Bar,pipe,Ø 76.1x2.9,S235,Yes,0,Alternating Diagonal,yes,yes
+66,Diagonal Bar 66 - Shaft 4,22,27,Diagonal Bar,pipe,Ø 76.1x2.9,S235,Yes,0,Alternating Diagonal,yes,yes
+67,Horizontal Bar 67 - Shaft 4,25,26,Horizontal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,yes
+68,Horizontal Bar 68 - Shaft 4,26,27,Horizontal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,yes
+69,Horizontal Bar 69 - Shaft 4,27,25,Horizontal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,yes
+70,Horizontal Bar 70 - Shaft 4,22,23,Horizontal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,yes
+71,Horizontal Bar 71 - Shaft 4,23,24,Horizontal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,yes
+72,Horizontal Bar 72 - Shaft 4,24,22,Horizontal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,yes
+73,Leg 73 - Shaft 5,25,28,Leg,pipe,Ø 88.9x6.3,S235,0,0,Alternating Diagonal,yes,yes
+74,Leg 74 - Shaft 5,26,29,Leg,pipe,Ø 88.9x6.3,S235,0,0,Alternating Diagonal,yes,yes
+75,Leg 75 - Shaft 5,27,30,Leg,pipe,Ø 88.9x6.3,S235,0,0,Alternating Diagonal,yes,yes
+76,Leg 76 - Shaft 5,28,31,Leg,pipe,Ø 88.9x6.3,S235,0,0,Alternating Diagonal,yes,yes
+77,Leg 77 - Shaft 5,29,32,Leg,pipe,Ø 88.9x6.3,S235,0,0,Alternating Diagonal,yes,yes
+78,Leg 78 - Shaft 5,30,33,Leg,pipe,Ø 88.9x6.3,S235,0,0,Alternating Diagonal,yes,yes
+79,Diagonal Bar 79 - Shaft 5,25,29,Diagonal Bar,pipe,Ø 76.1x2.9,S235,Yes,0,Alternating Diagonal,yes,yes
+80,Diagonal Bar 80 - Shaft 5,26,30,Diagonal Bar,pipe,Ø 76.1x2.9,S235,Yes,0,Alternating Diagonal,yes,yes
+81,Diagonal Bar 81 - Shaft 5,27,28,Diagonal Bar,pipe,Ø 76.1x2.9,S235,Yes,0,Alternating Diagonal,yes,yes
+82,Diagonal Bar 82 - Shaft 5,29,31,Diagonal Bar,pipe,Ø 76.1x2.9,S235,Yes,0,Alternating Diagonal,yes,yes
+83,Diagonal Bar 83 - Shaft 5,30,32,Diagonal Bar,pipe,Ø 76.1x2.9,S235,Yes,0,Alternating Diagonal,yes,yes
+84,Diagonal Bar 84 - Shaft 5,28,33,Diagonal Bar,pipe,Ø 76.1x2.9,S235,Yes,0,Alternating Diagonal,yes,yes
+85,Horizontal Bar 85 - Shaft 5,31,32,Horizontal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,yes
+86,Horizontal Bar 86 - Shaft 5,32,33,Horizontal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,yes
+87,Horizontal Bar 87 - Shaft 5,33,31,Horizontal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,yes
+88,Horizontal Bar 88 - Shaft 5,28,29,Horizontal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,yes
+89,Horizontal Bar 89 - Shaft 5,29,30,Horizontal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,yes
+90,Horizontal Bar 90 - Shaft 5,30,28,Horizontal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,yes
+91,Leg 91 - Shaft 6,31,34,Leg,pipe,Ø 88.9x3.2,S235,0,0,Alternating Diagonal,yes,yes
+92,Leg 92 - Shaft 6,32,35,Leg,pipe,Ø 88.9x3.2,S235,0,0,Alternating Diagonal,yes,yes
+93,Leg 93 - Shaft 6,33,36,Leg,pipe,Ø 88.9x3.2,S235,0,0,Alternating Diagonal,yes,yes
+94,Diagonal Bar 94 - Shaft 6,31,35,Diagonal Bar,pipe,Ø 88.9x6.3,S235,Yes,0,Alternating Diagonal,yes,yes
+95,Diagonal Bar 95 - Shaft 6,32,36,Diagonal Bar,pipe,Ø 88.9x6.3,S235,Yes,0,Alternating Diagonal,yes,yes
+96,Diagonal Bar 96 - Shaft 6,33,34,Diagonal Bar,pipe,Ø 88.9x6.3,S235,Yes,0,Alternating Diagonal,yes,yes
+97,Horizontal Bar 97 - Shaft 6,34,35,Horizontal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,yes
+98,Horizontal Bar 98 - Shaft 6,35,36,Horizontal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,yes
+99,Horizontal Bar 99 - Shaft 6,36,34,Horizontal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,yes
+
+Diag_Hor_Connection
+Id_Lig,Id_Ele,Is_Welded,NBolts,Bolt_Diameter,Type_of_Steel_Bolt,Type_of_Steel_of_the_Plate,e1,e2,p1,p2,Thickness_of_the_Plate
+1,7,Yes,0,0,0,0,0,0,0,0,0
+2,8,Yes,0,0,0,0,0,0,0,0,0
+3,9,Yes,0,0,0,0,0,0,0,0,0
+4,10,Yes,0,0,0,0,0,0,0,0,0
+5,11,Yes,0,0,0,0,0,0,0,0,0
+6,12,Yes,0,0,0,0,0,0,0,0,0
+7,13,No,1,M20,8.8,S235,30,30,0,0,10
+8,14,No,1,M20,8.8,S235,30,30,0,0,10
+9,15,No,1,M20,8.8,S235,30,30,0,0,10
+10,16,No,1,M20,8.8,S235,30,30,0,0,10
+11,17,No,1,M20,8.8,S235,30,30,0,0,10
+12,18,No,1,M20,8.8,S235,30,30,0,0,10
+13,25,Yes,0,0,0,0,0,0,0,0,0
+14,26,Yes,0,0,0,0,0,0,0,0,0
+15,27,Yes,0,0,0,0,0,0,0,0,0
+16,28,Yes,0,0,0,0,0,0,0,0,0
+17,29,Yes,0,0,0,0,0,0,0,0,0
+18,30,Yes,0,0,0,0,0,0,0,0,0
+19,31,No,1,M16,8.8,S235,30,30,0,0,10
+20,32,No,1,M16,8.8,S235,30,30,0,0,10
+21,33,No,1,M16,8.8,S235,30,30,0,0,10
+22,34,No,1,M16,8.8,S235,30,30,0,0,10
+23,35,No,1,M16,8.8,S235,30,30,0,0,10
+24,36,No,1,M16,8.8,S235,30,30,0,0,10
+25,43,Yes,0,0,0,0,0,0,0,0,0
+26,44,Yes,0,0,0,0,0,0,0,0,0
+27,45,Yes,0,0,0,0,0,0,0,0,0
+28,46,Yes,0,0,0,0,0,0,0,0,0
+29,47,Yes,0,0,0,0,0,0,0,0,0
+30,48,Yes,0,0,0,0,0,0,0,0,0
+31,49,No,1,M20,8.8,S235,30,30,0,0,10
+32,50,No,1,M20,8.8,S235,30,30,0,0,10
+33,51,No,1,M20,8.8,S235,30,30,0,0,10
+34,52,No,1,M20,8.8,S235,30,30,0,0,10
+35,53,No,1,M20,8.8,S235,30,30,0,0,10
+36,54,No,1,M20,8.8,S235,30,30,0,0,10
+37,61,Yes,0,0,0,0,0,0,0,0,0
+38,62,Yes,0,0,0,0,0,0,0,0,0
+39,63,Yes,0,0,0,0,0,0,0,0,0
+40,64,Yes,0,0,0,0,0,0,0,0,0
+41,65,Yes,0,0,0,0,0,0,0,0,0
+42,66,Yes,0,0,0,0,0,0,0,0,0
+43,67,No,1,M16,8.8,S235,30,30,0,0,10
+44,68,No,1,M16,8.8,S235,30,30,0,0,10
+45,69,No,1,M16,8.8,S235,30,30,0,0,10
+46,70,No,1,M16,8.8,S235,30,30,0,0,10
+47,71,No,1,M16,8.8,S235,30,30,0,0,10
+48,72,No,1,M16,8.8,S235,30,30,0,0,10
+49,79,Yes,0,0,0,0,0,0,0,0,0
+50,80,Yes,0,0,0,0,0,0,0,0,0
+51,81,Yes,0,0,0,0,0,0,0,0,0
+52,82,Yes,0,0,0,0,0,0,0,0,0
+53,83,Yes,0,0,0,0,0,0,0,0,0
+54,84,Yes,0,0,0,0,0,0,0,0,0
+55,85,No,1,M16,8.8,S235,30,30,0,0,10
+56,86,No,1,M16,8.8,S235,30,30,0,0,10
+57,87,No,1,M16,8.8,S235,30,30,0,0,10
+58,88,No,1,M16,8.8,S235,30,30,0,0,10
+59,89,No,1,M16,8.8,S235,30,30,0,0,10
+60,90,No,1,M16,8.8,S235,30,30,0,0,10
+61,94,Yes,0,0,0,0,0,0,0,0,0
+62,95,Yes,0,0,0,0,0,0,0,0,0
+63,96,Yes,0,0,0,0,0,0,0,0,0
+64,97,No,1,M16,8.8,S235,30,30,0,0,10
+65,98,No,1,M16,8.8,S235,30,30,0,0,10
+66,99,No,1,M16,8.8,S235,30,30,0,0,10
+
+Shaft Connection - Flange
+Id_Connection,ID_Node,Exterior_Perimeter_Flange_mm,Distance_Between_Bolts_mm,Flange_Thickness_mm,Type_of_Steel_Flange,Bolts_Diameter_mm,Quantity_of_Bolts,Type_of_Steel_Bolts,Does_it_have_Stiffeners,Quantity_of_Stiffeners,Stiffeners_Thickness_mm,Stiffeners_Length_mm,Stiffeners_Height_mm
+1,7,974,96,30,S355,M24,8,8.8,no,0,0,0,0
+2,8,974,96,30,S355,M24,8,8.8,no,0,0,0,0
+3,9,974,96,30,S355,M24,8,8.8,no,0,0,0,0
+4,13,754,155,25,S355,M20,6,8.8,no,0,0,0,0
+5,14,754,155,25,S355,M20,6,8.8,no,0,0,0,0
+6,15,754,155,25,S355,M20,6,8.8,no,0,0,0,0
+7,19,754,95,25,S355,M20,6,8.8,no,0,0,0,0
+8,20,754,95,25,S355,M20,6,8.8,no,0,0,0,0
+9,21,754,95,25,S355,M20,6,8.8,no,0,0,0,0
+10,25,597,70,20,S355,M16,6,8.8,no,0,0,0,0
+11,26,597,70,20,S355,M16,6,8.8,no,0,0,0,0
+12,27,597,70,20,S355,M16,6,8.8,no,0,0,0,0
+13,31,597,70,20,S355,M16,6,8.8,no,0,0,0,0
+14,32,597,70,20,S355,M16,6,8.8,no,0,0,0,0
+15,33,597,70,20,S355,M16,6,8.8,no,0,0,0,0
+16,34,0,0,0,0,0,0,0,0,0,0,0,0
+17,35,0,0,0,0,0,0,0,0,0,0,0,0
+18,36,0,0,0,0,0,0,0,0,0,0,0,0
+
+Shaft Connection - Bolted
+Id_Connection,ID_Node,How_many_Counter_Plates,Type_of_Steel_of_the_Counter_Plate,Thickness_of_the_Counter_Plate_mm,e1,e2,p1,p2,Quantity_of_Bolts_per_Tab,Bolts_Diameter,Type_of_Steel_Bolts
+
+Foundation
+Foundation Type,Not selected
+Height (m) / Slab Height (m),0
+Width (m) / Slab Width (m),0
+Pier Height (m),0
+Pier Width (m),0
+
+Orientation
+Tower_Orientation_Degrees
+0.00

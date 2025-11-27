@@ -1,0 +1,373 @@
+Nodes
+ID,Title,X,Y,Z,Type
+1,Tower Foundation Connection 1 - Shaft 1,895.000,895.000,0.000,Tower Foundation
+2,Tower Foundation Connection 2 - Shaft 1,895.000,-895.000,0.000,Tower Foundation
+3,Tower Foundation Connection 3 - Shaft 1,-895.000,-895.000,0.000,Tower Foundation
+4,Tower Foundation Connection 4 - Shaft 1,-895.000,895.000,0.000,Tower Foundation
+5,Connection Bracings 5 - Shaft 1,895.000,895.000,1400.000,Connection Bracer
+6,Connection Bracings 6 - Shaft 1,895.000,-895.000,1400.000,Connection Bracer
+7,Connection Bracings 7 - Shaft 1,-895.000,-895.000,1400.000,Connection Bracer
+8,Connection Bracings 8 - Shaft 1,-895.000,895.000,1400.000,Connection Bracer
+9,Connection Bracings 9 - Shaft 1,895.000,895.000,2800.000,Connection Bracer
+10,Connection Bracings 10 - Shaft 1,895.000,-895.000,2800.000,Connection Bracer
+11,Connection Bracings 11 - Shaft 1,-895.000,-895.000,2800.000,Connection Bracer
+12,Connection Bracings 12 - Shaft 1,-895.000,895.000,2800.000,Connection Bracer
+13,Connection Bracings 13 - Shaft 1,895.000,895.000,4200.000,Connection Bracer
+14,Connection Bracings 14 - Shaft 1,895.000,-895.000,4200.000,Connection Bracer
+15,Connection Bracings 15 - Shaft 1,-895.000,-895.000,4200.000,Connection Bracer
+16,Connection Bracings 16 - Shaft 1,-895.000,895.000,4200.000,Connection Bracer
+17,Connection Shaft 17 - Shaft 1,895.000,895.000,5600.000,Connection Shaft
+18,Connection Shaft 18 - Shaft 1,895.000,-895.000,5600.000,Connection Shaft
+19,Connection Shaft 19 - Shaft 1,-895.000,-895.000,5600.000,Connection Shaft
+20,Connection Shaft 20 - Shaft 1,-895.000,895.000,5600.000,Connection Shaft
+21,Connection Bracings 21 - Shaft 2,895.000,895.000,6875.000,Connection Bracer
+22,Connection Bracings 22 - Shaft 2,895.000,-895.000,6875.000,Connection Bracer
+23,Connection Bracings 23 - Shaft 2,-895.000,-895.000,6875.000,Connection Bracer
+24,Connection Bracings 24 - Shaft 2,-895.000,895.000,6875.000,Connection Bracer
+25,Connection Shaft 25 - Shaft 2,895.000,895.000,8150.000,Connection Shaft
+26,Connection Shaft 26 - Shaft 2,895.000,-895.000,8150.000,Connection Shaft
+27,Connection Shaft 27 - Shaft 2,-895.000,-895.000,8150.000,Connection Shaft
+28,Connection Shaft 28 - Shaft 2,-895.000,895.000,8150.000,Connection Shaft
+29,Connection Bracings 29 - Shaft 3,732.500,732.500,9125.000,Connection Bracer
+30,Connection Bracings 30 - Shaft 3,732.500,-732.500,9125.000,Connection Bracer
+31,Connection Bracings 31 - Shaft 3,-732.500,-732.500,9125.000,Connection Bracer
+32,Connection Bracings 32 - Shaft 3,-732.500,732.500,9125.000,Connection Bracer
+33,Connection Shaft 33 - Shaft 3,570.000,570.000,10100.000,Connection Shaft
+34,Connection Shaft 34 - Shaft 3,570.000,-570.000,10100.000,Connection Shaft
+35,Connection Shaft 35 - Shaft 3,-570.000,-570.000,10100.000,Connection Shaft
+36,Connection Shaft 36 - Shaft 3,-570.000,570.000,10100.000,Connection Shaft
+37,Connection Bracings 37 - Shaft 4,570.000,570.000,11337.500,Connection Bracer
+38,Connection Bracings 38 - Shaft 4,570.000,-570.000,11337.500,Connection Bracer
+39,Connection Bracings 39 - Shaft 4,-570.000,-570.000,11337.500,Connection Bracer
+40,Connection Bracings 40 - Shaft 4,-570.000,570.000,11337.500,Connection Bracer
+41,Connection Bracings 41 - Shaft 4,570.000,570.000,12575.000,Connection Bracer
+42,Connection Bracings 42 - Shaft 4,570.000,-570.000,12575.000,Connection Bracer
+43,Connection Bracings 43 - Shaft 4,-570.000,-570.000,12575.000,Connection Bracer
+44,Connection Bracings 44 - Shaft 4,-570.000,570.000,12575.000,Connection Bracer
+45,Connection Bracings 45 - Shaft 4,570.000,570.000,13812.500,Connection Bracer
+46,Connection Bracings 46 - Shaft 4,570.000,-570.000,13812.500,Connection Bracer
+47,Connection Bracings 47 - Shaft 4,-570.000,-570.000,13812.500,Connection Bracer
+48,Connection Bracings 48 - Shaft 4,-570.000,570.000,13812.500,Connection Bracer
+49,Connection Shaft 49 - Shaft 4,570.000,570.000,15050.000,Connection Shaft
+50,Connection Shaft 50 - Shaft 4,570.000,-570.000,15050.000,Connection Shaft
+51,Connection Shaft 51 - Shaft 4,-570.000,-570.000,15050.000,Connection Shaft
+52,Connection Shaft 52 - Shaft 4,-570.000,570.000,15050.000,Connection Shaft
+53,Connection Bracings 53 - Shaft 5,570.000,570.000,16287.500,Connection Bracer
+54,Connection Bracings 54 - Shaft 5,570.000,-570.000,16287.500,Connection Bracer
+55,Connection Bracings 55 - Shaft 5,-570.000,-570.000,16287.500,Connection Bracer
+56,Connection Bracings 56 - Shaft 5,-570.000,570.000,16287.500,Connection Bracer
+57,Connection Bracings 57 - Shaft 5,570.000,570.000,17525.000,Connection Bracer
+58,Connection Bracings 58 - Shaft 5,570.000,-570.000,17525.000,Connection Bracer
+59,Connection Bracings 59 - Shaft 5,-570.000,-570.000,17525.000,Connection Bracer
+60,Connection Bracings 60 - Shaft 5,-570.000,570.000,17525.000,Connection Bracer
+61,Connection Bracings 61 - Shaft 5,570.000,570.000,18762.500,Connection Bracer
+62,Connection Bracings 62 - Shaft 5,570.000,-570.000,18762.500,Connection Bracer
+63,Connection Bracings 63 - Shaft 5,-570.000,-570.000,18762.500,Connection Bracer
+64,Connection Bracings 64 - Shaft 5,-570.000,570.000,18762.500,Connection Bracer
+65,Connection Shaft 65 - Shaft 5,570.000,570.000,20000.000,Connection Shaft
+66,Connection Shaft 66 - Shaft 5,570.000,-570.000,20000.000,Connection Shaft
+67,Connection Shaft 67 - Shaft 5,-570.000,-570.000,20000.000,Connection Shaft
+68,Connection Shaft 68 - Shaft 5,-570.000,570.000,20000.000,Connection Shaft
+
+Lines
+ID,Title,Start_Node_ID,End_Node_ID,Type,Type_of_Profile,Line_Profile,Steel_Type,Is_Welded,N_Bolts,Type_of_Shape,Top_Bars,Middle_Bars
+1,Leg 1 - Shaft 1,1,5,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+2,Leg 2 - Shaft 1,2,6,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+3,Leg 3 - Shaft 1,3,7,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+4,Leg 4 - Shaft 1,4,8,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+5,Leg 5 - Shaft 1,5,9,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+6,Leg 6 - Shaft 1,6,10,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+7,Leg 7 - Shaft 1,7,11,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+8,Leg 8 - Shaft 1,8,12,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+9,Leg 9 - Shaft 1,9,13,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+10,Leg 10 - Shaft 1,10,14,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+11,Leg 11 - Shaft 1,11,15,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+12,Leg 12 - Shaft 1,12,16,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+13,Leg 13 - Shaft 1,13,17,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+14,Leg 14 - Shaft 1,14,18,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+15,Leg 15 - Shaft 1,15,19,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+16,Leg 16 - Shaft 1,16,20,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+17,Diagonal Bar 17 - Shaft 1,1,6,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+18,Diagonal Bar 18 - Shaft 1,2,7,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+19,Diagonal Bar 19 - Shaft 1,3,8,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+20,Diagonal Bar 20 - Shaft 1,4,5,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+21,Diagonal Bar 21 - Shaft 1,6,9,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+22,Diagonal Bar 22 - Shaft 1,7,10,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+23,Diagonal Bar 23 - Shaft 1,8,11,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+24,Diagonal Bar 24 - Shaft 1,5,12,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+25,Diagonal Bar 25 - Shaft 1,9,14,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+26,Diagonal Bar 26 - Shaft 1,10,15,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+27,Diagonal Bar 27 - Shaft 1,11,16,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+28,Diagonal Bar 28 - Shaft 1,12,13,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+29,Diagonal Bar 29 - Shaft 1,14,17,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+30,Diagonal Bar 30 - Shaft 1,15,18,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+31,Diagonal Bar 31 - Shaft 1,16,19,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+32,Diagonal Bar 32 - Shaft 1,13,20,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+33,Horizontal Bar 33 - Shaft 1,17,18,Horizontal Bar,angle,L80x80x8,S235,No,1,Alternating Diagonal,yes,no
+34,Horizontal Bar 34 - Shaft 1,18,19,Horizontal Bar,angle,L80x80x8,S235,No,1,Alternating Diagonal,yes,no
+35,Horizontal Bar 35 - Shaft 1,19,20,Horizontal Bar,angle,L80x80x8,S235,No,1,Alternating Diagonal,yes,no
+36,Horizontal Bar 36 - Shaft 1,20,17,Horizontal Bar,angle,L80x80x8,S235,No,1,Alternating Diagonal,yes,no
+37,External Manual Bar 37 - Shaft 1,10,9,Manual Bar,angle,L80x80x8,S235,No,1,Alternating Diagonal,yes,no
+38,External Manual Bar 38 - Shaft 1,9,12,Manual Bar,angle,L80x80x8,S235,No,1,Alternating Diagonal,yes,no
+39,External Manual Bar 39 - Shaft 1,12,11,Manual Bar,angle,L80x80x8,S235,No,1,Alternating Diagonal,yes,no
+40,External Manual Bar 40 - Shaft 1,11,10,Manual Bar,angle,L80x80x8,S235,No,1,Alternating Diagonal,yes,no
+41,Leg 41 - Shaft 2,17,21,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+42,Leg 42 - Shaft 2,18,22,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+43,Leg 43 - Shaft 2,19,23,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+44,Leg 44 - Shaft 2,20,24,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+45,Leg 45 - Shaft 2,21,25,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+46,Leg 46 - Shaft 2,22,26,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+47,Leg 47 - Shaft 2,23,27,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+48,Leg 48 - Shaft 2,24,28,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+49,Diagonal Bar 49 - Shaft 2,17,22,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+50,Diagonal Bar 50 - Shaft 2,18,23,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+51,Diagonal Bar 51 - Shaft 2,19,24,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+52,Diagonal Bar 52 - Shaft 2,20,21,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+53,Diagonal Bar 53 - Shaft 2,22,25,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+54,Diagonal Bar 54 - Shaft 2,23,26,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+55,Diagonal Bar 55 - Shaft 2,24,27,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+56,Diagonal Bar 56 - Shaft 2,21,28,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+57,Horizontal Bar 57 - Shaft 2,25,26,Horizontal Bar,angle,L80x80x8,S235,No,1,Alternating Diagonal,yes,no
+58,Horizontal Bar 58 - Shaft 2,26,27,Horizontal Bar,angle,L80x80x8,S235,No,1,Alternating Diagonal,yes,no
+59,Horizontal Bar 59 - Shaft 2,27,28,Horizontal Bar,angle,L80x80x8,S235,No,1,Alternating Diagonal,yes,no
+60,Horizontal Bar 60 - Shaft 2,28,25,Horizontal Bar,angle,L80x80x8,S235,No,1,Alternating Diagonal,yes,no
+61,Leg 61 - Shaft 3,25,29,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+62,Leg 62 - Shaft 3,26,30,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+63,Leg 63 - Shaft 3,27,31,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+64,Leg 64 - Shaft 3,28,32,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+65,Leg 65 - Shaft 3,29,33,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+66,Leg 66 - Shaft 3,30,34,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+67,Leg 67 - Shaft 3,31,35,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+68,Leg 68 - Shaft 3,32,36,Leg,angle,L120x120x12,S235,0,0,Alternating Diagonal,yes,no
+69,Diagonal Bar 69 - Shaft 3,25,30,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+70,Diagonal Bar 70 - Shaft 3,26,31,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+71,Diagonal Bar 71 - Shaft 3,27,32,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+72,Diagonal Bar 72 - Shaft 3,28,29,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+73,Diagonal Bar 73 - Shaft 3,30,33,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+74,Diagonal Bar 74 - Shaft 3,31,34,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+75,Diagonal Bar 75 - Shaft 3,32,35,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+76,Diagonal Bar 76 - Shaft 3,29,36,Diagonal Bar,angle,L60x60x6,S235,No,2,Alternating Diagonal,yes,no
+77,Horizontal Bar 77 - Shaft 3,33,34,Horizontal Bar,angle,L80x80x8,S235,No,1,Alternating Diagonal,yes,no
+78,Horizontal Bar 78 - Shaft 3,34,35,Horizontal Bar,angle,L80x80x8,S235,No,1,Alternating Diagonal,yes,no
+79,Horizontal Bar 79 - Shaft 3,35,36,Horizontal Bar,angle,L80x80x8,S235,No,1,Alternating Diagonal,yes,no
+80,Horizontal Bar 80 - Shaft 3,36,33,Horizontal Bar,angle,L80x80x8,S235,No,1,Alternating Diagonal,yes,no
+81,Leg 81 - Shaft 4,33,37,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+82,Leg 82 - Shaft 4,34,38,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+83,Leg 83 - Shaft 4,35,39,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+84,Leg 84 - Shaft 4,36,40,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+85,Leg 85 - Shaft 4,37,41,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+86,Leg 86 - Shaft 4,38,42,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+87,Leg 87 - Shaft 4,39,43,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+88,Leg 88 - Shaft 4,40,44,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+89,Leg 89 - Shaft 4,41,45,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+90,Leg 90 - Shaft 4,42,46,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+91,Leg 91 - Shaft 4,43,47,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+92,Leg 92 - Shaft 4,44,48,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+93,Leg 93 - Shaft 4,45,49,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+94,Leg 94 - Shaft 4,46,50,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+95,Leg 95 - Shaft 4,47,51,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+96,Leg 96 - Shaft 4,48,52,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+97,Diagonal Bar 97 - Shaft 4,33,38,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+98,Diagonal Bar 98 - Shaft 4,34,39,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+99,Diagonal Bar 99 - Shaft 4,35,40,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+100,Diagonal Bar 100 - Shaft 4,36,37,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+101,Diagonal Bar 101 - Shaft 4,38,41,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+102,Diagonal Bar 102 - Shaft 4,39,42,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+103,Diagonal Bar 103 - Shaft 4,40,43,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+104,Diagonal Bar 104 - Shaft 4,37,44,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+105,Diagonal Bar 105 - Shaft 4,41,46,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+106,Diagonal Bar 106 - Shaft 4,42,47,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+107,Diagonal Bar 107 - Shaft 4,43,48,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+108,Diagonal Bar 108 - Shaft 4,44,45,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+109,Diagonal Bar 109 - Shaft 4,46,49,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+110,Diagonal Bar 110 - Shaft 4,47,50,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+111,Diagonal Bar 111 - Shaft 4,48,51,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+112,Diagonal Bar 112 - Shaft 4,45,52,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+113,Horizontal Bar 113 - Shaft 4,49,50,Horizontal Bar,angle,L60x60x6,S235,No,1,Alternating Diagonal,yes,no
+114,Horizontal Bar 114 - Shaft 4,50,51,Horizontal Bar,angle,L60x60x6,S235,No,1,Alternating Diagonal,yes,no
+115,Horizontal Bar 115 - Shaft 4,51,52,Horizontal Bar,angle,L60x60x6,S235,No,1,Alternating Diagonal,yes,no
+116,Horizontal Bar 116 - Shaft 4,52,49,Horizontal Bar,angle,L60x60x6,S235,No,1,Alternating Diagonal,yes,no
+117,External Manual Bar 117 - Shaft 4,43,42,Manual Bar,angle,L60x60x6,S235,No,1,Alternating Diagonal,yes,no
+118,External Manual Bar 118 - Shaft 4,42,41,Manual Bar,angle,L60x60x6,S235,No,1,Alternating Diagonal,yes,no
+119,External Manual Bar 119 - Shaft 4,41,44,Manual Bar,angle,L60x60x6,S235,No,1,Alternating Diagonal,yes,no
+120,External Manual Bar 120 - Shaft 4,44,43,Manual Bar,angle,L60x60x6,S235,No,1,Alternating Diagonal,yes,no
+121,Leg 121 - Shaft 5,49,53,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+122,Leg 122 - Shaft 5,50,54,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+123,Leg 123 - Shaft 5,51,55,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+124,Leg 124 - Shaft 5,52,56,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+125,Leg 125 - Shaft 5,53,57,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+126,Leg 126 - Shaft 5,54,58,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+127,Leg 127 - Shaft 5,55,59,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+128,Leg 128 - Shaft 5,56,60,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+129,Leg 129 - Shaft 5,57,61,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+130,Leg 130 - Shaft 5,58,62,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+131,Leg 131 - Shaft 5,59,63,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+132,Leg 132 - Shaft 5,60,64,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+133,Leg 133 - Shaft 5,61,65,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+134,Leg 134 - Shaft 5,62,66,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+135,Leg 135 - Shaft 5,63,67,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+136,Leg 136 - Shaft 5,64,68,Leg,angle,L90x90x9,S235,0,0,Alternating Diagonal,yes,no
+137,Diagonal Bar 137 - Shaft 5,49,54,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+138,Diagonal Bar 138 - Shaft 5,50,55,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+139,Diagonal Bar 139 - Shaft 5,51,56,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+140,Diagonal Bar 140 - Shaft 5,52,53,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+141,Diagonal Bar 141 - Shaft 5,54,57,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+142,Diagonal Bar 142 - Shaft 5,55,58,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+143,Diagonal Bar 143 - Shaft 5,56,59,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+144,Diagonal Bar 144 - Shaft 5,53,60,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+145,Diagonal Bar 145 - Shaft 5,57,62,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+146,Diagonal Bar 146 - Shaft 5,58,63,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+147,Diagonal Bar 147 - Shaft 5,59,64,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+148,Diagonal Bar 148 - Shaft 5,60,61,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+149,Diagonal Bar 149 - Shaft 5,62,65,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+150,Diagonal Bar 150 - Shaft 5,63,66,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+151,Diagonal Bar 151 - Shaft 5,64,67,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+152,Diagonal Bar 152 - Shaft 5,61,68,Diagonal Bar,angle,L50x50x5,S235,No,1,Alternating Diagonal,yes,no
+153,Horizontal Bar 153 - Shaft 5,65,66,Horizontal Bar,angle,L60x60x6,S235,No,1,Alternating Diagonal,yes,no
+154,Horizontal Bar 154 - Shaft 5,66,67,Horizontal Bar,angle,L60x60x6,S235,No,1,Alternating Diagonal,yes,no
+155,Horizontal Bar 155 - Shaft 5,67,68,Horizontal Bar,angle,L60x60x6,S235,No,1,Alternating Diagonal,yes,no
+156,Horizontal Bar 156 - Shaft 5,68,65,Horizontal Bar,angle,L60x60x6,S235,No,1,Alternating Diagonal,yes,no
+157,External Manual Bar 157 - Shaft 5,58,57,Manual Bar,angle,L60x60x6,S235,No,1,Alternating Diagonal,yes,no
+158,External Manual Bar 158 - Shaft 5,59,60,Manual Bar,angle,L60x60x6,S235,No,1,Alternating Diagonal,yes,no
+159,External Manual Bar 159 - Shaft 5,60,57,Manual Bar,angle,L60x60x6,S235,No,1,Alternating Diagonal,yes,no
+160,External Manual Bar 160 - Shaft 5,59,58,Manual Bar,angle,L60x60x6,S235,No,1,Alternating Diagonal,yes,no
+
+Diag_Hor_Connection
+Id_Lig,Id_Ele,Is_Welded,NBolts,Bolt_Diameter,Type_of_Steel_Bolt,Type_of_Steel_of_the_Plate,e1,e2,p1,p2,Thickness_of_the_Plate
+1,17,No,2,M16,8.8,S235,25,30,40,0,6
+2,18,No,2,M16,8.8,S235,25,30,40,0,6
+3,19,No,2,M16,8.8,S235,25,30,40,0,6
+4,20,No,2,M16,8.8,S235,25,30,40,0,6
+5,21,No,2,M16,8.8,S235,25,30,40,0,6
+6,22,No,2,M16,8.8,S235,25,30,40,0,6
+7,23,No,2,M16,8.8,S235,25,30,40,0,6
+8,24,No,2,M16,8.8,S235,25,30,40,0,6
+9,25,No,2,M16,8.8,S235,25,30,40,0,6
+10,26,No,2,M16,8.8,S235,25,30,40,0,6
+11,27,No,2,M16,8.8,S235,25,30,40,0,6
+12,28,No,2,M16,8.8,S235,25,30,40,0,6
+13,29,No,2,M16,8.8,S235,25,30,40,0,6
+14,30,No,2,M16,8.8,S235,25,30,40,0,6
+15,31,No,2,M16,8.8,S235,25,30,40,0,6
+16,32,No,2,M16,8.8,S235,25,30,40,0,6
+17,33,No,1,M16,8.8,S235,25,40,0,0,8
+18,34,No,1,M16,8.8,S235,25,40,0,0,8
+19,35,No,1,M16,8.8,S235,25,40,0,0,8
+20,36,No,1,M16,8.8,S235,25,40,0,0,8
+21,37,No,1,M16,8.8,S235,25,40,0,0,8
+22,38,No,1,M16,8.8,S235,25,40,0,0,8
+23,39,No,1,M16,8.8,S235,25,40,0,0,8
+24,40,No,1,M16,8.8,S235,25,40,0,0,8
+25,49,No,2,M16,8.8,S235,25,30,40,0,6
+26,50,No,2,M16,8.8,S235,25,30,40,0,6
+27,51,No,2,M16,8.8,S235,25,30,40,0,6
+28,52,No,2,M16,8.8,S235,25,30,40,0,6
+29,53,No,2,M16,8.8,S235,25,30,40,0,6
+30,54,No,2,M16,8.8,S235,25,30,40,0,6
+31,55,No,2,M16,8.8,S235,25,30,40,0,6
+32,56,No,2,M16,8.8,S235,25,30,40,0,6
+33,57,No,1,M16,8.8,S235,25,40,0,0,8
+34,58,No,1,M16,8.8,S235,25,40,0,0,8
+35,59,No,1,M16,8.8,S235,25,40,0,0,8
+36,60,No,1,M16,8.8,S235,25,40,0,0,8
+37,69,No,2,M16,8.8,S235,25,30,40,0,6
+38,70,No,2,M16,8.8,S235,25,30,40,0,6
+39,71,No,2,M16,8.8,S235,25,30,40,0,6
+40,72,No,2,M16,8.8,S235,25,30,40,0,6
+41,73,No,2,M16,8.8,S235,25,30,40,0,6
+42,74,No,2,M16,8.8,S235,25,30,40,0,6
+43,75,No,2,M16,8.8,S235,25,30,40,0,6
+44,76,No,2,M16,8.8,S235,25,30,40,0,6
+45,77,No,1,M16,8.8,S235,25,40,0,0,8
+46,78,No,1,M16,8.8,S235,25,40,0,0,8
+47,79,No,1,M16,8.8,S235,25,40,0,0,8
+48,80,No,1,M16,8.8,S235,25,40,0,0,8
+49,97,No,1,M12,8.8,S235,25,25,0,0,5
+50,98,No,1,M12,8.8,S235,25,25,0,0,5
+51,99,No,1,M12,8.8,S235,25,25,0,0,5
+52,100,No,1,M12,8.8,S235,25,25,0,0,5
+53,101,No,1,M12,8.8,S235,25,25,0,0,5
+54,102,No,1,M12,8.8,S235,25,25,0,0,5
+55,103,No,1,M12,8.8,S235,25,25,0,0,5
+56,104,No,1,M12,8.8,S235,25,25,0,0,5
+57,105,No,1,M12,8.8,S235,25,25,0,0,5
+58,106,No,1,M12,8.8,S235,25,25,0,0,5
+59,107,No,1,M12,8.8,S235,25,25,0,0,5
+60,108,No,1,M12,8.8,S235,25,25,0,0,5
+61,109,No,1,M12,8.8,S235,25,25,0,0,5
+62,110,No,1,M12,8.8,S235,25,25,0,0,5
+63,111,No,1,M12,8.8,S235,25,25,0,0,5
+64,112,No,1,M12,8.8,S235,25,25,0,0,5
+65,113,No,1,M16,8.8,S235,25,30,0,0,6
+66,114,No,1,M16,8.8,S235,25,30,0,0,6
+67,115,No,1,M16,8.8,S235,25,30,0,0,6
+68,116,No,1,M16,8.8,S235,25,30,0,0,6
+69,117,No,1,M16,8.8,S235,25,30,0,0,6
+70,118,No,1,M16,8.8,S235,25,30,0,0,6
+71,119,No,1,M16,8.8,S235,25,30,0,0,6
+72,120,No,1,M16,8.8,S235,25,30,0,0,6
+73,137,No,1,M12,8.8,S235,25,25,0,0,5
+74,138,No,1,M12,8.8,S235,25,25,0,0,5
+75,139,No,1,M12,8.8,S235,25,25,0,0,5
+76,140,No,1,M12,8.8,S235,25,25,0,0,5
+77,141,No,1,M12,8.8,S235,25,25,0,0,5
+78,142,No,1,M12,8.8,S235,25,25,0,0,5
+79,143,No,1,M12,8.8,S235,25,25,0,0,5
+80,144,No,1,M12,8.8,S235,25,25,0,0,5
+81,145,No,1,M12,8.8,S235,25,25,0,0,5
+82,146,No,1,M12,8.8,S235,25,25,0,0,5
+83,147,No,1,M12,8.8,S235,25,25,0,0,5
+84,148,No,1,M12,8.8,S235,25,25,0,0,5
+85,149,No,1,M12,8.8,S235,25,25,0,0,5
+86,150,No,1,M12,8.8,S235,25,25,0,0,5
+87,151,No,1,M12,8.8,S235,25,25,0,0,5
+88,152,No,1,M12,8.8,S235,25,25,0,0,5
+89,153,No,1,M16,8.8,S235,30,30,0,0,6
+90,154,No,1,M16,8.8,S235,30,30,0,0,6
+91,155,No,1,M16,8.8,S235,30,30,0,0,6
+92,156,No,1,M16,8.8,S235,30,30,0,0,6
+93,157,No,1,M16,8.8,S235,30,30,0,0,6
+94,158,No,1,M16,8.8,S235,30,30,0,0,6
+95,159,No,1,M16,8.8,S235,30,30,0,0,6
+96,160,No,1,M16,8.8,S235,30,30,0,0,6
+
+Shaft Connection - Flange
+Id_Connection,ID_Node,Exterior_Perimeter_Flange_mm,Distance_Between_Bolts_mm,Flange_Thickness_mm,Type_of_Steel_Flange,Bolts_Diameter_mm,Quantity_of_Bolts,Type_of_Steel_Bolts,Does_it_have_Stiffeners,Quantity_of_Stiffeners,Stiffeners_Thickness_mm,Stiffeners_Length_mm,Stiffeners_Height_mm
+
+Shaft Connection - Bolted
+Id_Connection,ID_Node,How_many_Counter_Plates,Type_of_Steel_of_the_Counter_Plate,Thickness_of_the_Counter_Plate_mm,e1,e2,p1,p2,Quantity_of_Bolts_per_Tab,Bolts_Diameter,Type_of_Steel_Bolts
+1,17,2,S235,12,30,60,50,0,3,M16,8.8
+2,18,2,S235,12,30,60,50,0,3,M16,8.8
+3,19,2,S235,12,30,60,50,0,3,M16,8.8
+4,20,2,S235,12,30,60,50,0,3,M16,8.8
+5,25,2,S235,12,30,60,50,0,3,M20,8.8
+6,26,2,S235,12,30,60,50,0,3,M20,8.8
+7,27,2,S235,12,30,60,50,0,3,M20,8.8
+8,28,2,S235,12,30,60,50,0,3,M20,8.8
+9,33,2,S235,9,30,45,50,0,3,M20,8.8
+10,34,2,S235,9,30,45,50,0,3,M20,8.8
+11,35,2,S235,9,30,45,50,0,3,M20,8.8
+12,36,2,S235,9,30,45,50,0,3,M20,8.8
+13,49,2,S235,9,30,45,50,0,3,M20,8.8
+14,50,2,S235,9,30,45,50,0,3,M20,8.8
+15,51,2,S235,9,30,45,50,0,3,M20,8.8
+16,52,2,S235,9,30,45,50,0,3,M20,8.8
+17,65,0,0,0,0,0,0,0,0,0,0
+18,66,0,0,0,0,0,0,0,0,0,0
+19,67,0,0,0,0,0,0,0,0,0,0
+20,68,0,0,0,0,0,0,0,0,0,0
+
+Flange Foundation Angle
+Embebed_in_concrete,Flange_Width,Flange_Thickness,Type_of_Steel_Flange,Bolts_Diameter,Nbolts,Type_of_Steel_Bolts,Has_Stiffeners,Quantity_of_Stiffeners,Stiffeners_Thickness_mm,Stiffeners_Length_mm,Stiffeners_Height_mm
+Yes,0,0,0,0,0,0,0,0,0,0,0
+
+Foundation
+Foundation Type,Slab
+Height (m) / Slab Height (m),3.00
+Width (m) / Slab Width (m),3.00
+Pier Height (m),0
+Pier Width (m),0
+
+Orientation
+Tower_Orientation_Degrees
+103.20

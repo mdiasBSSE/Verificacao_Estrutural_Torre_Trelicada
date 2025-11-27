@@ -1,0 +1,109 @@
+Nodes
+ID,Title,X,Y,Z,Type
+1,Tower Foundation Connection 1 - Shaft 1,866.025,1500.000,0.000,Tower Foundation
+2,Tower Foundation Connection 2 - Shaft 1,866.025,-1500.000,0.000,Tower Foundation
+3,Tower Foundation Connection 3 - Shaft 1,-1732.051,0.000,0.000,Tower Foundation
+4,Connection Bracings 4 - Shaft 1,793.857,1375.000,2500.000,Connection Bracer
+5,Connection Bracings 5 - Shaft 1,793.857,-1375.000,2500.000,Connection Bracer
+6,Connection Bracings 6 - Shaft 1,-1587.713,0.000,2500.000,Connection Bracer
+7,Connection Shaft 7 - Shaft 1,721.688,1250.000,5000.000,Connection Shaft
+8,Connection Shaft 8 - Shaft 1,721.688,-1250.000,5000.000,Connection Shaft
+9,Connection Shaft 9 - Shaft 1,-1443.376,0.000,5000.000,Connection Shaft
+10,Connection Bracings 10 - Shaft 1,828.372,0.000,1304.348,Non-Connectable Node
+11,Connection Bracings 11 - Shaft 1,-414.186,-717.391,1304.348,Non-Connectable Node
+12,Connection Bracings 12 - Shaft 1,-414.186,717.391,1304.348,Non-Connectable Node
+13,Connection Bracings 13 - Shaft 1,756.054,0.000,3809.524,Non-Connectable Node
+14,Connection Bracings 14 - Shaft 1,-378.027,-654.762,3809.524,Non-Connectable Node
+15,Connection Bracings 15 - Shaft 1,-378.027,654.762,3809.524,Non-Connectable Node
+
+Lines
+ID,Title,Start_Node_ID,End_Node_ID,Type,Type_of_Profile,Line_Profile,Steel_Type,Is_Welded,N_Bolts,Type_of_Shape,Top_Bars,Middle_Bars
+1,Leg 1 - Shaft 1,1,4,Leg,pipe,Ø 76.1x5.0,S275,0,0,X-Bracing,yes,yes
+2,Leg 2 - Shaft 1,2,5,Leg,pipe,Ø 76.1x5.0,S275,0,0,X-Bracing,yes,yes
+3,Leg 3 - Shaft 1,3,6,Leg,pipe,Ø 76.1x5.0,S275,0,0,X-Bracing,yes,yes
+4,Leg 4 - Shaft 1,4,7,Leg,pipe,Ø 76.1x5.0,S275,0,0,X-Bracing,yes,yes
+5,Leg 5 - Shaft 1,5,8,Leg,pipe,Ø 76.1x5.0,S275,0,0,X-Bracing,yes,yes
+6,Leg 6 - Shaft 1,6,9,Leg,pipe,Ø 76.1x5.0,S275,0,0,X-Bracing,yes,yes
+7,Diagonal Bar 7 - Shaft 1,1,10,Diagonal Bar,pipe,Ø 139.7x5.0,S235,No,2,X-Bracing,yes,yes
+8,Diagonal Bar 8 - Shaft 1,10,5,Diagonal Bar,pipe,Ø 139.7x5.0,S235,No,2,X-Bracing,yes,yes
+9,Diagonal Bar 9 - Shaft 1,2,10,Diagonal Bar,pipe,Ø 139.7x5.0,S235,No,2,X-Bracing,yes,yes
+10,Diagonal Bar 10 - Shaft 1,10,4,Diagonal Bar,pipe,Ø 139.7x5.0,S235,No,2,X-Bracing,yes,yes
+11,Diagonal Bar 11 - Shaft 1,2,11,Diagonal Bar,pipe,Ø 139.7x5.0,S235,No,2,X-Bracing,yes,yes
+12,Diagonal Bar 12 - Shaft 1,11,6,Diagonal Bar,pipe,Ø 139.7x5.0,S235,No,2,X-Bracing,yes,yes
+13,Diagonal Bar 13 - Shaft 1,3,11,Diagonal Bar,pipe,Ø 139.7x5.0,S235,No,2,X-Bracing,yes,yes
+14,Diagonal Bar 14 - Shaft 1,11,5,Diagonal Bar,pipe,Ø 139.7x5.0,S235,No,2,X-Bracing,yes,yes
+15,Diagonal Bar 15 - Shaft 1,3,12,Diagonal Bar,pipe,Ø 139.7x5.0,S235,No,2,X-Bracing,yes,yes
+16,Diagonal Bar 16 - Shaft 1,12,4,Diagonal Bar,pipe,Ø 139.7x5.0,S235,No,2,X-Bracing,yes,yes
+17,Diagonal Bar 17 - Shaft 1,1,12,Diagonal Bar,pipe,Ø 139.7x5.0,S235,No,2,X-Bracing,yes,yes
+18,Diagonal Bar 18 - Shaft 1,12,6,Diagonal Bar,pipe,Ø 139.7x5.0,S235,No,2,X-Bracing,yes,yes
+19,Diagonal Bar 19 - Shaft 1,4,13,Diagonal Bar,pipe,Ø 139.7x5.0,S235,No,2,X-Bracing,yes,yes
+20,Diagonal Bar 20 - Shaft 1,13,8,Diagonal Bar,pipe,Ø 139.7x5.0,S235,No,2,X-Bracing,yes,yes
+21,Diagonal Bar 21 - Shaft 1,5,13,Diagonal Bar,pipe,Ø 139.7x5.0,S235,No,2,X-Bracing,yes,yes
+22,Diagonal Bar 22 - Shaft 1,13,7,Diagonal Bar,pipe,Ø 139.7x5.0,S235,No,2,X-Bracing,yes,yes
+23,Diagonal Bar 23 - Shaft 1,5,14,Diagonal Bar,pipe,Ø 139.7x5.0,S235,No,2,X-Bracing,yes,yes
+24,Diagonal Bar 24 - Shaft 1,14,9,Diagonal Bar,pipe,Ø 139.7x5.0,S235,No,2,X-Bracing,yes,yes
+25,Diagonal Bar 25 - Shaft 1,6,14,Diagonal Bar,pipe,Ø 139.7x5.0,S235,No,2,X-Bracing,yes,yes
+26,Diagonal Bar 26 - Shaft 1,14,8,Diagonal Bar,pipe,Ø 139.7x5.0,S235,No,2,X-Bracing,yes,yes
+27,Diagonal Bar 27 - Shaft 1,6,15,Diagonal Bar,pipe,Ø 139.7x5.0,S235,No,2,X-Bracing,yes,yes
+28,Diagonal Bar 28 - Shaft 1,15,7,Diagonal Bar,pipe,Ø 139.7x5.0,S235,No,2,X-Bracing,yes,yes
+29,Diagonal Bar 29 - Shaft 1,4,15,Diagonal Bar,pipe,Ø 139.7x5.0,S235,No,2,X-Bracing,yes,yes
+30,Diagonal Bar 30 - Shaft 1,15,9,Diagonal Bar,pipe,Ø 139.7x5.0,S235,No,2,X-Bracing,yes,yes
+31,Horizontal Bar 31 - Shaft 1,7,8,Horizontal Bar,angle,L45x45x3,S275,No,2,X-Bracing,yes,yes
+32,Horizontal Bar 32 - Shaft 1,8,9,Horizontal Bar,angle,L45x45x3,S275,No,2,X-Bracing,yes,yes
+33,Horizontal Bar 33 - Shaft 1,9,7,Horizontal Bar,angle,L45x45x3,S275,No,2,X-Bracing,yes,yes
+34,Horizontal Bar 34 - Shaft 1,4,5,Horizontal Bar,angle,L45x45x3,S275,No,2,X-Bracing,yes,yes
+35,Horizontal Bar 35 - Shaft 1,5,6,Horizontal Bar,angle,L45x45x3,S275,No,2,X-Bracing,yes,yes
+36,Horizontal Bar 36 - Shaft 1,6,4,Horizontal Bar,angle,L45x45x3,S275,No,2,X-Bracing,yes,yes
+
+Diag_Hor_Connection
+Id_Lig,Id_Ele,Is_Welded,NBolts,Bolt_Diameter,Type_of_Steel_Bolt,Type_of_Steel_of_the_Plate,e1,e2,p1,p2,Thickness_of_the_Plate
+1,7,No,2,M16,8.8,S275,30,50,40,0,5
+2,8,No,2,M16,8.8,S275,30,50,40,0,5
+3,9,No,2,M16,8.8,S275,30,50,40,0,5
+4,10,No,2,M16,8.8,S275,30,50,40,0,5
+5,11,No,2,M16,8.8,S275,30,50,40,0,5
+6,12,No,2,M16,8.8,S275,30,50,40,0,5
+7,13,No,2,M16,8.8,S275,30,50,40,0,5
+8,14,No,2,M16,8.8,S275,30,50,40,0,5
+9,15,No,2,M16,8.8,S275,30,50,40,0,5
+10,16,No,2,M16,8.8,S275,30,50,40,0,5
+11,17,No,2,M16,8.8,S275,30,50,40,0,5
+12,18,No,2,M16,8.8,S275,30,50,40,0,5
+13,19,No,2,M16,8.8,S275,30,50,40,0,5
+14,20,No,2,M16,8.8,S275,30,50,40,0,5
+15,21,No,2,M16,8.8,S275,30,50,40,0,5
+16,22,No,2,M16,8.8,S275,30,50,40,0,5
+17,23,No,2,M16,8.8,S275,30,50,40,0,5
+18,24,No,2,M16,8.8,S275,30,50,40,0,5
+19,25,No,2,M16,8.8,S275,30,50,40,0,5
+20,26,No,2,M16,8.8,S275,30,50,40,0,5
+21,27,No,2,M16,8.8,S275,30,50,40,0,5
+22,28,No,2,M16,8.8,S275,30,50,40,0,5
+23,29,No,2,M16,8.8,S275,30,50,40,0,5
+24,30,No,2,M16,8.8,S275,30,50,40,0,5
+25,31,No,2,M16,8.8,S275,30,25,50,30,8
+26,32,No,2,M16,8.8,S275,30,25,50,30,8
+27,33,No,2,M16,8.8,S275,30,25,50,30,8
+28,34,No,2,M16,8.8,S275,30,25,50,30,8
+29,35,No,2,M16,8.8,S275,30,25,50,30,8
+30,36,No,2,M16,8.8,S275,30,25,50,30,8
+
+Shaft Connection - Flange
+Id_Connection,ID_Node,Exterior_Perimeter_Flange_mm,Distance_Between_Bolts_mm,Flange_Thickness_mm,Type_of_Steel_Flange,Bolts_Diameter_mm,Quantity_of_Bolts,Type_of_Steel_Bolts,Does_it_have_Stiffeners,Quantity_of_Stiffeners,Stiffeners_Thickness_mm,Stiffeners_Length_mm,Stiffeners_Height_mm
+1,7,300,250,30,S235,M16,6,8.8,no,10,0,0,0
+2,8,300,250,30,S235,M16,6,8.8,no,10,0,0,0
+3,9,300,250,30,S235,M16,6,8.8,no,10,0,0,0
+
+Shaft Connection - Bolted
+Id_Connection,ID_Node,How_many_Counter_Plates,Type_of_Steel_of_the_Counter_Plate,Thickness_of_the_Counter_Plate_mm,e1,e2,p1,p2,Quantity_of_Bolts_per_Tab,Bolts_Diameter,Type_of_Steel_Bolts
+
+Foundation
+Foundation Type,Not selected
+Height (m) / Slab Height (m),0
+Width (m) / Slab Width (m),0
+Pier Height (m),0
+Pier Width (m),0
+
+Orientation
+Tower_Orientation_Degrees
+25.00
