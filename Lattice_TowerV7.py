@@ -25,7 +25,7 @@ from scipy.optimize import minimize
 def main(Aincrease):    
     # === 1. Ler nós e barras ===
 
-
+    #ohiwegohisdfhi
     # Verifica se foi passado algum argumento
     if len(sys.argv) > 1:
         # Pega o primeiro argumento passado na linha de comando
