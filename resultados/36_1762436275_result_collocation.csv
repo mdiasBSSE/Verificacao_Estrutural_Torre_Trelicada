@@ -1,0 +1,101 @@
+Bars
+
+Member,Profile,Steel,Slenderness,NtRd,NbRd,Ned,Ratio,Result
+Leg - Shaft 4,Ø 60.3x3.2,S275,99.6,157.9,72.6,8.4,0.12,OK
+Leg - Shaft 3,Ø 138x1,S235,41.3,101.1,88.6,27.7,0.31,OK
+Leg - Shaft 2,Ø 114.3x4.0,S235,51.3,325.7,266.1,69.5,0.26,OK
+Leg - Shaft 1,Ø 139.7x4.0,S235,42.0,400.7,349.6,101.5,0.29,OK
+Diagonal Bar - Shaft 4,Ø 88.9x4.0,S275,80.9,293.4,170.3,3.8,0.02,OK
+Diagonal Bar - Shaft 3,L40x40x3,S275,69.7,84.7,55.1,7.1,0.13,OK
+Diagonal Bar - Shaft 2,L40x40x4,S355,190.0,109.3,15.4,10.5,0.68,OK
+Diagonal Bar - Shaft 1,Ø 21.3x3.2,S275,243.2,50.0,5.4,5.3,0.99,OK
+Horizontal Bar - Shaft 4,Ø 101.6x10.0,S275,57.3,791.4,593.0,0.8,0.0,OK
+Horizontal Bar - Shaft 3,L30x30x3,S235,95.6,62.7,36.8,1.7,0.05,OK
+Horizontal Bar - Shaft 2,L48x48x8,S235,118.4,174.1,77.7,2.7,0.03,OK
+Horizontal Bar - Shaft 1,Ø 26.9x2.6,S235,297.1,46.6,4.0,1.1,0.28,OK
+
+Connections
+
+Member,Plate thickness,e1,e2,p1,p2,Steel Plate,Number of bolts,Bolts Size,Bolts steel,Ned,NRd,Ratio,Result
+Diagonal Bar - Shaft 4,0.0,0.0,0.0,0.0,0.0,S0,0,0,0,3.8,0.0,0.0,NA
+Diagonal Bar - Shaft 3,4.0,30.0,30.0,0.0,0.0,S275,1,8.8,M16,7.1,30.6,0.23,OK
+Diagonal Bar - Shaft 2,0.0,0.0,0.0,0.0,0.0,S0,0,0,0,10.5,0.0,0.0,NA
+Diagonal Bar - Shaft 1,0.0,0.0,0.0,0.0,0.0,S0,0,0,0,5.3,0.0,0.0,NA
+Horizontal Bar - Shaft 4,0.0,0.0,0.0,0.0,0.0,S0,0,0,0,0.4,0.0,0.0,NA
+Horizontal Bar - Shaft 3,0.0,0.0,0.0,0.0,0.0,S0,0,0,0,2.1,0.0,0.0,NA
+Horizontal Bar - Shaft 2,0.0,0.0,0.0,0.0,0.0,S0,0,0,0,3.0,0.0,0.0,NA
+Horizontal Bar - Shaft 1,0.0,0.0,0.0,0.0,0.0,S0,0,0,0,0.6,0.0,0.0,NA
+
+Shaft connections - Bolted 
+
+Member,Plate thickness,e1,e2,p1,p2,Number of plates,Steel Plate,Number of bolts,Bolts Size,Bolts steel,NRd,Ned,Ratio,Result
+
+Shaft connections - Flanged
+
+Member,Flange Diameter,Flange thickness,Flange Steel,Bolts Inscription,Number of bolts,Bolts Diameter,Bolts steel,Ned,Nrd,Ratio,Result
+Leg - Shaft 4,18.0,55.0,S235,963.0,55.0,M56,S275,0.0,3.2,0.0,OK
+Leg - Shaft 3,11.0,22.0,S275,231.0,33.0,M16,4.8,0.0,20.4,0.0,OK
+Leg - Shaft 2,11.0,22.0,S275,231.0,33.0,M16,4.8,0.0,57.6,0.0,OK
+Leg - Shaft 1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,OK
+
+Tilt
+
+Case,Degree,Minute,Distance
+SLS - Top,0.055,3.307,17.4
+SLS - 2/3,0.053,3.158,9.6
+ULS - Top,0.088,5.291,27.8
+ULS - 2/3,0.084,5.053,15.4
+SLS - 100 km/h,0.021,1.286,6.8
+ULS - 100 km/h,0.034,2.057,10.8
+SLS - 120 km/h,0.031,1.851,9.7
+ULS - 120 km/h,0.049,2.962,15.6
+
+Basal Efforts
+
+Case,Ned,Ted,Med
+SLS,29.625,26.399,343.265
+ULS,35.55,42.239,549.224
+
+Area - Equipments
+
+0.092,0.092,0.092,0.092
+
+Area - Linear equipments
+
+Name,Widht,Shape Coefficient,Weight,Start,End
+Cables,0.0,1.2,0.0,0.0,24.0
+
+Foundation
+
+Foundation, 
+Slab Width (m),0
+Slab Height (m),0
+Pier Width (m),0
+Pier Height (m),0
+Soil Self-Weight (kN/m3),0
+Allowed Soil Tension (SLS) (Pa),0
+Allowed Soil Tension (ULS) (Pa),0
+
+Ratio Foundation
+
+Ratio Foundation,0
+
+Wind Load
+
+Wind Load,
+Country,Spain
+Wind Zone,A
+vref (m/s),26
+Terrain Category,II
+Orographie Coefficient,1.0
+q0 (Pa),422.5
+Average Wind speed (top) (m/s),30.5
+Dynamic Wind Pressure (top) (Pa),1240.0
+
+Ice Load
+
+Snow Load,
+Radial ice thickness,0
+Increased volumetric weight of ice (kg/m3),0
+
+Area Left,1.24

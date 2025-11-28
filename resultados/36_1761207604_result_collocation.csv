@@ -1,0 +1,90 @@
+Bars
+
+Member,Profile,Steel,Slenderness,NcRd,NbRd,Ned,Ratio
+Leg - Shaft 8,L90x90x9,S235,97.6,364.3,208.5,18.5,0.089
+Leg - Shaft 7,L90x90x9,S235,98.0,364.3,207.5,45.6,0.22
+Leg - Shaft 6,L90x90x9,S235,97.6,364.3,208.5,80.4,0.386
+Leg - Shaft 5,L90x90x9,S235,98.0,364.3,207.5,122.1,0.588
+Leg - Shaft 4,L120x120x12,S235,38.5,646.3,596.0,130.0,0.218
+Leg - Shaft 3,L120x120x12,S235,75.3,646.3,467.4,142.6,0.305
+Leg - Shaft 2,L120x120x12,S235,85.1,646.3,424.9,190.0,0.447
+Leg - Shaft 1,L120x120x12,S235,80.3,646.3,445.7,243.2,0.546
+Diagonal Bar - Shaft 8,L50x50x5,S235,154.1,112.8,26.6,10.4,0.389
+Diagonal Bar - Shaft 7,L50x50x5,S235,154.4,112.8,26.6,13.8,0.521
+Diagonal Bar - Shaft 6,L50x50x5,S235,154.1,112.8,26.6,16.9,0.635
+Diagonal Bar - Shaft 5,L50x50x5,S235,154.4,112.8,26.6,19.2,0.722
+Diagonal Bar - Shaft 4,L60x60x6,S235,131.1,162.4,62.3,14.4,0.232
+Diagonal Bar - Shaft 3,L60x60x6,S235,164.9,162.4,42.7,22.0,0.514
+Diagonal Bar - Shaft 2,L60x60x6,S235,170.9,162.4,40.2,26.0,0.647
+Diagonal Bar - Shaft 1,L60x60x6,S235,167.9,162.4,41.4,28.9,0.697
+Horizontal Bar - Shaft 8,L60x60x6,S235,101.4,162.4,71.1,3.0,0.043
+Horizontal Bar - Shaft 7,L60x60x6,S235,101.4,162.4,71.1,0.5,0.008
+Horizontal Bar - Shaft 6,L60x60x6,S235,101.4,162.4,71.1,0.7,0.009
+Horizontal Bar - Shaft 5,L60x60x6,S235,101.4,162.4,71.1,1.0,0.014
+Horizontal Bar - Shaft 4,L80x80x8,S235,87.4,289.1,148.3,20.0,0.135
+Horizontal Bar - Shaft 3,L80x80x8,S235,113.5,289.1,109.5,17.0,0.155
+Horizontal Bar - Shaft 2,L80x80x8,S235,113.5,289.1,109.5,1.0,0.009
+Horizontal Bar - Shaft 1,L80x80x8,S235,113.5,289.1,109.5,1.3,0.012
+
+Connections
+
+Member,Plate thickness,e1,e2,p1,p2,Steel Plate,Number of bolts,Bolts Size,Bolts steel,Ned,NRd,Ratio
+Diagonal Bar - Shaft 8,5.0,25.0,25.0,0.0,0.0,S235,1,8.8,M16,10.4,23.3,0.444
+Diagonal Bar - Shaft 7,5.0,25.0,25.0,0.0,0.0,S235,1,8.8,M12,13.8,25.7,0.538
+Diagonal Bar - Shaft 6,5.0,25.0,25.0,0.0,0.0,S235,1,8.8,M12,16.9,25.7,0.658
+Diagonal Bar - Shaft 5,5.0,25.0,25.0,0.0,0.0,S235,1,8.8,M12,19.2,25.7,0.745
+Diagonal Bar - Shaft 4,6.0,25.0,30.0,40.0,0.0,S235,2,8.8,M16,14.4,65.9,0.219
+Diagonal Bar - Shaft 3,6.0,25.0,30.0,40.0,0.0,S235,2,8.8,M16,22.0,65.9,0.333
+Diagonal Bar - Shaft 2,6.0,25.0,30.0,40.0,0.0,S235,2,8.8,M16,26.0,65.9,0.394
+Diagonal Bar - Shaft 1,6.0,25.0,30.0,40.0,0.0,S235,2,8.8,M16,28.9,65.9,0.438
+Horizontal Bar - Shaft 8,6.0,30.0,30.0,0.0,0.0,S235,1,8.8,M16,3.0,38.4,0.079
+Horizontal Bar - Shaft 7,6.0,25.0,30.0,0.0,0.0,S235,1,8.8,M16,0.6,32.0,0.019
+Horizontal Bar - Shaft 6,6.0,25.0,30.0,0.0,0.0,S235,1,8.8,M16,0.7,32.0,0.023
+Horizontal Bar - Shaft 5,6.0,25.0,30.0,0.0,0.0,S235,1,8.8,M16,1.1,32.0,0.033
+Horizontal Bar - Shaft 4,8.0,25.0,40.0,0.0,0.0,S235,1,8.8,M16,20.0,42.7,0.47
+Horizontal Bar - Shaft 3,8.0,25.0,40.0,0.0,0.0,S235,1,8.8,M16,18.9,42.7,0.442
+Horizontal Bar - Shaft 2,8.0,25.0,40.0,0.0,0.0,S235,1,8.8,M16,1.2,42.7,0.028
+Horizontal Bar - Shaft 1,8.0,25.0,40.0,0.0,0.0,S235,1,8.8,M16,1.5,42.7,0.035
+
+Shaft connections - Bolted 
+
+Member,Plate thickness,e1,e2,p1,p2,Number of plates,Steel Plate,Number of bolts,Bolts Size,Bolts steel,NRd,Ned,Ratio
+Leg - Shaft 1,0.0,0.0,0.0,0.0,0.0,0,S0,0,0,0,18.5,0.0,0.0
+Leg - Shaft 2,9.0,30.0,45.0,50.0,0.0,2,S235,3,8.8,M20,45.6,380.9,0.12
+Leg - Shaft 3,9.0,30.0,45.0,50.0,0.0,2,S235,3,8.8,M20,45.6,380.9,0.12
+Leg - Shaft 4,9.0,30.0,45.0,50.0,0.0,2,S235,3,8.8,M20,122.1,380.9,0.32
+Leg - Shaft 5,9.0,30.0,45.0,50.0,0.0,2,S235,3,8.8,M20,122.1,380.9,0.32
+Leg - Shaft 6,12.0,30.0,60.0,50.0,0.0,2,S235,3,8.8,M20,142.6,507.9,0.281
+Leg - Shaft 7,12.0,30.0,60.0,50.0,0.0,2,S235,3,8.8,M20,142.6,507.9,0.281
+Leg - Shaft 8,0.0,0.0,0.0,0.0,0.0,1,S0,0,0.0,0.0,0.0,0.0,0.0
+
+Shaft connections - Flanged
+
+Member,Flange Diameter,Flange thickness,Flange Steel,Bolts Inscription,Number of bolts,Bolts Diameter,Bolts steel,Ned,Nrd,Ratio
+
+Tilt
+
+Case,Degree,Minute,Distance
+SLS - Top,0.164,9.837,36.121
+SLS - 2/3,0.236,14.177,29.518
+ULS - Top,0.262,15.739,57.794
+ULS - 2/3,0.236,14.177,29.518
+SLS - 100 km/h,0.062,3.705,13.606
+ULS - 100 km/h,0.099,5.929,21.77
+SLS - 120 km/h,0.089,5.336,19.593
+ULS - 120 km/h,0.142,8.537,31.348
+
+Basal Efforts
+
+Case,Ned,Ted,Med
+SLS,59.279,31.356,175.705
+ULS,80.66,50.17,281.129
+
+Area - Equipments
+
+0.595,0.924,2.444,0.563,0.251,0.251,1.05
+
+Area - Linear equipments
+
+Name,Widht,Shape Coefficient,Weight,Start,End
+Other,0.1,1.2,15.0,0.0,20.0

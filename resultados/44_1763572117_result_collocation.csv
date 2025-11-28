@@ -1,0 +1,116 @@
+Bars
+
+Member,Profile,Steel,Slenderness,NtRd,NbRd,Ned,Ratio,Result
+Leg - Shaft 6,Ø 88.9x3.2,S235,66.0,202.5,146.4,0.8,0.01,OK
+Leg - Shaft 5,Ø 88.9x6.3,S235,102.4,384.2,188.0,20.8,0.11,OK
+Leg - Shaft 4,Ø 88.9x6.3,S235,102.4,384.2,188.0,56.4,0.3,OK
+Leg - Shaft 3,Ø 114.3x6.3,S235,78.4,502.3,321.5,103.5,0.32,OK
+Leg - Shaft 2,Ø 114.3x8.0,S235,79.8,627.8,396.2,134.5,0.34,OK
+Leg - Shaft 1,Ø 168.3x4.5,S355,51.9,822.1,606.2,156.3,0.26,OK
+Diagonal Bar - Shaft 6,Ø 88.9x6.3,S235,76.9,384.2,249.9,0.6,0.0,OK
+Diagonal Bar - Shaft 5,Ø 76.1x2.9,S235,105.9,156.7,73.6,10.7,0.15,OK
+Diagonal Bar - Shaft 4,Ø 76.1x2.9,S235,105.9,156.7,73.6,15.1,0.21,OK
+Diagonal Bar - Shaft 3,Ø 88.9x3.2,S235,90.5,202.5,113.7,19.1,0.17,OK
+Diagonal Bar - Shaft 2,Ø 76.1x2.9,S235,115.9,156.7,65.5,8.3,0.13,OK
+Diagonal Bar - Shaft 1,Ø 88.9x3.2,S235,111.4,202.5,89.1,9.1,0.1,OK
+Horizontal Bar - Shaft 6,L50x50x5,S235,214.7,112.8,14.9,0.3,0.02,OK
+Horizontal Bar - Shaft 5,L50x50x5,S235,214.7,112.8,14.9,1.9,0.13,OK
+Horizontal Bar - Shaft 4,L50x50x5,S235,214.7,112.8,14.9,0.8,0.06,OK
+Horizontal Bar - Shaft 3,L50x50x5,S235,214.7,112.8,14.9,0.7,0.05,OK
+Horizontal Bar - Shaft 2,L50x50x5,S235,214.7,112.8,14.9,4.0,0.27,OK
+Horizontal Bar - Shaft 1,L60x60x6,S235,249.2,162.4,16.3,0.8,0.05,OK
+
+Connections
+
+Member,Plate thickness,e1,e2,p1,p2,Steel Plate,Number of bolts,Bolts Size,Bolts steel,Ned,NRd,Ratio,Result
+Diagonal Bar - Shaft 6,--,--,--,--,--,--,--,--,--,--,--,--,Welded
+Diagonal Bar - Shaft 5,--,--,--,--,--,--,--,--,--,--,--,--,Welded
+Diagonal Bar - Shaft 4,--,--,--,--,--,--,--,--,--,--,--,--,Welded
+Diagonal Bar - Shaft 3,--,--,--,--,--,--,--,--,--,--,--,--,Welded
+Diagonal Bar - Shaft 2,--,--,--,--,--,--,--,--,--,--,--,--,Welded
+Diagonal Bar - Shaft 1,--,--,--,--,--,--,--,--,--,--,--,--,Welded
+Horizontal Bar - Shaft 6,5.0,30.0,30.0,0.0,0.0,S235,1,8.8,M16,0.3,32.0,0.01,OK
+Horizontal Bar - Shaft 5,5.0,30.0,30.0,0.0,0.0,S235,1,8.8,M16,1.9,32.0,0.06,OK
+Horizontal Bar - Shaft 4,5.0,30.0,30.0,0.0,0.0,S235,1,8.8,M16,0.9,32.0,0.03,OK
+Horizontal Bar - Shaft 3,5.0,30.0,30.0,0.0,0.0,S235,1,8.8,M20,0.8,27.7,0.03,OK
+Horizontal Bar - Shaft 2,5.0,30.0,30.0,0.0,0.0,S235,1,8.8,M16,4.0,32.0,0.12,OK
+Horizontal Bar - Shaft 1,6.0,30.0,30.0,0.0,0.0,S235,1,8.8,M20,0.9,33.3,0.03,OK
+
+Shaft connections - Bolted 
+
+Member,Plate thickness,e1,e2,p1,p2,Number of plates,Steel Plate,Number of bolts,Bolts Size,Bolts steel,NRd,Ned,Ratio,Result
+
+Shaft connections - Flanged
+
+Member,Flange Diameter,Flange thickness,Flange Steel,Bolts Inscription,Number of bolts,Bolts Diameter,Bolts steel,Ned,Nrd,Ratio,Result
+Leg - Shaft 6,--,--,--,--,--,--,--,--,--,--,NA
+Leg - Shaft 5,190.0,20.0,S355,140.0,6.0,M16,8.8,0.3,202.5,0.0,OK
+Leg - Shaft 4,190.0,20.0,S355,140.0,6.0,M16,8.8,13.4,384.2,0.03,OK
+Leg - Shaft 3,240.0,25.0,S355,190.0,6.0,M20,8.8,43.1,384.2,0.11,OK
+Leg - Shaft 2,--,--,--,--,--,--,--,--,--,--,NA
+Leg - Shaft 1,310.0,30.0,S355,251.0,8.0,M24,8.8,112.4,627.8,0.18,OK
+
+Tilt
+
+Case,Degree,Minute,Distance
+SLS - Top,0.139,8.351,53.6
+SLS - 2/3,0.139,8.325,33.7
+ULS - Top,0.167,10.022,64.3
+ULS - 2/3,0.167,9.99,40.5
+SLS - 100 km/h,0.083,4.956,31.8
+ULS - 100 km/h,0.099,5.948,38.2
+SLS - 120 km/h,0.119,7.137,45.8
+ULS - 120 km/h,0.143,8.565,55.0
+
+Basal Efforts
+
+Case,Ned,Ted,Med
+SLS,42.611,21.518,422.541
+ULS,42.611,25.821,507.049
+
+Area - Equipments
+
+2.37,1.19,0.34,0.34,0.34,0.17,0.17,0.17,0.1,0.75,0.75
+
+Area - Linear equipments
+
+Name,Widht,Shape Coefficient,Weight,Start,End
+Ladder,0.083,1.2,6.0,0.0,32.0
+Cable,0.17,1.2,8.0,0.0,32.0
+
+Foundation
+
+Foundation, 
+Slab Width (m),0
+Slab Height (m),0
+Pier Width (m),0
+Pier Height (m),0
+Soil Self-Weight (kN/m3),10.0
+Allowed Soil Tension (SLS) (Pa),10.0
+Allowed Soil Tension (ULS) (Pa),10.0
+
+Ratio Foundation
+
+Ratio Foundation,0.11
+
+Wind Load
+
+Wind Load,
+Country,France
+Wind Zone,1
+vref (m/s),22
+Terrain Category,IIIa
+Orographie Coefficient,1.0
+q0 (Pa),296.5
+Average Wind speed (top) (m/s),23.38
+Dynamic Wind Pressure (top) (Pa),796.0
+
+Ice Load
+
+Snow Load,
+Radial ice thickness,0
+Increased volumetric weight of ice (kg/m3),0
+
+Reliability Class,1
+
+Area Left,22.8

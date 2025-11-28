@@ -37,7 +37,7 @@ def main(Aincrease):
         FolderPath=Path(__file__).resolve().parent
     os.chdir(FolderPath)
     # Constrói o caminho completo para o arquivo .txt
-    txt_file = os.path.join(FolderPath, "torres", f"{argumento}_torres.txt")
+    txt_file = os.path.join(FolderPath, "wind_config", f"{argumento}_wind_config.txt")
     ant_txt_file=os.path.join(FolderPath, "antennas", f"{argumento}_antennas.txt")
     Model_csv_file=os.path.join(FolderPath, "latticesurvey", f"{argumento}_latticesurvey.csv")
 
@@ -55,20 +55,13 @@ def main(Aincrease):
     Travamento=np.zeros(nEle+1).astype(str)
 
 
-    (Pais,Terrain,Zona,Classe_Fiabilidade,
+    (Pais,vb,z0,zmin,Classe_Fiabilidade,
         Gelo,Altitude,C0_calc,Tipoc0,
         Alt_col,Lu,Ld,Xtopo,Ac_c0,A500,A1000,Alt,
         FundMethod,MfundMax,RatioFundCalc,
         SoilSelfWeight,AllowedSoilTension_SLS,
         AllowedSoilTension_ULS)=Structure_txt_read(txt_file)
 
-
-    if True:
-        vb,z0,zmin=Zone(Zona,Terrain,Pais)
-    else:
-        vb=24
-        z0=0.2
-        zmin=3.81
     zmed_alt=Alt+zmed
     if Pais=="France":
         rho_ar=1.225

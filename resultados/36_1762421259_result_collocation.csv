@@ -1,0 +1,107 @@
+Bars
+
+Member,Profile,Steel,Slenderness,NtRd,NbRd,Ned,Ratio,Result
+Leg - Shaft 5,L90x90x9,S235,97.8,364.3,208.0,48.0,0.23,OK
+Leg - Shaft 4,L90x90x9,S235,97.8,364.3,208.0,128.5,0.62,OK
+Leg - Shaft 3,L120x120x12,S235,38.5,646.3,596.0,136.8,0.23,OK
+Leg - Shaft 2,L120x120x12,S235,75.3,646.3,467.4,150.1,0.32,OK
+Leg - Shaft 1,L120x120x12,S235,82.7,646.3,435.3,255.0,0.59,OK
+Diagonal Bar - Shaft 5,L50x50x5,S235,154.2,112.8,26.6,14.6,0.55,OK
+Diagonal Bar - Shaft 4,L50x50x5,S235,154.2,112.8,26.6,20.1,0.76,OK
+Diagonal Bar - Shaft 3,L60x60x6,S235,131.1,162.4,49.8,15.2,0.3,OK
+Diagonal Bar - Shaft 2,L60x60x6,S235,164.9,162.4,42.7,23.2,0.54,OK
+Diagonal Bar - Shaft 1,L60x60x6,S235,169.4,162.4,40.8,30.3,0.74,OK
+Horizontal Bar - Shaft 5,L60x60x6,S235,101.4,162.4,71.1,3.2,0.05,OK
+Horizontal Bar - Shaft 4,L60x60x6,S235,101.4,162.4,71.1,1.0,0.01,OK
+Horizontal Bar - Shaft 3,L80x80x8,S235,87.4,289.1,148.3,21.1,0.14,OK
+Horizontal Bar - Shaft 2,L80x80x8,S235,113.5,289.1,109.5,18.0,0.16,OK
+Horizontal Bar - Shaft 1,L80x80x8,S235,113.5,289.1,109.5,1.4,0.01,OK
+
+Connections
+
+Member,Plate thickness,e1,e2,p1,p2,Steel Plate,Number of bolts,Bolts Size,Bolts steel,Ned,NRd,Ratio,Result
+Diagonal Bar - Shaft 5,5.0,25.0,25.0,0.0,0.0,S235,1,8.8,M12,14.6,25.7,0.57,OK
+Diagonal Bar - Shaft 4,5.0,25.0,25.0,0.0,0.0,S235,1,8.8,M12,20.1,25.7,0.78,OK
+Diagonal Bar - Shaft 3,6.0,25.0,30.0,40.0,0.0,S235,1,8.8,M16,15.2,32.0,0.47,OK
+Diagonal Bar - Shaft 2,6.0,25.0,30.0,40.0,0.0,S235,2,8.8,M16,23.2,65.9,0.35,OK
+Diagonal Bar - Shaft 1,6.0,25.0,30.0,40.0,0.0,S235,2,8.8,M16,30.3,65.9,0.46,OK
+Horizontal Bar - Shaft 5,6.0,25.0,30.0,0.0,0.0,S235,1,8.8,M16,3.2,32.0,0.1,OK
+Horizontal Bar - Shaft 4,6.0,25.0,30.0,0.0,0.0,S235,1,8.8,M16,1.1,32.0,0.03,OK
+Horizontal Bar - Shaft 3,8.0,25.0,40.0,0.0,0.0,S235,1,8.8,M16,21.1,42.7,0.49,OK
+Horizontal Bar - Shaft 2,8.0,25.0,40.0,0.0,0.0,S235,1,8.8,M16,19.9,42.7,0.47,OK
+Horizontal Bar - Shaft 1,8.0,25.0,40.0,0.0,0.0,S235,1,8.8,M16,1.5,42.7,0.04,OK
+
+Shaft connections - Bolted 
+
+Member,Plate thickness,e1,e2,p1,p2,Number of plates,Steel Plate,Number of bolts,Bolts Size,Bolts steel,NRd,Ned,Ratio,Result
+Leg - Shaft 1,9.0,30.0,45.0,50.0,0.0,2,S235,3,8.8,M20,48.0,380.9,0.13,OK
+Leg - Shaft 2,9.0,30.0,45.0,50.0,0.0,2,S235,3,8.8,M20,128.5,380.9,0.34,OK
+Leg - Shaft 3,9.0,30.0,45.0,50.0,0.0,2,S235,3,8.8,M20,128.5,380.9,0.34,OK
+Leg - Shaft 4,12.0,30.0,60.0,50.0,0.0,2,S235,3,8.8,M20,150.1,507.9,0.3,OK
+Leg - Shaft 5,12.0,30.0,60.0,50.0,0.0,2,S235,3,8.8,M20,150.1,507.9,0.3,OK
+
+Shaft connections - Flanged
+
+Member,Flange Diameter,Flange thickness,Flange Steel,Bolts Inscription,Number of bolts,Bolts Diameter,Bolts steel,Ned,Nrd,Ratio,Result
+
+Tilt
+
+Case,Degree,Minute,Distance
+SLS - Top,0.173,10.4,38.084
+SLS - 2/3,0.249,14.921,31.079
+ULS - Top,0.277,16.639,60.935
+ULS - 2/3,0.249,14.921,31.079
+SLS - 100 km/h,0.065,3.917,14.346
+ULS - 100 km/h,0.104,6.268,22.953
+SLS - 120 km/h,0.094,5.641,20.658
+ULS - 120 km/h,0.15,9.026,33.052
+
+Basal Efforts
+
+Case,Ned,Ted,Med
+SLS,59.278,32.661,184.816
+ULS,80.659,52.258,295.706
+
+Area - Equipments
+
+0.595,0.924,2.444,0.563,0.251,0.251,1.05
+
+Area - Linear equipments
+
+Name,Widht,Shape Coefficient,Weight,Start,End
+Other,0.1,1.2,15.0,0.0,20.0
+
+Foundation
+
+Foundation, 
+Slab Width (m),0
+Slab Height (m),0
+Pier Width (m),0
+Pier Height (m),0
+Soil Self-Weight (kN/m3),0
+Allowed Soil Tension (SLS) (Pa),0
+Allowed Soil Tension (ULS) (Pa),0
+
+Ratio Foundation
+
+Ratio Foundation,0
+
+Wind Load
+
+Wind Load,
+Country,Portugal
+Wind Zone,A
+vref (m/s),27
+Terrain Category,II
+Orographie Coefficient,1.0
+q0 (Pa),455.625
+Average Wind speed (top) (m/s),30.736213126663944
+Dynamic Wind Pressure (top) (Pa),1280.282631716382
+
+Ice Load
+
+Snow Load,
+Radial ice thickness,0
+Increased volumetric weight of ice (kg/m3),0
+
+Area Left,3.1574999999999998

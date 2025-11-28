@@ -1,5 +1,6 @@
 import numpy as np
 import csv
+from Wind.Wind_Ec import Zone
 
 def Model_csv_read(Model_csv_file):
     with open(Model_csv_file, newline='', encoding='utf-8') as f:
@@ -30,7 +31,6 @@ def Model_csv_read(Model_csv_file):
     Elements_Matrix     = np.array(leitor[iElements+1 : i_Diag_Hor-2])      # de Elements até Diag_Hor
     Dig_Hor_Matrix      = np.array( leitor[i_Diag_Hor+1 : i_Shaft_Flange-2])  # de Diag_Hor até Shaft Flange
     Shaft_Flange_Matrix = np.array( leitor[i_Shaft_Flange+1 : i_Shaft_Bolted-2])  # de Shaft Flange até Shaft Bolted
-    
     Shaft_Bolted_Matrix = np.array( leitor[i_Shaft_Bolted+1 :i_Flange_Foundation_Angle-2])        # de Shaft Bolted até Foundation
     Flange_Foundation_Angle = np.array( leitor[i_Flange_Foundation_Angle+1:i_Foundation-2])
     Foundation_Matrix   = np.array( leitor[i_Foundation :i_Orientation-2])           #de Foundation até Orientation
@@ -40,40 +40,73 @@ def Model_csv_read(Model_csv_file):
 
 
 def Structure_txt_read(txt_file):
-    with open(txt_file, 'r') as file:
-        linhas = [linha.strip() for linha in file.readlines()]
-    Pais=linhas[0]
+    # with open(txt_file, 'r') as file:
+    #     linhas = [linha.strip() for linha in file.readlines()]
+    # Pais=linhas[0]
+    # Alt=0
+    # FundMethod=False
+    # Terrain=linhas[1]
+    # Zona=linhas[2]
+    # Classe_Fiabilidade=int(linhas[3])
+    # Gelo=linhas[4]
+    # Altitude=float(linhas[5])
+    # C0_calc=linhas[6]
+    # Tipoc0=linhas[7]
+    # Alt_col=float(linhas[8])
+    # Lu=float(linhas[9])
+    # Ld=float(linhas[10])
+    # Xtopo=float(linhas[11])
+    # Ac_c0=float(linhas[12])
+    # A500=float(linhas[13])
+    # A1000=float(linhas[14])
+    # for i in range(len(linhas)):
+    #     if (linhas[i]=="Fund:\n" or linhas[i]=="Fund:") and len(linhas)==i+6:
+    #         FundMethod=True
+    #         MfundMax=np.array(linhas[i+1].split(";"), dtype=float)
+    #         RatioFundCalc=np.array(linhas[i+2].split(";"), dtype=float)
+    #         SoilSelfWeight = float(linhas[i+3].split(";")[1])
+    #         AllowedSoilTension_SLS = float(linhas[i+4].split(";")[1])
+    #         AllowedSoilTension_ULS = float(linhas[i+5].split(";")[1])
+    # if FundMethod==False:
+    #         MfundMax=0
+    #         RatioFundCalc=0
+    #         SoilSelfWeight = 0
+    #         AllowedSoilTension_SLS = 0
+    #         AllowedSoilTension_ULS = 0
+    with open(txt_file, "r", encoding="utf-8") as f:
+        for linha in f:
+            partes = linha.strip().split(",")
+        Pais=partes[0]
+        Calc_Wind_Auto=partes[1]
+        if Calc_Wind_Auto=="Yes":
+            z0=float(partes[2])
+            zmin=float(partes[3])
+            vb=float(partes[4])
+            Classe_Fiabilidade=int(partes[5])
+        else:
+            Terrain=partes[2]
+            vb=float(partes[3])
+            _,z0,zmin=Zone("-",Terrain,Pais)
+            Classe_Fiabilidade=int(partes[5])
     Alt=0
+    Gelo="No"
+    Altitude=0
+    C0_calc="No"
+    Tipoc0=0
+    Alt_col=0
+    Lu=0
+    Ld=0
+    Xtopo=0
+    Ac_c0=0
+    A500=0
+    A1000=0
     FundMethod=False
-    Terrain=linhas[1]
-    Zona=linhas[2]
-    Classe_Fiabilidade=int(linhas[3])
-    Gelo=linhas[4]
-    Altitude=float(linhas[5])
-    C0_calc=linhas[6]
-    Tipoc0=linhas[7]
-    Alt_col=float(linhas[8])
-    Lu=float(linhas[9])
-    Ld=float(linhas[10])
-    Xtopo=float(linhas[11])
-    Ac_c0=float(linhas[12])
-    A500=float(linhas[13])
-    A1000=float(linhas[14])
-    for i in range(len(linhas)):
-        if (linhas[i]=="Fund:\n" or linhas[i]=="Fund:") and len(linhas)==i+6:
-            FundMethod=True
-            MfundMax=np.array(linhas[i+1].split(";"), dtype=float)
-            RatioFundCalc=np.array(linhas[i+2].split(";"), dtype=float)
-            SoilSelfWeight = float(linhas[i+3].split(";")[1])
-            AllowedSoilTension_SLS = float(linhas[i+4].split(";")[1])
-            AllowedSoilTension_ULS = float(linhas[i+5].split(";")[1])
-    if FundMethod==False:
-            MfundMax=0
-            RatioFundCalc=0
-            SoilSelfWeight = 0
-            AllowedSoilTension_SLS = 0
-            AllowedSoilTension_ULS = 0
-    return Pais,Terrain,Zona,Classe_Fiabilidade,Gelo,Altitude,C0_calc,Tipoc0,Alt_col,Lu,Ld,Xtopo,Ac_c0,A500,A1000,Alt,FundMethod,MfundMax,RatioFundCalc,SoilSelfWeight,AllowedSoilTension_SLS,AllowedSoilTension_ULS
+    MfundMax=0
+    RatioFundCalc=0
+    SoilSelfWeight = 0
+    AllowedSoilTension_SLS = 0
+    AllowedSoilTension_ULS = 0
+    return Pais,vb,z0,zmin,Classe_Fiabilidade,Gelo,Altitude,C0_calc,Tipoc0,Alt_col,Lu,Ld,Xtopo,Ac_c0,A500,A1000,Alt,FundMethod,MfundMax,RatioFundCalc,SoilSelfWeight,AllowedSoilTension_SLS,AllowedSoilTension_ULS
 
 
 def Ant_txt_read(ant_txt_file):

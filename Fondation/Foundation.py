@@ -40,22 +40,22 @@ def Foundation_Calc_Basic(Foundation_Matrix,FundMethod,MfundMax,RatioFundCalc,So
                 ["Pier Height (m)", Found_Pier_Height],
                 ["Soil Self-Weight (kN/m3)", SoilSelfWeight],
                 ["Allowed Soil Tension (SLS) (Pa)", AllowedSoilTension_SLS],
-                ["Allowed Soil Tension (ULS) (Pa)", AllowedSoilTension_ULS]  # Corrigi o nome duplicado
+                ["Allowed Soil Tension (ULS) (Pa)", AllowedSoilTension_ULS] 
             ], dtype=object)
             Fund_Out_Ratio_Csv=np.array([["Ratio Foundation",RatioFund]])
 
         else:
             Fund_Out_Geo_Csv = np.array([["Foundation"," "],
-                ["Slab Width (m)", 0],
-                ["Slab Height (m)", 0],
-                ["Pier Width (m)", 0],
-                ["Pier Height (m)", 0],
-                ["Soil Self-Weight (kN/m3)", 0],
-                ["Allowed Soil Tension (SLS) (Pa)",0],
-                ["Allowed Soil Tension (ULS) (Pa)", 0]  # Corrigi o nome duplicado
+                ["Slab Width (m)", "--"],
+                ["Slab Height (m)", "--"],
+                ["Pier Width (m)", "--"],
+                ["Pier Height (m)", "--"],
+                ["Soil Self-Weight (kN/m3)", "--"],
+                ["Allowed Soil Tension (SLS) (Pa)","--"],
+                ["Allowed Soil Tension (ULS) (Pa)", "--"]  
             ], dtype=object)
             RatioFund=0
-            Fund_Out_Ratio_Csv=np.array([["Ratio Foundation",0]])
+            Fund_Out_Ratio_Csv=np.array([["Ratio Foundation","NA"]])
 
     return RatioFund,Fund_Out_Geo_Csv,Fund_Out_Ratio_Csv
 

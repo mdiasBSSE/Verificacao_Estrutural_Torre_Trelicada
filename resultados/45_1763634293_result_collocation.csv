@@ -1,0 +1,104 @@
+Bars
+
+Member,Profile,Steel,Slenderness,NtRd,NbRd,Ned,Ratio,Result
+Leg - Shaft 4,Ø 114.3x4.0,S355,62.8,492.1,319.1,18.2,0.06,OK
+Leg - Shaft 3,Ø 114.3x4.0,S355,50.0,492.1,370.5,180.9,0.49,OK
+Leg - Shaft 2,Ø 139.7x5.0,S355,40.9,751.1,618.1,423.4,0.69,OK
+Leg - Shaft 1,Ø 168.3x6.0,S355,67.9,1086.0,658.9,733.1,1.11,KO
+Diagonal Bar - Shaft 4,Ø 76.1x3,S235,116.2,161.9,67.4,21.1,0.31,OK
+Diagonal Bar - Shaft 3,Ø 76.1x3,S235,102.6,161.9,79.1,56.7,0.72,OK
+Diagonal Bar - Shaft 2,Ø 88.9x3,S235,87.3,190.3,110.7,75.9,0.69,OK
+Diagonal Bar - Shaft 1,Ø 88x3,S235,88.2,188.3,108.4,95.9,0.88,OK
+Horizontal Bar - Shaft 4,Ø 48.3x2.9,S235,118.1,97.2,39.6,7.7,0.19,OK
+Horizontal Bar - Shaft 3,Ø 48.3x2.9,S235,118.1,97.2,39.6,10.0,0.25,OK
+Horizontal Bar - Shaft 2,Ø 48.3x2.9,S235,118.1,97.2,39.6,3.1,0.08,OK
+Horizontal Bar - Shaft 1,Ø 48.3x2.9,S235,118.1,97.2,39.6,4.7,0.12,OK
+
+Connections
+
+Member,Plate thickness,e1,e2,p1,p2,Steel Plate,Number of bolts,Bolts Size,Bolts steel,Ned,NRd,Ratio,Result
+Diagonal Bar - Shaft 4,6.0,40.0,40.0,0.0,60.0,S355,2,8.8,M16,21.1,120.6,0.18,OK
+Diagonal Bar - Shaft 3,6.0,40.0,40.0,0.0,60.0,S355,2,8.8,M16,56.7,120.6,0.47,OK
+Diagonal Bar - Shaft 2,6.0,40.0,40.0,0.0,60.0,S355,2,8.8,M16,75.9,120.6,0.63,OK
+Diagonal Bar - Shaft 1,6.0,40.0,40.0,0.0,60.0,S355,2,8.8,M16,95.9,120.6,0.8,OK
+Horizontal Bar - Shaft 4,6.0,40.0,40.0,0.0,0.0,S355,1,S355,M16,7.7,38.4,0.2,OK
+Horizontal Bar - Shaft 3,6.0,40.0,40.0,0.0,0.0,S355,1,8.8,M16,10.1,60.3,0.17,OK
+Horizontal Bar - Shaft 2,6.0,40.0,40.0,0.0,0.0,S355,1,8.8,M16,3.4,60.3,0.06,OK
+Horizontal Bar - Shaft 1,6.0,40.0,40.0,0.0,0.0,S355,1,8.8,M16,5.0,60.3,0.08,OK
+
+Shaft connections - Bolted 
+
+Member,Plate thickness,e1,e2,p1,p2,Number of plates,Steel Plate,Number of bolts,Bolts Size,Bolts steel,NRd,Ned,Ratio,Result
+
+Shaft connections - Flanged
+
+Member,Flange Diameter,Flange thickness,Flange Steel,Bolts Inscription,Number of bolts,Bolts Diameter,Bolts steel,Ned,Nrd,Ratio,Result
+Leg - Shaft 4,--,--,--,--,--,--,--,--,--,--,NA
+Leg - Shaft 3,220.0,20.0,S355,166.0,6.0,M16,8.8,14.6,445.0,0.03,OK
+Leg - Shaft 2,295.0,20.0,S355,216.0,6.0,M20,8.8,170.2,491.5,0.35,OK
+Leg - Shaft 1,320.0,25.0,S355,240.0,6.0,M24,8.8,407.8,751.1,0.54,OK
+
+Tilt
+
+Case,Degree,Minute,Distance
+SLS - Top,0.391,23.476,97.2
+SLS - 2/3,0.355,21.32,54.0
+ULS - Top,0.626,37.561,155.5
+ULS - 2/3,0.569,34.111,86.3
+SLS - 100 km/h,0.089,5.332,22.1
+ULS - 100 km/h,0.142,8.532,35.3
+SLS - 120 km/h,0.128,7.679,31.8
+ULS - 120 km/h,0.205,12.286,50.9
+
+Basal Efforts
+
+Case,Ned,Ted,Med
+SLS,31.401,63.554,844.442
+ULS,37.681,101.687,1351.107
+
+Area - Equipments
+
+3.1,0.873,0.262,0.262,0.791,0.263,1.0,2.0,0.75,0.75
+
+Area - Linear equipments
+
+Name,Widht,Shape Coefficient,Weight,Start,End
+Ladder,0.122,1.2,7.5,0.0,20.0
+Cable,0.4,1.2,20.0,0.0,20.0
+
+Foundation
+
+Foundation, 
+Slab Width (m),0
+Slab Height (m),0
+Pier Width (m),0
+Pier Height (m),0
+Soil Self-Weight (kN/m3),10.0
+Allowed Soil Tension (SLS) (Pa),10.0
+Allowed Soil Tension (ULS) (Pa),10.0
+
+Ratio Foundation
+
+Ratio Foundation,0.21
+
+Wind Load
+
+Wind Load,
+Country,France
+Wind Zone,Martinique
+vref (m/s),32
+Terrain Category,0
+Orographie Coefficient,1.0
+q0 (Pa),627.2
+Average Wind speed (top) (m/s),42.92
+Dynamic Wind Pressure (top) (Pa),2081.0
+
+Ice Load
+
+Snow Load,
+Radial ice thickness,0
+Increased volumetric weight of ice (kg/m3),0
+
+Reliability Class,3
+
+Area Left,0

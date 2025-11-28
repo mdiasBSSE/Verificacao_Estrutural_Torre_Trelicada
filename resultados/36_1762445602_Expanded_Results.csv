@@ -1,0 +1,123 @@
+Expanded Results,,,,,,,,,,,,,,,,,,,,
+Wind Load - 0,,,,,,,,,,,,,,,,,,,,
+Name_Enc_Out,At,Af,Ac,Acsup,As,Indice_Cheios,cf0f,cf0c,cf0csup,cfs0,cfs,c0_Vento_For,CsCd,Pressao_troco_medio,FmW,FTW,L_lin_equiv,Ka,FmW_lin,FTW_lin
+Shaft 2,12.944,0.0,3.712,0.0,3.712,0.287,2.277,1.365,1.09,1.0,1.365,1.0,0.962,1141.9,2350.5,6213.1,0.0,0.8,0.0,0.0
+Shaft 1,14.131,0.236,2.84,0.0,3.076,0.218,2.483,1.452,1.084,2.0,1.532,1.0,0.962,810.0,1550.0,3778.9,0.0,0.8,0.0,0.0
+Wind Load - 15,,,,,,,,,,,,,,,,,,,,
+Name_Enc_Out,At,Af,Ac,Acsup,As,Indice_Cheios,cf0f,cf0c,cf0csup,cfs0,cfs,c0_Vento_For,CsCd,Pressao_troco_medio,FmW,FTW,L_lin_equiv,Ka,FmW_lin,FTW_lin
+Shaft 2,12.944,0.0,3.712,0.0,3.712,0.287,2.277,1.365,1.09,1.0,1.365,1.0,0.962,1141.9,2350.5,6213.1,0.0,0.8,0.0,0.0
+Shaft 1,14.131,0.236,2.84,0.0,3.076,0.218,2.483,1.452,1.084,2.0,1.53,1.0,0.962,810.0,1548.3,3774.6,0.0,0.8,0.0,0.0
+Wind Load - 30,,,,,,,,,,,,,,,,,,,,
+Name_Enc_Out,At,Af,Ac,Acsup,As,Indice_Cheios,cf0f,cf0c,cf0csup,cfs0,cfs,c0_Vento_For,CsCd,Pressao_troco_medio,FmW,FTW,L_lin_equiv,Ka,FmW_lin,FTW_lin
+Shaft 2,12.944,0.0,3.712,0.0,3.712,0.287,2.277,1.365,1.09,1.0,1.365,1.0,0.962,1141.9,2350.5,6213.1,0.0,0.8,0.0,0.0
+Shaft 1,14.131,0.236,2.84,0.0,3.076,0.218,2.483,1.452,1.084,2.0,1.526,1.0,0.962,810.0,1544.1,3764.3,0.0,0.8,0.0,0.0
+Wind Load - 45,,,,,,,,,,,,,,,,,,,,
+Name_Enc_Out,At,Af,Ac,Acsup,As,Indice_Cheios,cf0f,cf0c,cf0csup,cfs0,cfs,c0_Vento_For,CsCd,Pressao_troco_medio,FmW,FTW,L_lin_equiv,Ka,FmW_lin,FTW_lin
+Shaft 2,12.944,0.0,3.712,0.0,3.712,0.287,2.277,1.365,1.09,1.0,1.365,1.0,0.962,1141.9,2350.5,6213.1,0.0,0.8,0.0,0.0
+Shaft 1,14.131,0.236,2.84,0.0,3.076,0.218,2.483,1.452,1.084,2.0,1.522,1.0,0.962,810.0,1539.9,3754.1,0.0,0.8,0.0,0.0
+Wind Load - 60,,,,,,,,,,,,,,,,,,,,
+Name_Enc_Out,At,Af,Ac,Acsup,As,Indice_Cheios,cf0f,cf0c,cf0csup,cfs0,cfs,c0_Vento_For,CsCd,Pressao_troco_medio,FmW,FTW,L_lin_equiv,Ka,FmW_lin,FTW_lin
+Shaft 2,12.944,0.0,3.712,0.0,3.712,0.287,2.277,1.365,1.09,1.0,1.365,1.0,0.962,1141.9,2350.5,6213.1,0.0,0.8,0.0,0.0
+Shaft 1,14.131,0.236,2.84,0.0,3.076,0.218,2.483,1.452,1.084,2.0,1.52,1.0,0.962,810.0,1538.1,3749.8,0.0,0.8,0.0,0.0
+Wind Load - 75,,,,,,,,,,,,,,,,,,,,
+Name_Enc_Out,At,Af,Ac,Acsup,As,Indice_Cheios,cf0f,cf0c,cf0csup,cfs0,cfs,c0_Vento_For,CsCd,Pressao_troco_medio,FmW,FTW,L_lin_equiv,Ka,FmW_lin,FTW_lin
+Shaft 2,12.944,0.0,3.712,0.0,3.712,0.287,2.277,1.365,1.09,1.0,1.365,1.0,0.962,1141.9,2350.5,6213.1,0.0,0.8,0.0,0.0
+Shaft 1,14.131,0.236,2.84,0.0,3.076,0.218,2.483,1.452,1.084,2.0,1.522,1.0,0.962,810.0,1539.9,3754.1,0.0,0.8,0.0,0.0
+Wind Load - 90,,,,,,,,,,,,,,,,,,,,
+Name_Enc_Out,At,Af,Ac,Acsup,As,Indice_Cheios,cf0f,cf0c,cf0csup,cfs0,cfs,c0_Vento_For,CsCd,Pressao_troco_medio,FmW,FTW,L_lin_equiv,Ka,FmW_lin,FTW_lin
+Shaft 2,12.944,0.0,3.712,0.0,3.712,0.287,2.277,1.365,1.09,1.0,1.365,1.0,0.962,1141.9,2350.5,6213.1,0.0,0.8,0.0,0.0
+Shaft 1,14.131,0.236,2.84,0.0,3.076,0.218,2.483,1.452,1.084,2.0,1.526,1.0,0.962,810.0,1544.1,3764.3,0.0,0.8,0.0,0.0
+Wind Load - 105,,,,,,,,,,,,,,,,,,,,
+Name_Enc_Out,At,Af,Ac,Acsup,As,Indice_Cheios,cf0f,cf0c,cf0csup,cfs0,cfs,c0_Vento_For,CsCd,Pressao_troco_medio,FmW,FTW,L_lin_equiv,Ka,FmW_lin,FTW_lin
+Shaft 2,12.944,0.0,3.712,0.0,3.712,0.287,2.277,1.365,1.09,1.0,1.365,1.0,0.962,1141.9,2350.5,6213.1,0.0,0.8,0.0,0.0
+Shaft 1,14.131,0.236,2.84,0.0,3.076,0.218,2.483,1.452,1.084,2.0,1.53,1.0,0.962,810.0,1548.3,3774.6,0.0,0.8,0.0,0.0
+Wind Load - 120,,,,,,,,,,,,,,,,,,,,
+Name_Enc_Out,At,Af,Ac,Acsup,As,Indice_Cheios,cf0f,cf0c,cf0csup,cfs0,cfs,c0_Vento_For,CsCd,Pressao_troco_medio,FmW,FTW,L_lin_equiv,Ka,FmW_lin,FTW_lin
+Shaft 2,12.944,0.0,3.712,0.0,3.712,0.287,2.277,1.365,1.09,1.0,1.365,1.0,0.962,1141.9,2350.5,6213.1,0.0,0.8,0.0,0.0
+Shaft 1,14.131,0.236,2.84,0.0,3.076,0.218,2.483,1.452,1.084,2.0,1.532,1.0,0.962,810.0,1550.0,3778.9,0.0,0.8,0.0,0.0
+Wind Load - 135,,,,,,,,,,,,,,,,,,,,
+Name_Enc_Out,At,Af,Ac,Acsup,As,Indice_Cheios,cf0f,cf0c,cf0csup,cfs0,cfs,c0_Vento_For,CsCd,Pressao_troco_medio,FmW,FTW,L_lin_equiv,Ka,FmW_lin,FTW_lin
+Shaft 2,12.944,0.0,3.712,0.0,3.712,0.287,2.277,1.365,1.09,1.0,1.365,1.0,0.962,1141.9,2350.5,6213.1,0.0,0.8,0.0,0.0
+Shaft 1,14.131,0.236,2.84,0.0,3.076,0.218,2.483,1.452,1.084,2.0,1.53,1.0,0.962,810.0,1548.3,3774.6,0.0,0.8,0.0,0.0
+Wind Load - 150,,,,,,,,,,,,,,,,,,,,
+Name_Enc_Out,At,Af,Ac,Acsup,As,Indice_Cheios,cf0f,cf0c,cf0csup,cfs0,cfs,c0_Vento_For,CsCd,Pressao_troco_medio,FmW,FTW,L_lin_equiv,Ka,FmW_lin,FTW_lin
+Shaft 2,12.944,0.0,3.712,0.0,3.712,0.287,2.277,1.365,1.09,1.0,1.365,1.0,0.962,1141.9,2350.5,6213.1,0.0,0.8,0.0,0.0
+Shaft 1,14.131,0.236,2.84,0.0,3.076,0.218,2.483,1.452,1.084,2.0,1.526,1.0,0.962,810.0,1544.1,3764.3,0.0,0.8,0.0,0.0
+Wind Load - 165,,,,,,,,,,,,,,,,,,,,
+Name_Enc_Out,At,Af,Ac,Acsup,As,Indice_Cheios,cf0f,cf0c,cf0csup,cfs0,cfs,c0_Vento_For,CsCd,Pressao_troco_medio,FmW,FTW,L_lin_equiv,Ka,FmW_lin,FTW_lin
+Shaft 2,12.944,0.0,3.712,0.0,3.712,0.287,2.277,1.365,1.09,1.0,1.365,1.0,0.962,1141.9,2350.5,6213.1,0.0,0.8,0.0,0.0
+Shaft 1,14.131,0.236,2.84,0.0,3.076,0.218,2.483,1.452,1.084,2.0,1.522,1.0,0.962,810.0,1539.9,3754.1,0.0,0.8,0.0,0.0
+Wind Load - 180,,,,,,,,,,,,,,,,,,,,
+Name_Enc_Out,At,Af,Ac,Acsup,As,Indice_Cheios,cf0f,cf0c,cf0csup,cfs0,cfs,c0_Vento_For,CsCd,Pressao_troco_medio,FmW,FTW,L_lin_equiv,Ka,FmW_lin,FTW_lin
+Shaft 2,12.944,0.0,3.712,0.0,3.712,0.287,2.277,1.365,1.09,1.0,1.365,1.0,0.962,1141.9,2350.5,6213.1,0.0,0.8,0.0,0.0
+Shaft 1,14.131,0.236,2.84,0.0,3.076,0.218,2.483,1.452,1.084,2.0,1.52,1.0,0.962,810.0,1538.1,3749.8,0.0,0.8,0.0,0.0
+Wind Load - 195,,,,,,,,,,,,,,,,,,,,
+Name_Enc_Out,At,Af,Ac,Acsup,As,Indice_Cheios,cf0f,cf0c,cf0csup,cfs0,cfs,c0_Vento_For,CsCd,Pressao_troco_medio,FmW,FTW,L_lin_equiv,Ka,FmW_lin,FTW_lin
+Shaft 2,12.944,0.0,3.712,0.0,3.712,0.287,2.277,1.365,1.09,1.0,1.365,1.0,0.962,1141.9,2350.5,6213.1,0.0,0.8,0.0,0.0
+Shaft 1,14.131,0.236,2.84,0.0,3.076,0.218,2.483,1.452,1.084,2.0,1.522,1.0,0.962,810.0,1539.9,3754.1,0.0,0.8,0.0,0.0
+Wind Load - 210,,,,,,,,,,,,,,,,,,,,
+Name_Enc_Out,At,Af,Ac,Acsup,As,Indice_Cheios,cf0f,cf0c,cf0csup,cfs0,cfs,c0_Vento_For,CsCd,Pressao_troco_medio,FmW,FTW,L_lin_equiv,Ka,FmW_lin,FTW_lin
+Shaft 2,12.944,0.0,3.712,0.0,3.712,0.287,2.277,1.365,1.09,1.0,1.365,1.0,0.962,1141.9,2350.5,6213.1,0.0,0.8,0.0,0.0
+Shaft 1,14.131,0.236,2.84,0.0,3.076,0.218,2.483,1.452,1.084,2.0,1.526,1.0,0.962,810.0,1544.1,3764.3,0.0,0.8,0.0,0.0
+Wind Load - 225,,,,,,,,,,,,,,,,,,,,
+Name_Enc_Out,At,Af,Ac,Acsup,As,Indice_Cheios,cf0f,cf0c,cf0csup,cfs0,cfs,c0_Vento_For,CsCd,Pressao_troco_medio,FmW,FTW,L_lin_equiv,Ka,FmW_lin,FTW_lin
+Shaft 2,12.944,0.0,3.712,0.0,3.712,0.287,2.277,1.365,1.09,1.0,1.365,1.0,0.962,1141.9,2350.5,6213.1,0.0,0.8,0.0,0.0
+Shaft 1,14.131,0.236,2.84,0.0,3.076,0.218,2.483,1.452,1.084,2.0,1.53,1.0,0.962,810.0,1548.3,3774.6,0.0,0.8,0.0,0.0
+Wind Load - 240,,,,,,,,,,,,,,,,,,,,
+Name_Enc_Out,At,Af,Ac,Acsup,As,Indice_Cheios,cf0f,cf0c,cf0csup,cfs0,cfs,c0_Vento_For,CsCd,Pressao_troco_medio,FmW,FTW,L_lin_equiv,Ka,FmW_lin,FTW_lin
+Shaft 2,12.944,0.0,3.712,0.0,3.712,0.287,2.277,1.365,1.09,1.0,1.365,1.0,0.962,1141.9,2350.5,6213.1,0.0,0.8,0.0,0.0
+Shaft 1,14.131,0.236,2.84,0.0,3.076,0.218,2.483,1.452,1.084,2.0,1.532,1.0,0.962,810.0,1550.0,3778.9,0.0,0.8,0.0,0.0
+Wind Load - 255,,,,,,,,,,,,,,,,,,,,
+Name_Enc_Out,At,Af,Ac,Acsup,As,Indice_Cheios,cf0f,cf0c,cf0csup,cfs0,cfs,c0_Vento_For,CsCd,Pressao_troco_medio,FmW,FTW,L_lin_equiv,Ka,FmW_lin,FTW_lin
+Shaft 2,12.944,0.0,3.712,0.0,3.712,0.287,2.277,1.365,1.09,1.0,1.365,1.0,0.962,1141.9,2350.5,6213.1,0.0,0.8,0.0,0.0
+Shaft 1,14.131,0.236,2.84,0.0,3.076,0.218,2.483,1.452,1.084,2.0,1.53,1.0,0.962,810.0,1548.3,3774.6,0.0,0.8,0.0,0.0
+Wind Load - 270,,,,,,,,,,,,,,,,,,,,
+Name_Enc_Out,At,Af,Ac,Acsup,As,Indice_Cheios,cf0f,cf0c,cf0csup,cfs0,cfs,c0_Vento_For,CsCd,Pressao_troco_medio,FmW,FTW,L_lin_equiv,Ka,FmW_lin,FTW_lin
+Shaft 2,12.944,0.0,3.712,0.0,3.712,0.287,2.277,1.365,1.09,1.0,1.365,1.0,0.962,1141.9,2350.5,6213.1,0.0,0.8,0.0,0.0
+Shaft 1,14.131,0.236,2.84,0.0,3.076,0.218,2.483,1.452,1.084,2.0,1.526,1.0,0.962,810.0,1544.1,3764.3,0.0,0.8,0.0,0.0
+Wind Load - 285,,,,,,,,,,,,,,,,,,,,
+Name_Enc_Out,At,Af,Ac,Acsup,As,Indice_Cheios,cf0f,cf0c,cf0csup,cfs0,cfs,c0_Vento_For,CsCd,Pressao_troco_medio,FmW,FTW,L_lin_equiv,Ka,FmW_lin,FTW_lin
+Shaft 2,12.944,0.0,3.712,0.0,3.712,0.287,2.277,1.365,1.09,1.0,1.365,1.0,0.962,1141.9,2350.5,6213.1,0.0,0.8,0.0,0.0
+Shaft 1,14.131,0.236,2.84,0.0,3.076,0.218,2.483,1.452,1.084,2.0,1.522,1.0,0.962,810.0,1539.9,3754.1,0.0,0.8,0.0,0.0
+Wind Load - 300,,,,,,,,,,,,,,,,,,,,
+Name_Enc_Out,At,Af,Ac,Acsup,As,Indice_Cheios,cf0f,cf0c,cf0csup,cfs0,cfs,c0_Vento_For,CsCd,Pressao_troco_medio,FmW,FTW,L_lin_equiv,Ka,FmW_lin,FTW_lin
+Shaft 2,12.944,0.0,3.712,0.0,3.712,0.287,2.277,1.365,1.09,1.0,1.365,1.0,0.962,1141.9,2350.5,6213.1,0.0,0.8,0.0,0.0
+Shaft 1,14.131,0.236,2.84,0.0,3.076,0.218,2.483,1.452,1.084,2.0,1.52,1.0,0.962,810.0,1538.1,3749.8,0.0,0.8,0.0,0.0
+Wind Load - 315,,,,,,,,,,,,,,,,,,,,
+Name_Enc_Out,At,Af,Ac,Acsup,As,Indice_Cheios,cf0f,cf0c,cf0csup,cfs0,cfs,c0_Vento_For,CsCd,Pressao_troco_medio,FmW,FTW,L_lin_equiv,Ka,FmW_lin,FTW_lin
+Shaft 2,12.944,0.0,3.712,0.0,3.712,0.287,2.277,1.365,1.09,1.0,1.365,1.0,0.962,1141.9,2350.5,6213.1,0.0,0.8,0.0,0.0
+Shaft 1,14.131,0.236,2.84,0.0,3.076,0.218,2.483,1.452,1.084,2.0,1.522,1.0,0.962,810.0,1539.9,3754.1,0.0,0.8,0.0,0.0
+Wind Load - 330,,,,,,,,,,,,,,,,,,,,
+Name_Enc_Out,At,Af,Ac,Acsup,As,Indice_Cheios,cf0f,cf0c,cf0csup,cfs0,cfs,c0_Vento_For,CsCd,Pressao_troco_medio,FmW,FTW,L_lin_equiv,Ka,FmW_lin,FTW_lin
+Shaft 2,12.944,0.0,3.712,0.0,3.712,0.287,2.277,1.365,1.09,1.0,1.365,1.0,0.962,1141.9,2350.5,6213.1,0.0,0.8,0.0,0.0
+Shaft 1,14.131,0.236,2.84,0.0,3.076,0.218,2.483,1.452,1.084,2.0,1.526,1.0,0.962,810.0,1544.1,3764.3,0.0,0.8,0.0,0.0
+Wind Load - 345,,,,,,,,,,,,,,,,,,,,
+Name_Enc_Out,At,Af,Ac,Acsup,As,Indice_Cheios,cf0f,cf0c,cf0csup,cfs0,cfs,c0_Vento_For,CsCd,Pressao_troco_medio,FmW,FTW,L_lin_equiv,Ka,FmW_lin,FTW_lin
+Shaft 2,12.944,0.0,3.712,0.0,3.712,0.287,2.277,1.365,1.09,1.0,1.365,1.0,0.962,1141.9,2350.5,6213.1,0.0,0.8,0.0,0.0
+Shaft 1,14.131,0.236,2.84,0.0,3.076,0.218,2.483,1.452,1.084,2.0,1.53,1.0,0.962,810.0,1548.3,3774.6,0.0,0.8,0.0,0.0
+
+Wind Load - 0,Wind Load - 15,Wind Load - 30,Wind Load - 45,Wind Load - 60,Wind Load - 75,Wind Load - 90,Wind Load - 105,Wind Load - 120,Wind Load - 135,Wind Load - 150,Wind Load - 165,Wind Load - 180,Wind Load - 195,Wind Load - 210,Wind Load - 225,Wind Load - 240,Wind Load - 255,Wind Load - 270,Wind Load - 285,Wind Load - 300,Wind Load - 315,Wind Load - 330,Wind Load - 345
+0.153,0.162,0.175,0.187,0.197,0.2,0.197,0.188,0.175,0.162,0.153,0.15,0.153,0.162,0.175,0.188,0.197,0.2,0.197,0.188,0.175,0.163,0.153,0.15
+0.153,0.162,0.175,0.187,0.197,0.2,0.197,0.188,0.175,0.162,0.153,0.15,0.153,0.162,0.175,0.188,0.197,0.2,0.197,0.188,0.175,0.163,0.153,0.15
+
+
+
+Member,Profile,Buckling Lenght,Steel,Ratio Class,Lim Class,Section Class,Lambda 1,Lambda Lim,Lambda Check,Slenderness,k,alpha,Phi,Chi,Aeff,Red,Eta,NcRd,NbRd,Ned,Ratio
+Leg - Shaft 2,Ø 88.9x6.0,1666.667,S275,14.817,76.909,3,86.815,120,0.0,56.7,1.0,0.49,0.824,0.753,1562.628,1.0,1.0,429.7,323.7,12.4,0.038
+Leg - Shaft 1,Ø 76.1x5.0,2504.163,S275,15.22,76.909,3,86.815,120,0.0,99.4,1.0,0.49,1.387,0.461,1116.836,1.0,1.0,307.1,141.6,32.5,0.229
+Diagonal Bar - Shaft 2,Ø 114.3x3,1502.313,S275,38.1,76.909,3,86.815,180,0.0,26.7,0.7,0.49,0.574,0.945,1048.978,1.0,1.0,288.5,272.7,3.9,0.014
+Diagonal Bar - Shaft 1,Ø 139.7x5.0,1988.15,S235,27.94,90.0,3,93.913,180,0.0,39.6,0.95,0.49,0.643,0.886,2115.863,1.0,1.0,497.2,440.4,9.1,0.021
+Horizontal Bar - Shaft 2,Ø 101.6x3.2,2500.0,S275,31.75,76.909,3,86.815,180,0.0,50.3,0.7,0.49,0.761,0.798,989.225,1.0,1.0,272.0,217.0,0.3,0.001
+Horizontal Bar - Shaft 1,L45x45x3,2750.0,S275,13.0,13.866,3,86.815,180,KO,250.2,0.797,0.34,5.109,0.107,266.0,1.0,1.0,73.2,7.8,2.0,0.26
+
+Member,Plate thickness [mm],e1 [mm],e2 [mm],p1 [mm],p2 [mm],Steel Plate,Number of bolts,Bolts Size,Bolts steel,d_bolt [mm],d_0 [mm],As_bolt [mm²],A_bolt [mm²],FvRd [kN],Ratio bolt-lig,αd_end,αd_inner,k1_edge,k1_inner,αb_end,αb_inner,FbRd_Edge_Inner [kN],FbRd_Edge_End [kN],FbRd [kN],Anv_block [mm²],Ant_block [mm²],Veff1Rd [kN],Veff2Rd [kN],βCant,NuRd [kN],Fele [kN],FLig_Rd [kN],Ratio
+Diagonal Bar - Shaft 2,0.0,0.0,0.0,0.0,0.0,S0,0,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.8,0.0,0.0
+Diagonal Bar - Shaft 1,5.0,30.0,50.0,40.0,0.0,S275,2,8.8,M16,16.0,18.0,157.0,201.1,120.6,0.075,0.556,0.491,2.5,2.5,0.556,0.491,33.8,38.2,72.0,0.0,0.0,0.0,0.0,0.0,0.0,9.1,72.0,0.126
+Horizontal Bar - Shaft 2,0.0,0.0,0.0,0.0,0.0,S0,0,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.3,0.0,0.0
+Horizontal Bar - Shaft 1,3.0,30.0,25.0,50.0,30.0,S275,2,8.8,M16,16.0,18.0,157.0,201.1,120.6,0.035,0.556,0.676,0.633,0.633,0.556,0.676,7.1,5.8,11.6,126.0,36.0,32.4,26.2,0.0,0.0,4.2,11.6,0.36
+
+Member,Plate thickness [mm],e1 [mm],e2 [mm],p1 [mm],p2 [mm],Number of plates,Steel Plate,Number of bolts,Bolts Size,Bolts steel,d_bolt [mm],d_0 [mm],As_bolt [mm²],A_bolt [mm²],FvRd [kN],Ratio bolt-lig,αd_end,αd_inner,k1_edge,k1_inner,αb_end,αb_inner,FbRd_Edge_Inner [kN],FbRd_Edge_End [kN],FbRd [kN],Anv_block [mm²],Ant_block [mm²],Veff1Rd [kN],Veff2Rd [kN],βCant,NuRd [kN],Fele [kN],FLig_Rd [kN],Ratio
+
+Member,Flange Diameter,Flange thickness,Flange Steel,Bolts Inscription,Number of bolts,Bolts Diameter,Bolts steel,Ned,Nrd,Ratio,As_bolt,A_bolt,Lb,leff,alpha_r,epsilon,n,aws,m,Rb,R,elinha,FtRd,k1,mplRd,Re,k3,Bride,NT1Rd,NT2Rd,NT3Rd,NT4Rd,N_Bolt_F,Bolt_F,Bolt_Steel_F,NTRd,F_Ele_F,Ratio_F
+Leg - Shaft 2,95.0,30.0,S235,6,500.0,-202.3,208.6,-0.033,16.0,18.0,157.0,201.1,72.8,260.4,11.127,nan,nan,4.2,0.2008,250.0,41.4,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,6.0,M16,8.8,0.0,6.6,0.0
+Leg - Shaft 1,0.0,0.0,0.0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0

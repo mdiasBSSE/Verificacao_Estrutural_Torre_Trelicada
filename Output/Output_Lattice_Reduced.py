@@ -398,7 +398,7 @@ def Connection_Shaft_Output(TrussType,Troco,Ratio_Lig_B,nos_vento,divisor,t_B,e1
             bloco = Ratio_Lig_B[inicio:fim]
             i_local = np.argmax(bloco)           # posição dentro do bloco
             i_global = inicio + i_local   
-            Name_Enc_Out = f"Leg - Shaft {nos_vento.shape[0]-i}"
+            Name_Enc_Out = f"Leg - Shaft {i}"
             if Check_Lig_B[i_global]!="NA":
                 if Calc_Block_B[i_global]=="Nao" and Calc_Bolt_B[i_global]=="Sim" and Calc_Esmag_B[i_global]=="Nao" and Calc_Nu_B[i_global]=="Nao":
                     row = np.array([

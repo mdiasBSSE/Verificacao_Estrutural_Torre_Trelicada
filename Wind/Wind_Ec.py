@@ -213,6 +213,8 @@ def Zone(Zona,Tipo,Pais):
         elif Tipo=="0":
             z0=0.003
             zmin=1
+    if Zona=="-":
+        vb=0
     return vb,z0,zmin
 def Iv_calc(z,z0,zmin,Alt,Pais,c0):
     #Confirmar valores para portugal
