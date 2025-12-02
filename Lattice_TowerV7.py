@@ -61,7 +61,6 @@ def main(Aincrease):
         FundMethod,MfundMax,RatioFundCalc,
         SoilSelfWeight,AllowedSoilTension_SLS,
         AllowedSoilTension_ULS)=Structure_txt_read(txt_file)
-
     zmed_alt=Alt+zmed
     if Pais=="France":
         rho_ar=1.225

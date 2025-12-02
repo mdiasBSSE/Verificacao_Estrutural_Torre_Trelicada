@@ -277,11 +277,12 @@ def Buckling_Function(nEle,Inertiav,Inertiau,Inertiay,Inertiaz,Area,Comprimento_
             else:
                 Class_Enc[i]=4
             if TrussType[i]!="Leg":
-
+                
                 if TrussType[i] in ["Horizontal Bar", "External Manual Bar"]:
                     Multy,Multv,eta_Enc[i]=Horizontal_Buckling(int(i),nos_montante,Conection_Ele[i],N_Bolt_Ele[i],ExpVento[i])
                     Comprimento_Enc[i]=np.max([Comprimento_Barra[i]*Multv,Comprimento_Barra[i]*Multy])
-                elif TrussType[i]=="Internal Manual Bar" and ops.elenodes(int(i))[0] in nos_montante and ops.elenodes(int(i))[1] in nos_montante:
+                
+                elif TrussType[i]=="Internal Manual Bar" and ops.eleNodes(int(i))[0] in nos_montante and ops.eleNodes(int(i))[1] in nos_montante:
                     Comprimento_Enc[i]=Comprimento_Barra[i]*1
                 else:
                     Multy,Multv,eta_Enc[i]=Diagonal_Buckling(int(i),nos_montante,Conection_Ele[i],N_Bolt_Ele[i],ExpVento[i])
