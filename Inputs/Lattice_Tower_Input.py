@@ -84,10 +84,17 @@ def Structure_txt_read(txt_file):
             vb=float(partes[4])
             Classe_Fiabilidade=int(partes[5])
         else:
-            Terrain=partes[2]
-            vb=float(partes[3])
-            _,z0,zmin=Zone("-",Terrain,Pais)
-            Classe_Fiabilidade=int(partes[5])
+            if partes[5]=="Portugal-RSA":
+                Pais="Portugal-RSA"
+                Terrain=partes[2]
+                vb=float(partes[3])
+                _,z0,zmin=Zone("-",Terrain,Pais)
+                Classe_Fiabilidade=0
+            else:
+                Terrain=partes[2]
+                vb=float(partes[3])
+                _,z0,zmin=Zone("-",Terrain,Pais)
+                Classe_Fiabilidade=int(partes[5])
     Alt=0
     Gelo="No"
     Altitude=0
@@ -106,7 +113,7 @@ def Structure_txt_read(txt_file):
     SoilSelfWeight = 0
     AllowedSoilTension_SLS = 0
     AllowedSoilTension_ULS = 0
-    return Pais,vb,z0,zmin,Classe_Fiabilidade,Gelo,Altitude,C0_calc,Tipoc0,Alt_col,Lu,Ld,Xtopo,Ac_c0,A500,A1000,Alt,FundMethod,MfundMax,RatioFundCalc,SoilSelfWeight,AllowedSoilTension_SLS,AllowedSoilTension_ULS
+    return Pais,vb,z0,zmin,Classe_Fiabilidade,Gelo,Altitude,C0_calc,Tipoc0,Alt_col,Lu,Ld,Xtopo,Ac_c0,A500,A1000,Alt,FundMethod,MfundMax,RatioFundCalc,SoilSelfWeight,AllowedSoilTension_SLS,AllowedSoilTension_ULS,Calc_Wind_Auto
 
 
 def Ant_txt_read(ant_txt_file):

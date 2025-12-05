@@ -2,67 +2,194 @@ import numpy as np
 from openseespy import opensees as ops
 from Output.Output_Lattice_Reduced import Buckling_Output
 from Output.Output_Lattice_Expanded import Buckling_Exp_Output
-def Buckling_Lenght(Ele,Lenght):
-    elementos = ops.getEleTags()  # Todos os elementos do modelo
-    elementos_no = []
-    Dir_no = []
-    Blockedy=np.empty(2).astype(str)
-    Bracing=np.empty(2).astype(str)
-    Blockedv=np.empty(2).astype(str)
-    nos = ops.eleNodes(Ele) 
-    i_buckling=0
-    for no in nos:
-        elementos_no = []
-        Dir_no = []
+from Utilities.Utilities_ops import elementos_do_no_filt
+def norm(v):
+    v = np.asarray(v, dtype=float)
+    n = np.linalg.norm(v)
+    return v / n if n != 0 else v
+
+def rotation_matrix_from_vectors(a, b):
+    a = norm(a)
+    b = norm(b)
+    v = np.cross(a, b)
+    c = np.dot(a, b)
+    
+    if np.isclose(c, 1):
+        return np.eye(3)
+    if np.isclose(c, -1):
+        # 180º rotation → pick any orthogonal vector
+        axis = norm(np.array([1,0,0]) if abs(a[0]) < 0.9 else np.array([0,1,0]))
+        return -np.eye(3) + 2*np.outer(axis, axis)
+
+    s = np.linalg.norm(v)
+    K = np.array([
+        [0, -v[2], v[1]],
+        [v[2], 0, -v[0]],
+        [-v[1], v[0], 0]
+    ])
+
+    return np.eye(3) + K + K @ K * ((1 - c) / (s**2))
+def Buckling_Lenght(Ele, Length, TrussType):
+    import numpy as np
+    nos_elemento = ops.eleNodes(Ele)
+    n1, n2 = nos_elemento
+
+    # ==========================
+    # 1) Direção principal da barra
+    # ==========================
+    c1 = np.array(ops.nodeCoord(n1), dtype=float)
+    c2 = np.array(ops.nodeCoord(n2), dtype=float)
+    v_main = c2 - c1
+    L = np.linalg.norm(v_main)
+    v_main_u = v_main / L
+
+    # ==========================
+    # 2) Construção do referencial local
+    #     R_global_to_local @ v_main = (0, 0, 1)
+    # ==========================
+    R = rotation_matrix_from_vectors(v_main_u, np.array([0, 0, 1]))
+
+    elementos = ops.getEleTags()
+
+    Blockedy  = np.empty(2, dtype='U64')
+    Blockedv  = np.empty(2, dtype='U64')
+    Bracing_A = np.empty(2, dtype='U64')
+
+    for idx, no in enumerate(nos_elemento):
+
+        Dir_global = []
+
+        # ==========================
+        # 3) Obter direções das barras ligadas ao nó
+        # ==========================
         for ele in elementos:
-            nos_ele = ops.eleNodes(ele)  # tupla com os nós do elemento
-            if no in nos_ele:
-                elementos_no.append(ele)
-                coords1 = np.array(ops.nodeCoord(nos_ele[0]))
-                coords2 = np.array(ops.nodeCoord(nos_ele[1]))
-                Dir=(coords2-coords1)/np.linalg.norm(coords2-coords1)
-                Dir_no.append(Dir)
-        Dir_no=np.array(Dir_no)
-        cols_nonzero = np.any(Dir_no != 0, axis=0)
+            nA, nB = ops.eleNodes(ele)
+
+            if no in (nA, nB) and TrussType[ele] != "Leg":
+
+                cA = np.array(ops.nodeCoord(nA), dtype=float)
+                cB = np.array(ops.nodeCoord(nB), dtype=float)
+                v = cB - cA
+
+                if np.linalg.norm(v) > 0:
+                    Dir_global.append(v / np.linalg.norm(v))
+
+        Dir_global = np.array(Dir_global)
+
+        # ==========================
+        # 4) Transformar para coordenadas locais
+        #    v_local = R * v_global
+        # ==========================
+        Dir_local = (R @ Dir_global.T).T
+        
+
+        # ==========================
+        # 5) CLASSIFICAÇÕES NO REFERENCIAL LOCAL
+        # ==========================
+        has_x = np.any(np.abs(Dir_local[:,0]) > 1e-4)
+        has_y = np.any(np.abs(Dir_local[:,1]) > 1e-4)
+        has_z = np.any(np.abs(Dir_local[:,2]) > 1e-4)
+
+        # ---- Bloqueio local no eixo Y ----
+        if (has_x and has_y) or ops.nodeCoord(no)[2] == 0:
+            Blockedy[idx] = "True"
+        else:
+            Blockedy[idx] = "False"
+
+        # ---- Simetria local ----
+        if has_x != has_y:
+            Bracing_A[idx] = "Unsymmetrical"
+        else:
+            Bracing_A[idx] = "Symmetrical"
+
+        # ---- Bloqueio após rotação adicional (45° dentro do local) ----
+        theta = np.radians(45)
+        Rz = np.array([
+            [np.cos(theta), -np.sin(theta), 0],
+            [np.sin(theta),  np.cos(theta), 0],
+            [0, 0, 1]
+        ])
+
+        Dir_v = (Rz @ Dir_local.T).T
+        
+        has_x2 = np.any(np.abs(Dir_v[:,0]) > 1e-4)
+        has_y2 = np.any(np.abs(Dir_v[:,1]) > 1e-4)
+
+        if (has_x2 and has_y2) or ops.nodeCoord(no)[2] == 0:
+            Blockedv[idx] = "True"
+        else:
+            Blockedv[idx] = "False"
+
+    # ==========================
+    # 6) RESULTADOS FINAIS
+    # ==========================
+    L_buckling_y = Length if np.all(Blockedy == "True") else Length * 2
+    L_buckling_v = Length if np.all(Blockedv == "True") else Length * 2
+    Bracing = "Symmetrical" if np.all(Bracing_A == "Symmetrical") else "Unsymmetrical"
+    return L_buckling_y, L_buckling_v, Bracing
+
+# def Buckling_Lenght_old(Ele,Lenght,TrussType):
+#     elementos = ops.getEleTags()  # Todos os elementos do modelo
+#     elementos_no = []
+#     Dir_no = []
+#     Blockedy=np.empty(2).astype(str)
+#     Bracing=np.empty(2).astype(str)
+#     Blockedv=np.empty(2).astype(str)
+#     nos = ops.eleNodes(Ele) 
+#     i_buckling=0
+#     for no in nos:
+#         elementos_no = []
+#         Dir_no = []
+#         for ele in elementos:
+#             nos_ele = ops.eleNodes(ele)  # tupla com os nós do elemento
+#             if no in nos_ele:
+#                 if TrussType[ele]!="Leg":
+#                     elementos_no.append(ele)
+#                     coords1 = np.array(ops.nodeCoord(nos_ele[0]))
+#                     coords2 = np.array(ops.nodeCoord(nos_ele[1]))
+#                     Dir=(coords2-coords1)/np.linalg.norm(coords2-coords1)
+#                     Dir_no.append(Dir)
+#         Dir_no=np.array(Dir_no)
+#         cols_nonzero = np.any(Dir_no != 0, axis=0)
 
         
-        if cols_nonzero[0] and cols_nonzero[1] or ops.nodeCoord(no)[2]==0:
-            Blockedy[i_buckling]="True"
-        else:
-            Blockedy[i_buckling]="False"
+#         if cols_nonzero[0] and cols_nonzero[1] or ops.nodeCoord(no)[2]==0:
+#             Blockedy[i_buckling]="True"
+#         else:
+#             Blockedy[i_buckling]="False"
         
-        if cols_nonzero[0]!=cols_nonzero[1]:
-            Bracing[i_buckling]="Unsymmetrical"
-        else:
-            Bracing[i_buckling]="Symmetrical"
+#         if cols_nonzero[0]!=cols_nonzero[1]:
+#             Bracing[i_buckling]="Unsymmetrical"
+#         else:
+#             Bracing[i_buckling]="Symmetrical"
         
-        for j in range(Dir_no.shape[0]):
-            theta_rot=np.radians(45)
-            TransRot=np.array([[np.cos(theta_rot),-np.sin(theta_rot),0],[np.sin(theta_rot),np.cos(theta_rot),0],[0,0,1]])
-            Dir_no[j,:]=TransRot@Dir_no[j,:]
-        cols_nonzero = np.any(Dir_no != 0, axis=0)
-        if cols_nonzero[0] and cols_nonzero[1]or ops.nodeCoord(no)[2]==0:
-            Blockedv[i_buckling]="True"
-        else:
-            Blockedv[i_buckling]="False"
-        i_buckling=i_buckling+1
-    if np.all(Blockedy=="True"):
-        L_buckling_y=Lenght
-    else:
-        L_buckling_y=Lenght*2
-    if np.all(Blockedv=="True"):
-        L_buckling_v=Lenght
-    else:
-        L_buckling_v=Lenght*2
-    if np.all(Bracing=="Symmetrical"):
-        Bracing="Symmetrical"
-    else:
-        Bracing="Unsymmetrical"
+#         for j in range(Dir_no.shape[0]):
+#             theta_rot=np.radians(45)
+#             TransRot=np.array([[np.cos(theta_rot),-np.sin(theta_rot),0],[np.sin(theta_rot),np.cos(theta_rot),0],[0,0,1]])
+#             Dir_no[j,:]=TransRot@Dir_no[j,:]
+#         cols_nonzero = np.any(Dir_no != 0, axis=0)
+#         if cols_nonzero[0] and cols_nonzero[1]or ops.nodeCoord(no)[2]==0:
+#             Blockedv[i_buckling]="True"
+#         else:
+#             Blockedv[i_buckling]="False"
+#         i_buckling=i_buckling+1
+#     if np.all(Blockedy=="True"):
+#         L_buckling_y=Lenght
+#     else:
+#         L_buckling_y=Lenght*2
+#     if np.all(Blockedv=="True"):
+#         L_buckling_v=Lenght
+#     else:
+#         L_buckling_v=Lenght*2
+#     if np.all(Bracing=="Symmetrical"):
+#         Bracing="Symmetrical"
+#     else:
+#         Bracing="Unsymmetrical"
 
     
     
     
-    return L_buckling_y,L_buckling_v,Bracing
+#     return L_buckling_y,L_buckling_v,Bracing
 
 
 def Imp_factor_buckling_curve(Buckling_Curve):
@@ -77,8 +204,56 @@ def Imp_factor_buckling_curve(Buckling_Curve):
     elif Buckling_Curve=="d":
         alpha_Enc=0.76
     return alpha_Enc
+# def Block_direction_old (Ele,nos_montante):
+#     elementos = ops.getEleTags()  # Todos os elementos do modelo
+#     elementos_no = []
+#     Dir_no = []
+#     Block_vert_down=False
+#     Block_vert_up=False
+#     Block_inside=False
+#     nos = ops.eleNodes(Ele)
+#     if nos[0] in nos_montante and nos[1] not in nos_montante: 
+#         j=1
+#         Flag_Enc=False
+#     elif nos[1] in nos_montante and nos[0] not in nos_montante: 
+#         j=0
+#         Flag_Enc=False
+#     elif nos[0] in nos_montante and nos[1] in nos_montante: #Se os dois nós tiverem nos montantes
+#         Block_vert_up=True
+#         Block_vert_down=True
+#         Block_inside=True
+#         Flag_Enc=True #Se ambos os nos tiverem no montante significa que está bloqueado
+#         return Block_vert_up,Block_vert_down,Block_inside,Flag_Enc
+#     else:
+#         j=0 #Se nenhum estiver nos montantes é uma interna manual
+#         Flag_Enc=False
+#     elementos_no = []
+#     Dir_no = []
+#     for ele in elementos:
+#         nos_ele = ops.eleNodes(ele)  # tupla com os nós do elemento
+#         if nos[j] in nos_ele: #Analisa apenas o no que não está no montante
+#             elementos_no.append(ele)
+#             coords1 = np.array(ops.nodeCoord(int(nos[j])))
+#             if nos[j]==nos_ele[0]:
+#                 coords2 = np.array(ops.nodeCoord(nos_ele[1]))
+#             else:
+#                 coords2 = np.array(ops.nodeCoord(nos_ele[0]))
+#             Dir=(coords2-coords1)/np.linalg.norm(coords2-coords1) ##Vetor a sair do nó do elemento em analise
+            
+#             Dir_no.append(Dir)
+#     Dir_no=np.array(Dir_no)
+#     cols_vert_up = np.any(Dir_no > 0, axis=0)
+#     if cols_vert_up[2]: ###Se tiver algum bloqueio na vertical (Cima)
+#         Block_vert_up=True
+    
+#     cols_vert_down=  np.any(Dir_no < 0, axis=0)
+#     if cols_vert_down[2]: ###Se tiver algum bloqueio na vertical (Baixo)
+#         Block_vert_down=True
+    
+#     Block_inside = np.any((Dir_no[:,2]==0) & (Dir_no[:,0]!=0) & (Dir_no[:,1]!=0)) ###Block_inside é True se houver um vetor que tenha z=0, x!=0 e y!=0
+#     return Block_vert_up,Block_vert_down,Block_inside,Flag_Enc
 
-def Block_direction (Ele,nos_montante):
+def Block_direction (Ele,nos_montante,TrussType,Troco):
     elementos = ops.getEleTags()  # Todos os elementos do modelo
     elementos_no = []
     Dir_no = []
@@ -86,26 +261,62 @@ def Block_direction (Ele,nos_montante):
     Block_vert_up=False
     Block_inside=False
     nos = ops.eleNodes(Ele)
-    if nos[0] in nos_montante and nos[1] not in nos_montante:
-        j=1
+    if nos[0] in nos_montante and nos[1] not in nos_montante: 
+        j=1 #Nó fora do montante
+        k=0 #Nó do montante 
         Flag_Enc=False
-    elif nos[1] in nos_montante and nos[0] not in nos_montante:
+    elif nos[1] in nos_montante and nos[0] not in nos_montante: 
         j=0
+        k=1
         Flag_Enc=False
-    elif nos[0] in nos_montante and nos[1] in nos_montante:
+    elif nos[0] in nos_montante and nos[1] in nos_montante: #Se os dois nós tiverem nos montantes
         Block_vert_up=True
         Block_vert_down=True
         Block_inside=True
-        Flag_Enc=True
+        Flag_Enc=True #Se ambos os nos tiverem no montante significa que está bloqueado
         return Block_vert_up,Block_vert_down,Block_inside,Flag_Enc
     else:
-        j=0
-        Flag_Enc=False
+        j=0 #Se nenhum estiver nos montantes é uma interna manual e portanto o comprimento de encurvadura é L
+        k=0
+        Block_vert_up=True
+        Block_vert_down=True
+        Block_inside=True
+        Flag_Enc=True #Se ambos os nos tiverem no montante significa que está bloqueado
+        return Block_vert_up,Block_vert_down,Block_inside,Flag_Enc
     elementos_no = []
     Dir_no = []
+    if TrussType[Ele]=="Diagonal": #Trabalhar na seleção do montante
+        if Troco[Ele]==Troco[np.max(elementos_do_no_filt(nos[k],TrussType,"Leg"))]:
+            ELE_Montante=np.max(elementos_do_no_filt(nos[k],TrussType,"Leg"))
+        else:
+            ELE_Montante=np.min(elementos_do_no_filt(nos[k],TrussType,"Leg"))
+    else:
+        ELE_Montante=np.min(elementos_do_no_filt(nos[k],TrussType,"Leg"))
+    nos_ele_montante = ops.eleNodes(int(ELE_Montante))
+    coords1_montante = np.array(ops.nodeCoord(int(nos[k])))
+    if nos[k]==nos_ele_montante[0]:
+        coords2_montante = np.array(ops.nodeCoord(nos_ele_montante[1]))
+    else:
+        coords2_montante = np.array(ops.nodeCoord(nos_ele_montante[0]))
+    Dir_montante=(coords2_montante-coords1_montante)/np.linalg.norm(coords2_montante-coords1_montante)
+    coords2_Ele = np.array(ops.nodeCoord(int(nos[j])))
+    if nos[j]==nos[0]:
+        coords1_Ele = np.array(ops.nodeCoord(nos[1]))
+    else:
+        coords1_Ele = np.array(ops.nodeCoord(nos[0]))
+    Dir_ELE=(coords2_Ele-coords1_Ele)/np.linalg.norm(coords2_Ele-coords1_Ele)
+    Dir_Z_Local=np.cross(Dir_montante, Dir_ELE)
+    Dir_Z_Local=Dir_Z_Local/np.linalg.norm(Dir_Z_Local)
+    Dir_X_Local=Dir_ELE
+    Dir_Y_Local=np.cross(Dir_X_Local, Dir_Z_Local)
+    # print("Dir_Montante: ",Dir_montante)
+    # print("X: ", Dir_X_Local)
+    # print("Y: ", Dir_Y_Local)
+    # print("Z: ", Dir_Z_Local)
+    R = np.vstack((Dir_X_Local, Dir_Y_Local, Dir_Z_Local)) 
     for ele in elementos:
         nos_ele = ops.eleNodes(ele)  # tupla com os nós do elemento
-        if nos[j] in nos_ele:
+        if nos[j] in nos_ele: #Analisa apenas o no que não está no montante
             elementos_no.append(ele)
             coords1 = np.array(ops.nodeCoord(int(nos[j])))
             if nos[j]==nos_ele[0]:
@@ -113,47 +324,46 @@ def Block_direction (Ele,nos_montante):
             else:
                 coords2 = np.array(ops.nodeCoord(nos_ele[0]))
             Dir=(coords2-coords1)/np.linalg.norm(coords2-coords1) ##Vetor a sair do nó do elemento em analise
-            Dir_no.append(Dir)
+            Dir_Local=R @ Dir
+            Dir_no.append(Dir_Local)
+    
     Dir_no=np.array(Dir_no)
     cols_vert_up = np.any(Dir_no > 0, axis=0)
-    if cols_vert_up[2]:
+    if cols_vert_up[1]: ###Se tiver algum bloqueio na vertical (Cima) Y positivo
         Block_vert_up=True
     
     cols_vert_down=  np.any(Dir_no < 0, axis=0)
-    if cols_vert_down[2]:
+    if cols_vert_down[1]: ###Se tiver algum bloqueio na vertical (Baixo) Y negativo
         Block_vert_down=True
-    
-    cols_inside= np.any(Dir_no==0,axis=0)
-    if cols_inside[2] and not cols_inside[1] and not cols_inside[0]:
-        Block_inside=True
+    Block_inside = np.any(np.abs(Dir_no[:, 2]) > 10**-6)###Block_inside é True se houver um vetor que tenha z!=0
     return Block_vert_up,Block_vert_down,Block_inside,Flag_Enc
 
-def Horizontal_Buckling(Ele,nos_montante,Type_Con,N_bolt_con,Exp_vento):
-    Block_vert_up,Block_vert_down,Block_inside,Flag_Enc=Block_direction(Ele,nos_montante)
+def Horizontal_Buckling(Ele,nos_montante,Type_Con,N_bolt_con,Exp_vento,TrussType,Troco):
+    Block_vert_up,Block_vert_down,Block_inside,Flag_Enc=Block_direction(Ele,nos_montante,TrussType,Troco)
     eta=1.0
-    if Flag_Enc:
+    if Flag_Enc: #Se os dois nós tiverem nos montantes
         Multy=1
         Multv=1
         if Type_Con=="No" and N_bolt_con==1 and Exp_vento=="Flat":
             eta=0.8
         else:
             eta=1.0
-    else:
-        if Block_inside and Block_vert_up and Block_vert_down:
+    else: #Só entra aqui se não for uma barra de montante a montante
+        if Block_inside and Block_vert_up and Block_vert_down: #Barras em X completo com travamento interno
             Multy=1
             Multv=1
             if Type_Con=="No" and N_bolt_con==1 and Exp_vento=="Flat":
                 eta=0.9
             else:
                 eta=1.0
-        elif Block_vert_up and Block_vert_down:
+        elif Block_vert_up and Block_vert_down:  #Barras em X completo sem travamento interno
             Multy=2
             Multv=1
             if Type_Con=="No" and N_bolt_con==1 and Exp_vento=="Flat":
                 eta=0.9
             else:
                 eta=1.0     
-        elif (Block_vert_down and Block_inside) or (Block_vert_up and Block_inside) :
+        elif (Block_vert_down and Block_inside) or (Block_vert_up and Block_inside) : #Barras em meio X  com travamento interno
             Multy=1
             Multv=1
             if Type_Con=="No" and N_bolt_con==1 and Exp_vento=="Flat":
@@ -168,8 +378,9 @@ def Horizontal_Buckling(Ele,nos_montante,Type_Con,N_bolt_con,Exp_vento):
             else:
                 eta=1.0  
     return Multy,Multv,eta
-def Diagonal_Buckling(Ele,nos_montante,Type_Con,N_bolt_con,Exp_vento):
-    Block_vert_up,Block_vert_down,Block_inside,Flag_Enc=Block_direction(Ele,nos_montante)
+def Diagonal_Buckling(Ele,nos_montante,Type_Con,N_bolt_con,Exp_vento,TrussType,Troco):
+    Block_vert_up,Block_vert_down,Block_inside,Flag_Enc=Block_direction(Ele,nos_montante,TrussType,Troco)
+    
     eta=1.0
     if Flag_Enc:
         Multy=1
@@ -182,6 +393,7 @@ def Diagonal_Buckling(Ele,nos_montante,Type_Con,N_bolt_con,Exp_vento):
         if Block_inside and Block_vert_up and Block_vert_down:
             Multy=1
             Multv=1
+            
             if Type_Con=="No" and N_bolt_con==1 and Exp_vento=="Flat":
                 eta=0.9
             else:
@@ -189,6 +401,7 @@ def Diagonal_Buckling(Ele,nos_montante,Type_Con,N_bolt_con,Exp_vento):
         elif Block_vert_up and Block_vert_down:
             Multy=1
             Multv=1
+            print(Ele)
             if Type_Con=="No" and N_bolt_con==1 and Exp_vento=="Flat":
                 eta=0.9
             else:
@@ -207,6 +420,7 @@ def Diagonal_Buckling(Ele,nos_montante,Type_Con,N_bolt_con,Exp_vento):
                 eta=0.8
             else:
                 eta=1.0  
+
     return Multy,Multv,eta
 
 
@@ -279,13 +493,13 @@ def Buckling_Function(nEle,Inertiav,Inertiau,Inertiay,Inertiaz,Area,Comprimento_
             if TrussType[i]!="Leg":
                 
                 if TrussType[i] in ["Horizontal Bar", "External Manual Bar"]:
-                    Multy,Multv,eta_Enc[i]=Horizontal_Buckling(int(i),nos_montante,Conection_Ele[i],N_Bolt_Ele[i],ExpVento[i])
+                    Multy,Multv,eta_Enc[i]=Horizontal_Buckling(int(i),nos_montante,Conection_Ele[i],N_Bolt_Ele[i],ExpVento[i],TrussType,Troco)
                     Comprimento_Enc[i]=np.max([Comprimento_Barra[i]*Multv,Comprimento_Barra[i]*Multy])
                 
                 elif TrussType[i]=="Internal Manual Bar" and ops.eleNodes(int(i))[0] in nos_montante and ops.eleNodes(int(i))[1] in nos_montante:
                     Comprimento_Enc[i]=Comprimento_Barra[i]*1
                 else:
-                    Multy,Multv,eta_Enc[i]=Diagonal_Buckling(int(i),nos_montante,Conection_Ele[i],N_Bolt_Ele[i],ExpVento[i])
+                    Multy,Multv,eta_Enc[i]=Diagonal_Buckling(int(i),nos_montante,Conection_Ele[i],N_Bolt_Ele[i],ExpVento[i],TrussType,Troco)
                     Comprimento_Enc[i]=np.max([Comprimento_Barra[i]*Multv,Comprimento_Barra[i]*Multy])
                 if Conection_Ele[i]=="Yes":
                     k_Enc[i]=0.7
@@ -301,7 +515,7 @@ def Buckling_Function(nEle,Inertiav,Inertiau,Inertiay,Inertiaz,Area,Comprimento_
                 # else:
                 #     Lambda_Check[i]="KO"
             elif TrussType[i]=="Leg":
-                L_enc_y,L_enc_v,Bracing[i]=Buckling_Lenght(int(i),Comprimento_Barra[i])
+                L_enc_y,L_enc_v,Bracing[i]=Buckling_Lenght(int(i),Comprimento_Barra[i],TrussType)
                 k_Enc[i]=1
                 Comprimento_Enc[i]=L_enc_y
 
@@ -330,7 +544,7 @@ def Buckling_Function(nEle,Inertiav,Inertiau,Inertiay,Inertiaz,Area,Comprimento_
 
             if TrussType[i]!="Leg":
                 if TrussType[i] in ["Horizontal Bar", "External Manual Bar"]:
-                    Multy,Multv,eta_Enc[i]=Horizontal_Buckling(int(i),nos_montante,Conection_Ele[i],N_Bolt_Ele[i],ExpVento[i])
+                    Multy,Multv,eta_Enc[i]=Horizontal_Buckling(int(i),nos_montante,Conection_Ele[i],N_Bolt_Ele[i],ExpVento[i],TrussType,Troco)
                     L2_Enc=Comprimento_Barra[i]*Multv
                     L1_Enc=Comprimento_Barra[i]*Multy
                 elif TrussType[i]=="Internal Manual Bar" and ops.eleNodes(int(i))[0] in nos_montante and ops.eleNodes(int(i))[1] in nos_montante:
@@ -341,7 +555,7 @@ def Buckling_Function(nEle,Inertiav,Inertiau,Inertiay,Inertiaz,Area,Comprimento_
                     else:
                         k_Enc[i]=1
                 else:
-                    Multy,Multv,eta_Enc[i]=Diagonal_Buckling(int(i),nos_montante,Conection_Ele[i],N_Bolt_Ele[i],ExpVento[i])
+                    Multy,Multv,eta_Enc[i]=Diagonal_Buckling(int(i),nos_montante,Conection_Ele[i],N_Bolt_Ele[i],ExpVento[i],TrussType,Troco)
                     L2_Enc=Comprimento_Barra[i]*Multv
                     L1_Enc=Comprimento_Barra[i]*Multy
                 Lambda_Barra_p[i]=((Dim[i]-2*Esp[i])/Esp[i])/(28.4*epsilon[i]*np.sqrt(ksigma[i]))
@@ -396,7 +610,7 @@ def Buckling_Function(nEle,Inertiav,Inertiau,Inertiay,Inertiaz,Area,Comprimento_
                 else:
                     Comprimento_Enc[i]=L1_Enc
             elif TrussType[i]=="Leg":
-                L_enc_y,L_enc_v,Bracing[i]=Buckling_Lenght(int(i),Comprimento_Barra[i])
+                L_enc_y,L_enc_v,Bracing[i]=Buckling_Lenght(int(i),Comprimento_Barra[i],TrussType)
                 Lambda_Barra_p[i]=((Dim[i]-2*Esp[i])/Esp[i])/(28.4*epsilon[i]*np.sqrt(ksigma[i]))
                 if Class_Enc[i]==4:
                     if Lambda_Barra_p[i]<=0.748:

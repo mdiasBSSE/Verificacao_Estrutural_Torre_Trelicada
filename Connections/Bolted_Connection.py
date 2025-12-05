@@ -747,7 +747,8 @@ def Flanged_Bolted_Connection(Shaft_Flange_Matrix,TrussType,F_Tracao,Dim,Esp,Sig
 
 def Flanged_Foundation_Angle(Flange_Foundation_Angle,Trusstype,F_tracao):
 
-    if Flange_Foundation_Angle[0,0]=="No":
+    if Flange_Foundation_Angle[0,0]=="No" and (Flange_Foundation_Angle[0,1]!="0" or Flange_Foundation_Angle[0,2]!="0" or Flange_Foundation_Angle[0,3]!="0" or Flange_Foundation_Angle[0,4]!="0" or Flange_Foundation_Angle[0,5]!="0" or Flange_Foundation_Angle[0,6]!="0"):
+       ######################################################Impede de calcular se algum dos parametros necessarios não for introduzido####################
         i_Montante=Trusstype=="Leg"
         F_montante=np.max(F_tracao[i_Montante])
         _,_,Abolt,_=get_bolt_props(Flange_Foundation_Angle[0,4])
@@ -839,6 +840,6 @@ def Flanged_Foundation_Angle(Flange_Foundation_Angle,Trusstype,F_tracao):
                     "--",
                     "--",
                     "--",
-                    "--"]], dtype=object)        
+                    "NA"]], dtype=object)        
 
     return ratio, row

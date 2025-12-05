@@ -60,7 +60,7 @@ def main(Aincrease):
         Alt_col,Lu,Ld,Xtopo,Ac_c0,A500,A1000,Alt,
         FundMethod,MfundMax,RatioFundCalc,
         SoilSelfWeight,AllowedSoilTension_SLS,
-        AllowedSoilTension_ULS)=Structure_txt_read(txt_file)
+        AllowedSoilTension_ULS,Calc_Wind_Auto)=Structure_txt_read(txt_file)
     zmed_alt=Alt+zmed
     if Pais=="France":
         rho_ar=1.225
@@ -142,12 +142,9 @@ def main(Aincrease):
                                                                                                     ExpVento,Comprimento_Barra,divisor,0,"Nao",h_torre,munit,
                                                                                                        Massa_Extra,todos_nos,nEle,nos_por_elemento,coords,h_vetor,
                                                                                                     z_grupo,nos_grupo,dh,torre,dalpha,Posicao_Antenna,
-                                                                                                    Massa_Antenna,AreaDirection,equipline,Ant,1,rho_gelo,vb,z0,zmin)
+                                                                                                    Massa_Antenna,AreaDirection,equipline,Ant,1,rho_gelo,vb,z0,zmin,Calc_Wind_Auto)
         
-
     N_basal=np.abs(np.sum(F_nos[:4,:,2]))
-    #for i in range(ops.getNodes()):
-
     if Gelo=="Sim":
         Ncasoscarga_gelo=200
         (Desloc_gelo,Reactions_gelo,Desloc_aux_gelo,F_gelo,F_axial_gelo,Ry_gelo,MzVer_gelo,F_nos_gelo,nos_grupo_gelo,
@@ -159,7 +156,7 @@ def main(Aincrease):
                                                                                                         Comprimento_Barra,divisor,esp_gelo,Gelo,h_torre,munit,0,
                                                                                                         todos_nos,nEle,nos_por_elemento,coords,h_vetor,z_grupo,nos_grupo,dh,
                                                                                                         torre,dalpha,Posicao_Antenna,Massa_Antenna,AreaDirectiongelo,equipline
-                                                                                                        ,Ant,icombinacao+1,Esp,Area,rho_gelo,Massa_Antenna_Gelo,Massa_nos_lin,Massa_Troco,vb,z0,zmin)
+                                                                                                        ,Ant,icombinacao+1,Esp,Area,rho_gelo,Massa_Antenna_Gelo,Massa_nos_lin,Massa_Troco,vb,z0,zmin,Calc_Wind_Auto)
         N_basal_gelo=np.abs(np.sum(F_nos_gelo[:4,:,2]))
 
     Gamma_Perm_Des,Gamma_Variable_Des,Gamma_Perm_Fav,Gamma_Variable_Fav = ClasseFiabilidade(Pais,Classe_Fiabilidade)
@@ -238,11 +235,12 @@ def main(Aincrease):
 
 
     if Gelo=="Sim":
-        iAngle_Crit,Rot_SLS_top,Desloc_Out=Desloc_Output(Desloc,nos_grupo,iSLS,iELU,iELU_gelo,iEnd,ivento,z_grupo,h_torre,alpha_vector,v_no_maximo,
+        
+        iAngle_Crit,Rot_Top_SLS,Rot_23_SLS,Rot_Top_ELU,Rot_23_ELU,Rot_Top_100,Rot_Top_120,Desloc_Out=Desloc_Output(Desloc,nos_grupo,iSLS,iELU,iELU_gelo,iEnd,ivento,z_grupo,h_torre,alpha_vector,v_no_maximo,
                                              Ncasoscarga,todos_nos,Gamma_Perm_Des,Gamma_Variable_Des,Gamma_Perm_Fav,Gelo,Desloc_gelo,
                                              Ncasoscarga_gelo,icasoscarga_gelo,k_gelo,Psiventogelo)
     else:
-        iAngle_Crit,Rot_SLS_top,Desloc_Out=Desloc_Output(Desloc,nos_grupo,iSLS,iELU,0,iEnd,ivento,z_grupo,h_torre,alpha_vector,v_no_maximo,Ncasoscarga,
+        iAngle_Crit,Rot_Top_SLS,Rot_23_SLS,Rot_Top_ELU,Rot_23_ELU,Rot_Top_100,Rot_Top_120,Desloc_Out=Desloc_Output(Desloc,nos_grupo,iSLS,iELU,0,iEnd,ivento,z_grupo,h_torre,alpha_vector,v_no_maximo,Ncasoscarga,
                                              todos_nos,Gamma_Perm_Des,Gamma_Variable_Des,Gamma_Perm_Fav,Gelo,0,0,0,0,0)
 
     while iAngle_Crit>len(alpha_vector):
@@ -312,16 +310,16 @@ def main(Aincrease):
                 Case_Gelo_Out_csv=[]
             salvar_matrizes_csv(OutputEstruturalExp,Case_Out_csv,Area_Out_Exp,Case_Gelo_Out_csv,Area_Gelo_Out_Exp,Enc_Out_Exp,Lig_Out_Exp,B_Out_Exp,F_Out_Exp)
             if FundMethod==True:
-                print(f"{Ratio_max_out*100};{np.round(Rot_SLS_top,3)};{RatioFund*100};resultados/{Nanalise}_{timestamp}_result_collocation.csv")
+                print(f"{Ratio_max_out*100};{np.round(Rot_Top_SLS,3)};{np.round(Rot_23_SLS,3)};{np.round(Rot_Top_ELU,3)};{np.round(Rot_23_ELU,3)};{np.round(Rot_Top_100,3)};{np.round(Rot_Top_120,3)};{RatioFund*100};resultados/{Nanalise}_{timestamp}_result_collocation.csv")
             else:
-                print(f"{Ratio_max_out*100};{np.round(Rot_SLS_top,3)};0;resultados/{Nanalise}_{timestamp}_result_collocation.csv")
-        else:
+                print(f"{Ratio_max_out*100};{np.round(Rot_Top_SLS,3)};{np.round(Rot_23_SLS,3)};{np.round(Rot_Top_ELU,3)};{np.round(Rot_23_ELU,3)};{np.round(Rot_Top_100,3)};{np.round(Rot_Top_120,3)};0;resultados/{Nanalise}_{timestamp}_result_collocation.csv")
+        else:                
             OutputEstrutural="0"
     else:
         if FundMethod==True:
-            print(f"{Ratio_max_out*100};{np.round(Rot_SLS_top,3)};{RatioFund*100};resultados/xx_{timestamp}_result_collocation.csv")
+            print(f"{Ratio_max_out*100};{np.round(Rot_Top_SLS,3)};{np.round(Rot_23_SLS,3)};{np.round(Rot_Top_ELU,3)};{np.round(Rot_23_ELU,3)};{np.round(Rot_Top_100,3)};{np.round(Rot_Top_120,3)};{RatioFund*100};resultados/xx_{timestamp}_result_collocation.csv")
         else:
-            print(f"{Ratio_max_out*100};{np.round(Rot_SLS_top,3)};0;resultados/xx_{timestamp}_result_collocation.csv")   
+            print(f"{Ratio_max_out*100};{np.round(Rot_Top_SLS,3)};{np.round(Rot_23_SLS,3)};{np.round(Rot_Top_ELU,3)};{np.round(Rot_23_ELU,3)};{np.round(Rot_Top_100,3)};{np.round(Rot_Top_120,3)};0;resultados/xx_{timestamp}_result_collocation.csv")   
         OutputEstrutural="0"
     #print("Limites Troço 1: \n",nos_vento_troco[:,:,1])
     #print("Limites Troço 2: \n",nos_vento_troco[:,:,2])

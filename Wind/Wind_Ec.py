@@ -111,6 +111,88 @@ def calculoc0(Pais,zmin,h_vector,Tipo,Alt_colina,Lu,Ld,Xtopo,Ac,A500,A1000):
     c0min=c0[iZs]
     c0[indiceZs]=c0min
     return c0
+
+def ZoneInverse(z0, zmin, vb, Pais):
+
+    # --- PORTUGAL ---
+    if Pais == "Portugal":
+        zonas = {"A": 27, "B": 30}
+        tipos = {
+            "I":   (0.005, 1),
+            "II":  (0.05, 3),
+            "III": (0.3, 8),
+            "IV":  (1, 15),
+        }
+
+        zona = next((z for z, v in zonas.items() if v == vb), None)
+        tipo = next((t for t, vals in tipos.items() if vals == (z0, zmin)), None)
+        return zona, tipo
+
+    # --- PORTUGAL-RSA ---
+    elif Pais == "Portugal-RSA":
+        zonas = {"A": 27, "B": 30}
+        tipos = {
+            "I":  (0, 15),
+            "II": (0, 10),
+        }
+
+        zona = next((z for z, v in zonas.items() if v == vb), None)
+        tipo = next((t for t, vals in tipos.items() if vals == (z0, zmin)), None)
+        return zona, tipo
+
+    # --- FRANCE ---
+    elif Pais == "France":
+        zonas = {
+            "1": 22, "2": 24, "3": 26, "4": 28,
+            "Guadeloupe": 36, "Guyane": 17,
+            "Martinique": 32, "Réunion": 34, "Mayotte": 30
+        }
+
+        tipos = {
+            "0":   (0.005, 1),
+            "II":  (0.05, 2),
+            "IIIa": (0.2, 5),
+            "IIIb": (0.5, 9),
+            "IV":  (1, 15),
+        }
+
+        zona = next((z for z, v in zonas.items() if v == vb), None)
+        tipo = next((t for t, vals in tipos.items() if vals == (z0, zmin)), None)
+        return zona, tipo
+
+    # --- UNITED KINGDOM ---
+    elif Pais == "United Kingdom":
+        # vb não é usado (é sempre 0)
+        tipos = {
+            "Sea-0":      (0.003, 1),
+            "Country-I":  (0.01, 1),
+            "Country-II": (0.05, 2),
+            "Town-III":   (0.3, 5),
+            "Town-IV":    (1, 10)
+        }
+
+        zona = "-"  # não existe zona no UK
+        tipo = next((t for t, vals in tipos.items() if vals == (z0, zmin)), None)
+        return zona, tipo
+
+    # --- SPAIN ---
+    elif Pais == "Spain":
+        zonas = {"A": 26, "B": 27, "C": 29}
+
+        tipos = {
+            "I":   (0.01, 1),
+            "II":  (0.05, 2),
+            "III": (0.3, 5),
+            "IV":  (1, 10),
+            "0":   (0.003, 1),
+        }
+
+        zona = next((z for z, v in zonas.items() if v == vb), None)
+        tipo = next((t for t, vals in tipos.items() if vals == (z0, zmin)), None)
+        return zona, tipo
+
+    return None, None
+
 def Zone(Zona,Tipo,Pais):
     if Pais=="Portugal":
         if Zona=="A": #Pag155

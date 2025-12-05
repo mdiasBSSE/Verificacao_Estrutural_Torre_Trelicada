@@ -1,0 +1,13 @@
+8;0;42;18;900
+LE
+1
+1
+0
+Ladder;0;42;0.1021;10
+Cable;0;42;0.25;13
+ELE
+Final;1
+analise;51
+ORD
+1
+EORD

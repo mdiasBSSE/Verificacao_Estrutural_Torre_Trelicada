@@ -1,4 +1,5 @@
 import numpy as np
+from Wind.Wind_Ec import ZoneInverse
 def Desloc_Output(Desloc,nos_grupo,iSLS,iELU,iELU_gelo,iEnd,ivento,z_grupo,h_torre,alpha_vector,v_no_maximo,Ncasoscarga,todos_nos,Gamma_Perm_Des,Gamma_Variable_Des,Gamma_Perm_Fav,Gelo,Desloc_gelo,Ncasoscarga_gelo,icasoscarga_gelo,k_gelo,Psiventogelo): 
     Desloc_aux=np.sqrt(Desloc[:,:,0]**2+Desloc[:,:,1]**2)
 
@@ -211,22 +212,23 @@ def Desloc_Output(Desloc,nos_grupo,iSLS,iELU,iELU_gelo,iEnd,ivento,z_grupo,h_tor
                 np.round(np.max([Rot_100_top_SLS, Rot_100_top_SLS_gelo]) * 60, 3),
                 np.round(np.max([Desloc_100_top_SLS, Desloc_100_top_SLS_gelo]) * 1e3, 3)
             ],
-            ["ULS - 100 km/h",
-                np.round(np.max([Rot_100_top_ULS, Rot_100_top_ULS_gelo]), 3),
-                np.round(np.max([Rot_100_top_ULS, Rot_100_top_ULS_gelo]) * 60, 3),
-                np.round(np.max([Desloc_100_top_ULS, Desloc_100_top_ULS_gelo]) * 1e3, 3)
-            ],
+
             ["SLS - 120 km/h",
                 np.round(np.max([Rot_120_top_SLS, Rot_120_top_SLS_gelo]), 3),
                 np.round(np.max([Rot_120_top_SLS, Rot_120_top_SLS_gelo]) * 60, 3),
                 np.round(np.max([Desloc_120_top_SLS, Desloc_120_top_SLS_gelo]) * 1e3, 3)
-            ],
-            ["ULS - 120 km/h",
-                np.round(np.max([Rot_120_top_ULS, Rot_120_top_ULS_gelo]), 3),
-                np.round(np.max([Rot_120_top_ULS, Rot_120_top_ULS_gelo]) * 60, 3),
-                np.round(np.max([Desloc_120_top_ULS, Desloc_120_top_ULS_gelo]) * 1e3, 3)
             ]
         ], dtype=object)
+        # ["ULS - 120 km/h",
+        #         np.round(np.max([Rot_120_top_ULS, Rot_120_top_ULS_gelo]), 3),
+        #         np.round(np.max([Rot_120_top_ULS, Rot_120_top_ULS_gelo]) * 60, 3),
+        #         np.round(np.max([Desloc_120_top_ULS, Desloc_120_top_ULS_gelo]) * 1e3, 3)
+        #     ]
+        #         ["ULS - 100 km/h",
+        #     np.round(np.max([Rot_100_top_ULS, Rot_100_top_ULS_gelo]), 3),
+        #     np.round(np.max([Rot_100_top_ULS, Rot_100_top_ULS_gelo]) * 60, 3),
+        #     np.round(np.max([Desloc_100_top_ULS, Desloc_100_top_ULS_gelo]) * 1e3, 3)
+        # ],
     else:
         Desloc_Out= np.array([["Case", "Degree", "Minute", "Distance"],
                         ["SLS - Top", np.round(Rottop_SLS,3)  ,np.round(Rottop_SLS*60,3) ,np.round(Desloctop_SLS*10**3,1) ],
@@ -234,15 +236,24 @@ def Desloc_Output(Desloc,nos_grupo,iSLS,iELU,iELU_gelo,iEnd,ivento,z_grupo,h_tor
                         ["ULS - Top", np.round(Rottop_ELU,3)  ,np.round(Rottop_ELU*60,3) ,np.round(Desloctop_ELU*10**3,1) ],
                         ["ULS - 2/3", np.round(Rot23_ELU,3)  ,np.round(Rot23_ELU*60,3) ,np.round(Desloc232_ELU*10**3,1) ],
                         ["SLS - 100 km/h", np.round(Rot_100_top_SLS,3)  ,np.round(Rot_100_top_SLS*60,3) ,np.round(Desloc_100_top_SLS*10**3,1) ],
-                        ["ULS - 100 km/h", np.round(Rot_100_top_ULS,3)  ,np.round(Rot_100_top_ULS*60,3) ,np.round(Desloc_100_top_ULS*10**3,1) ],
-                        ["SLS - 120 km/h", np.round(Rot_120_top_SLS,3)  ,np.round(Rot_120_top_SLS*60,3) ,np.round(Desloc_120_top_SLS*10**3,1) ],
-                        ["ULS - 120 km/h", np.round(Rot_120_top_ULS,3)  ,np.round(Rot_120_top_ULS*60,3) ,np.round(Desloc_120_top_ULS*10**3,1) ]
-                ], dtype=object)
+                        ["SLS - 120 km/h", np.round(Rot_120_top_SLS,3)  ,np.round(Rot_120_top_SLS*60,3) ,np.round(Desloc_120_top_SLS*10**3,1) ]], dtype=object)
+        #["ULS - 120 km/h", np.round(Rot_120_top_ULS,3)  ,np.round(Rot_120_top_ULS*60,3) ,np.round(Desloc_120_top_ULS*10**3,1) ]
+        #["ULS - 100 km/h", np.round(Rot_100_top_ULS,3)  ,np.round(Rot_100_top_ULS*60,3) ,np.round(Desloc_100_top_ULS*10**3,1) ],
     if Gelo=="Sim":
         Rot_Top_SLS=np.max([Rottop_SLS, Rottop_SLS_gelo])
+        Rot_23_SLS=np.max([Rot23_SLS, Rot23_SLS_gelo])
+        Rot_Top_ELU=np.max([Rottop_ELU, Rottop_ELU_gelo])
+        Rot_23_ELU=np.max([Rot23_ELU, Rot23_ELU_gelo])
+        Rot_Top_100=np.max([Rot_100_top_SLS, Rot_100_top_SLS_gelo])
+        Rot_Top_120=np.max([Rot_120_top_SLS, Rot_120_top_SLS_gelo])
     else:
         Rot_Top_SLS=Rottop_SLS
-    return iAngle_Crit,Rot_Top_SLS,Desloc_Out
+        Rot_23_SLS=np.max([Rot23_SLS])
+        Rot_Top_ELU=np.max([Rottop_ELU])
+        Rot_23_ELU=np.max([Rot23_ELU])
+        Rot_Top_100=np.max([Rot_100_top_SLS])
+        Rot_Top_120=np.max([Rot_120_top_SLS])
+    return iAngle_Crit,Rot_Top_SLS,Rot_23_SLS,Rot_Top_ELU,Rot_23_ELU,Rot_Top_100,Rot_Top_120,Desloc_Out
 
 def Buckling_Output(Class_Enc,nos_vento,TrussType,Truss_Out,Size_Profile,Elements_Matrix,Lambda_Enc_eff,Lambda_1,NTracRd,NbRd,Troco,Ratio_Enc,F_Compressao):
     Enc_Out_csv=np.array(["Member", "Profile", "Steel", "Slenderness","NtRd","NbRd","Ned","Ratio","Result"])
@@ -679,19 +690,47 @@ def Lattice_csv_Output(Output_Filename,Enc_Out_csv,Lig_Out_csv,B_Out_csv,F_Out_c
         for linha in Flange_Fund_out:
             f.write(",".join(map(str, linha)) + "\n")
         f.write("\n")
-def Wind_Ice_Out(Pais,z0,vref,zmin,c0_top,q0,v_top,Pressure_top,Gelo,esp_gelo,rho_gelo):
-
-    Wind_Out_Csv= np.array([
-        ["Wind Load",""],
-        ["Country",Pais],
-        ["vref (m/s)" , vref],
-        ["z0", z0],
-        ["zmin", zmin],
-        ["Orographie Coefficient", c0_top],
-        ["q0 (Pa)",  np.round(q0,1) ],
-        ["Average Wind speed (top) (m/s)", np.round(v_top,2)],
-        ["Dynamic Wind Pressure (top) (Pa)",np.round(Pressure_top)]
-    ], dtype=object)
+def Wind_Ice_Out(Pais,z0,vref,zmin,c0_top,q0,v_top,Pressure_top,Gelo,esp_gelo,rho_gelo, Calc_Wind_Auto):
+    if Calc_Wind_Auto=="Yes":
+        Zona,Terreno=ZoneInverse(z0, zmin, vref, Pais)
+        Wind_Out_Csv= np.array([
+            ["Wind Load",""],
+            ["Country",Pais],
+            ["vb (m/s)" , f"{Zona} - {int(vref)}"],
+            ["z0", z0],
+            ["zmin", zmin],
+            ["Orographie Coefficient", c0_top],
+            ["q0 (Pa)",  np.round(q0,1) ],
+            ["Average Wind speed (top) (m/s)", np.round(v_top,2)],
+            ["Dynamic Wind Pressure (top) (Pa)",np.round(Pressure_top)]
+        ], dtype=object)
+    else:
+        if Pais in ["Portugal","Spain","France"]:
+            Zona,Terreno=ZoneInverse(z0, zmin, vref, Pais)
+            Wind_Out_Csv= np.array([
+            ["Wind Load",""],
+            ["Country",Pais],
+            ["Wind Zone", Zona],
+            ["vb (m/s)" , vref],
+            ["Terrain Category", Terreno],
+            ["Orographie Coefficient", c0_top],
+            ["q0 (Pa)",  np.round(q0,1) ],
+            ["Average Wind speed (top) (m/s)", np.round(v_top,2)],
+            ["Dynamic Wind Pressure (top) (Pa)",np.round(Pressure_top)]
+        ], dtype=object)
+        elif Pais in ["Portugal-RSA"]:
+            Zona,Terreno=ZoneInverse(z0, zmin, vref, Pais)
+            Wind_Out_Csv= np.array([
+            ["Wind Load",""],
+            ["Country",Pais],
+            ["Wind Zone", Zona],
+            ["vb (m/s)" , vref],
+            ["Terrain Category", Terreno],
+            ["Orographie Coefficient", c0_top],
+            ["q0 (Pa)",  np.round(q0,1) ],
+            ["Average Wind speed (top) (m/s)", np.round(v_top,2)],
+            ["Dynamic Wind Pressure (top) (Pa)",np.round(Pressure_top)]
+            ], dtype=object)
 
     if Gelo=="Sim":
         Ice_Out_Csv=np.array([
