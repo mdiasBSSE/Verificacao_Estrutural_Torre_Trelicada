@@ -327,10 +327,12 @@ def Velocidade_media(z,vb,z0,zmin,Pais,c0):
         vm=Cr*c0*vb
     else:
         vm=np.zeros(len(z))
-        if z0>=0.5:
+        #if z0>=0.5:
+        if zmin==15:
             m=18
             n=0.28
-        elif z0<0.5:
+        #elif z0<0.5:
+        elif zmin==10:
             m=25
             n=0.2
         vmmin=m*(zmin/10)**n

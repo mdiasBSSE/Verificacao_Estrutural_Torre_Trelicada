@@ -143,7 +143,7 @@ def main(Aincrease):
                                                                                                        Massa_Extra,todos_nos,nEle,nos_por_elemento,coords,h_vetor,
                                                                                                     z_grupo,nos_grupo,dh,torre,dalpha,Posicao_Antenna,
                                                                                                     Massa_Antenna,AreaDirection,equipline,Ant,1,rho_gelo,vb,z0,zmin,Calc_Wind_Auto)
-        
+    
     N_basal=np.abs(np.sum(F_nos[:4,:,2]))
     if Gelo=="Sim":
         Ncasoscarga_gelo=200

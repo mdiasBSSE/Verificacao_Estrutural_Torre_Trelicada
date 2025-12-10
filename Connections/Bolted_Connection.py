@@ -103,9 +103,9 @@ def Bolted_Connection_Bracing(Dig_Hor_Matrix,F_Tracao,F_Compressao,TrussType,Dim
                 Calc_Nu[i]="Nao"
             if Bolt[i]!="0" and Bolt_Steel[i]!="0" and N_Bolt_Lig[i]!="0":
                 Calc_Bolt[i]="Sim"
-            if Bolt[i]!="0" and N_Bolt_Lig[i]!="0":
+            elif Bolt[i]!="0" and N_Bolt_Lig[i]!="0"and Bolt_Steel[i]=="0": ###Se não tiver o aço do parafuso, assume-se um 8.8
                 Calc_Bolt[i]="Sim"
-                Bolt_Steel[i]!="8.8"
+                Bolt_Steel[i]="8.8*"
 
             if Calc_Bolt[i]=="Sim":
                 ###### Verificação parafuso ######
@@ -381,9 +381,9 @@ def Bolted_Connection_Shaft(Shaft_Bolted_Matrix,TrussType,F_Tracao,F_Compressao,
             Calc_Nu_B[i]="Nao"
         if Bolt_B[i]!="0" and Bolt_Steel_B[i]!="0" and N_Bolt_B[i]!="0" and Corte_B[i]!="0" :
             Calc_Bolt_B[i]="Sim"
-        if Bolt_B[i]!="0" and N_Bolt_B[i]!="0" and Corte_B[i]!="0":
+        elif Bolt_B[i]!="0" and N_Bolt_B[i]!="0" and Corte_B[i]!="0" and Bolt_Steel_B[i]=="0":
             Calc_Bolt_B[i]="Sim"
-            Bolt_Steel_B[i]!="8.8"
+            Bolt_Steel_B[i]="8.8*"
 
         if Calc_Bolt_B[i]=="Sim":
             ###### Verificação parafuso ######
@@ -633,7 +633,9 @@ def Flanged_Bolted_Connection(Shaft_Flange_Matrix,TrussType,F_Tracao,Dim,Esp,Sig
 
     for i in range(1,ID_Flanged+1):
         ###Assume-se Bride Creuse 
-        if Bolt_F[i]!="0" and Ext_Per_F[i]!=0 and D_between_Bolt_F[i]!=0 and t_F[i]!=0 and  Steel_F[i]!="0" and Bolt_F[i]!="0" and N_Bolt_F[i]!=0 and Bolt_Steel_F[i]!="0" and Stiffeners_F[i]!="0":
+        if Bolt_F[i]!="0" and Ext_Per_F[i]!=0 and D_between_Bolt_F[i]!=0 and t_F[i]!=0 and  Steel_F[i]!="0" and Bolt_F[i]!="0" and N_Bolt_F[i]!=0  and Stiffeners_F[i]!="0":
+            if Bolt_Steel_F[i]=="0": ###Se não houver aço do parafuso assume 8.8
+                Bolt_Steel_F[i]="8.8*"
             theta_F[i]=360/N_Bolt_F[i]
             D_Ext_F[i]=Ext_Per_F[i]/np.pi
             D_Bolt_Flange_F[i]=2*D_between_Bolt_F[i]/2/np.sin(np.radians(theta_F[i]/2))
@@ -641,7 +643,7 @@ def Flanged_Bolted_Connection(Shaft_Flange_Matrix,TrussType,F_Tracao,Dim,Esp,Sig
             # if len(ELE_F)==1:
             #     ELE_F=np.array([ELE_F[0],ELE_F[0]])
             # print(ELE_F)
-            if Stiffeners_F[i]=="no":
+            if Stiffeners_F[i]!="yes":
                 ELE_F_Baixo=np.min(ELE_F)
                 ELE_F=np.max(ELE_F)
                 F_Ele_F[i]=F_Tracao[int(ELE_F_Baixo)]
@@ -703,8 +705,8 @@ def Flanged_Bolted_Connection(Shaft_Flange_Matrix,TrussType,F_Tracao,Dim,Esp,Sig
             else:
                 fub_F[i],fyb_F[i]=get_fu_fy(Bolt_Steel_F[i])
                 fub_F[i]=fub_F[i]*10**6
-                fyb_F[i]=fyb_F[i]*10**6   
-                if Steel_F[i]!="0":
+                fyb_F[i]=fyb_F[i]*10**6
+                if Steel_F[i]!="0": ###Falar com o jorge sobre isto ###
                     fu_F[i],fy_F[i]=get_fu_fy(Steel_F[i])
                     fu_F[i]=fu_F[i]*10**6
                     fy_F[i]=fy_F[i]*10**6
@@ -747,12 +749,14 @@ def Flanged_Bolted_Connection(Shaft_Flange_Matrix,TrussType,F_Tracao,Dim,Esp,Sig
 
 def Flanged_Foundation_Angle(Flange_Foundation_Angle,Trusstype,F_tracao):
 
-    if Flange_Foundation_Angle[0,0]=="No" and (Flange_Foundation_Angle[0,1]!="0" or Flange_Foundation_Angle[0,2]!="0" or Flange_Foundation_Angle[0,3]!="0" or Flange_Foundation_Angle[0,4]!="0" or Flange_Foundation_Angle[0,5]!="0" or Flange_Foundation_Angle[0,6]!="0"):
+    if Flange_Foundation_Angle[0,0]=="No" and (Flange_Foundation_Angle[0,1]!="0" and Flange_Foundation_Angle[0,2]!="0" and Flange_Foundation_Angle[0,3]!="0" and Flange_Foundation_Angle[0,4]!="0" and Flange_Foundation_Angle[0,5]!="0"):
        ######################################################Impede de calcular se algum dos parametros necessarios não for introduzido####################
         i_Montante=Trusstype=="Leg"
         F_montante=np.max(F_tracao[i_Montante])
         _,_,Abolt,_=get_bolt_props(Flange_Foundation_Angle[0,4])
         Nbolt=int(Flange_Foundation_Angle[0,5])
+        if Flange_Foundation_Angle[0,6]=="0":
+            Flange_Foundation_Angle[0,6]="8.8*"
         fub, fyb=get_fu_fy(Flange_Foundation_Angle[0,6])
         fyb=fyb*10**6
         Nrd=fyb*Nbolt*Abolt

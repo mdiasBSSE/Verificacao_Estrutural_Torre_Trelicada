@@ -401,7 +401,6 @@ def Diagonal_Buckling(Ele,nos_montante,Type_Con,N_bolt_con,Exp_vento,TrussType,T
         elif Block_vert_up and Block_vert_down:
             Multy=1
             Multv=1
-            print(Ele)
             if Type_Con=="No" and N_bolt_con==1 and Exp_vento=="Flat":
                 eta=0.9
             else:

@@ -556,7 +556,7 @@ def Basal_Effort_Output(Ry,Ry_gelo,MzVer,MzVer_gelo,Gelo,iELU,iELU_gelo,iSLS,N_b
         N_basal_ELU = np.max([N_basal_ELU_Des, N_basal_ELU_Fav])
 
 
-    Basal_Ou_csv= np.array([["Case", "Ned", "Ted", "Med"],
+    Basal_Ou_csv= np.array([["Case", "Ned", "Ved", "Med"],
                     ["SLS", np.round(N_basal_ELS*10**-3,3)  ,np.round(Ry_ELS*10**-3,3) ,np.round(MzVer_ELS*10**-3,3) ],
                     ["ULS", np.round(N_basal_ELU*10**-3,3)  ,np.round(Ry_ELU*10**-3,3) ,np.round(MzVer_ELU*10**-3,3) ]
             ], dtype=object)
