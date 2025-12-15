@@ -11,7 +11,13 @@ from pathlib import Path
 import sys
 from Utilities.Utilities import encontra_vizinhos
 from Utilities.Utilities_EC import ClasseFiabilidade,Equivalent_Mass
-from Wind.Wind_Ec import CalcKa,calculoc0,Iv_calc,Velocidade_media,Pressure_wind,Coef_forca,CsCd_calc,Zone
+from Wind.Wind_Ec import CalcKa,Zone
+from Wind.Pressure_Wind import Pressure_wind
+from Wind.CsCd_Calc import CsCd_calc
+from Wind.Coef_forca import Coef_forca
+from Wind.Velocidade_Media import Velocidade_media
+from Wind.Iv_Calc import Iv_calc
+from Wind.calculoc0 import calculoc0
 from Model_Calculation.Calculation_Methods_ops import Create_Load_Case,Calc_Load_Case
 from Model_Calculation.Load_Creation_Area import Area_Definition,Area_Position_Mass
 from Output.Output_Lattice_Expanded import Shaft_Wind
@@ -31,7 +37,7 @@ def Simple_Cases(Ncasoscarga,nos_por_classe,C0_calc,Pais,zmax,Alt,Tipoc0,Alt_col
     v_no_maximo=np.sqrt(Pressao_no_maximo*2/rho_ar)
     Reynolds=v_no_maximo*Dim/visco_ar
 
-    nos_vento_troco,Largura,Largura_total,Largura_media,At,Af,Ac,Acsup,As,Indice_Cheios=Elements_Areas(nos_por_classe,nos_vento,Troco,TrussType,Dim,z_vento,ElementosID,ExpVento,Comprimento_Barra,divisor,Reynolds,esp_gelo)
+    nos_vento_troco,Largura,Largura_total,Largura_media,At,Af,Ac,Acsup,As,Indice_Cheios=Elements_Areas(Pais,nos_por_classe,nos_vento,Troco,TrussType,Dim,z_vento,ElementosID,ExpVento,Comprimento_Barra,divisor,Reynolds,esp_gelo)
 
 
     for i in range(len(z_vento)-1):
@@ -227,7 +233,7 @@ def Simple_Cases(Ncasoscarga,nos_por_classe,C0_calc,Pais,zmax,Alt,Tipoc0,Alt_col
         ops.remove('loadPattern',int(i+icasoscarga))
         ops.wipeAnalysis()
         NameCaso[i+icasoscarga+1]= Create_Load_Case(i+icasoscarga+1+iStart-1,f"Wind Load - {alpha_vector[i]}")
-        cf0f,cf0c,cf0csup,cfs0,cfs[i+icasoscarga+1,:]= Coef_forca(Af,Ac,Acsup,As,alpha_vector[i],Indice_Cheios,torre)
+        cf0f,cf0c,cf0csup,cfs0,cfs[i+icasoscarga+1,:]= Coef_forca(Af,Ac,Acsup,As,alpha_vector[i],Indice_Cheios,torre,Pais)
         CsCd[i+icasoscarga+1],CsCd_out=CsCd_calc(0.6*h_torre+Alt,h_torre,Iv_Zs,Larg,z0,zmin,freqs[0],me,cfs[i+icasoscarga+1,:],rho_ar,vm,Alt,Pais)
         FmW[i+icasoscarga+1,:]=Pressao_troco_medio/(1+7*Iv_Zs)*cfs[i+icasoscarga+1,:]*As
         FTW[i+icasoscarga+1,:]=FmW[i+icasoscarga+1,:]*(1+(1+0.2*(z_vento_roll/h_torre)**2)*((1+7*Iv_Zs)*CsCd[i+icasoscarga+1]-1)/c0_Vento_For)
@@ -297,7 +303,7 @@ def Simple_Cases_Gelo(Ncasoscarga,nos_por_classe,C0_calc,Pais,Terrain,Zona,zmax,
     v_no_maximo=np.sqrt(Pressao_no_maximo*2/rho_ar)
     Reynolds=v_no_maximo*Dim/visco_ar
 
-    nos_vento_troco,Largura,Largura_total,Largura_media,At,Af,Ac,Acsup,As,Indice_Cheios=Elements_Areas(nos_por_classe,nos_vento,Troco,TrussType,Dim,z_vento,ElementosID,ExpVento,Comprimento_Barra,divisor,Reynolds,esp_gelo)
+    nos_vento_troco,Largura,Largura_total,Largura_media,At,Af,Ac,Acsup,As,Indice_Cheios=Elements_Areas(Pais,nos_por_classe,nos_vento,Troco,TrussType,Dim,z_vento,ElementosID,ExpVento,Comprimento_Barra,divisor,Reynolds,esp_gelo)
 
 
     for i in range(len(z_vento)-1):
@@ -496,7 +502,7 @@ def Simple_Cases_Gelo(Ncasoscarga,nos_por_classe,C0_calc,Pais,Terrain,Zona,zmax,
         ops.remove('loadPattern',int(i+icasoscarga))
         ops.wipeAnalysis()
         NameCaso[i+icasoscarga+1]= Create_Load_Case(i+icasoscarga+1+iStart-1,f"Wind Load - {alpha_vector[i]}")
-        cf0f,cf0c,cf0csup,cfs0,cfs[i+icasoscarga+1,:]= Coef_forca(Af,Ac,Acsup,As,alpha_vector[i],Indice_Cheios,torre)
+        cf0f,cf0c,cf0csup,cfs0,cfs[i+icasoscarga+1,:]= Coef_forca(Af,Ac,Acsup,As,alpha_vector[i],Indice_Cheios,torre,Pais)
         CsCd[i+icasoscarga+1],CsCd_out=CsCd_calc(0.6*h_torre+Alt,h_torre,Iv_Zs,Larg,z0,zmin,freqs[0],me,cfs[i+icasoscarga+1,:],rho_ar,vm,Alt,Pais)
         FmW[i+icasoscarga+1,:]=Pressao_troco_medio/(1+7*Iv_Zs)*cfs[i+icasoscarga+1,:]*As
         FTW[i+icasoscarga+1,:]=FmW[i+icasoscarga+1,:]*(1+(1+0.2*(z_vento_roll/h_torre)**2)*((1+7*Iv_Zs)*CsCd[i+icasoscarga+1]-1)/c0_Vento_For)

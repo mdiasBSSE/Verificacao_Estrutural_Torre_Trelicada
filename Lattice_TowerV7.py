@@ -67,8 +67,7 @@ def main(Aincrease):
     else:
         rho_ar=1.25
     c0=np.ones(len(zmed))
-    #alpha_norte=0
-
+    
     GammaM1=1.0
     GammaM0=1.0
     GammaM2=1.25
@@ -81,7 +80,7 @@ def main(Aincrease):
     dh=h_vetor[1]-h_vetor[0]
     m_vector=np.zeros(len(h_vetor))
 
-    if Gelo=="Sim": #Ver neve para inglaterra
+    if Gelo=="Sim": #Ver gelo para inglaterra
         if Pais in ["Portugal","Portugal-RSA","France"]:
             if Altitude<600:
                 esp_gelo=0.02
@@ -261,7 +260,7 @@ def main(Aincrease):
 
 
     NTracRd=Sigma*Area
-    Ratio_Enc,Enc_Out_csv,Enc_Out_Exp=Buckling_Function(nEle,Inertiav,Inertiau,Inertiay,Inertiaz,Area,Comprimento_Barra,Sigma,Rigidez,nos_vento,Shape,
+    Ratio_Enc,Enc_Out_csv,Enc_Out_Exp=Buckling_Function(Pais,nEle,Inertiav,Inertiau,Inertiay,Inertiaz,Area,Comprimento_Barra,Sigma,Rigidez,nos_vento,Shape,
                                             Travamento,Top_bars,Middle_bars,ExpVento,Dim,Esp,TrussType,nos_montante,Conection_Ele,N_Bolt_Ele,
                                             GammaM1,F_Compressao,Size_Profile,Elements_Matrix,NTracRd,Troco)
 
@@ -271,9 +270,9 @@ def main(Aincrease):
 
     #Lig_Out = np.column_stack((TrussOut,DimOut,EspOut,e1_gusset,p1_gusset,e2_gusset,p2_gusset,t_gusset,Bolt,N_Bolt_Lig,d_Bolt, d_0, As_bolt, A_bolt,alpha_v_Bolt,FvRd,Ratio_bolt_lig,Check_Bolt,fu_Lig,fy_Lig,alpha_d_end,alpha_d_inner,k1_edge,alpha_b_end,alpha_b_inner,FbRd_Edge_Inner,FbRd_Edge_End,FbRd,Ratio_Esmag_Lig,Check_Esmag,Anv_block,Ant_block,Veff1Rd,Veff2Rd,beta_Cant,Anet,NuRd,Ratio_Block_Lig,Check_Block))
 
-    Ratio_Lig,Lig_Out_csv,Lig_Out_Exp=Bolted_Connection_Bracing(Dig_Hor_Matrix,F_Tracao,F_Compressao,TrussType,Dim,GammaM2,ExpVento,Esp,Area,Leg_Type,Sigma_u,Sigma,GammaM0,Troco,nos_vento)
+    Ratio_Lig,Lig_Out_csv,Lig_Out_Exp=Bolted_Connection_Bracing(Pais,Dig_Hor_Matrix,F_Tracao,F_Compressao,TrussType,Dim,GammaM2,ExpVento,Esp,Area,Leg_Type,Sigma_u,Sigma,GammaM0,Troco,nos_vento)
 
-    Ratio_Lig_B,B_Out_csv,B_Out_Exp=Bolted_Connection_Shaft(Shaft_Bolted_Matrix,TrussType,F_Tracao,F_Compressao,GammaM2,Sigma_u,Sigma,GammaM0,Area,Esp,Troco,nos_vento,divisor)
+    Ratio_Lig_B,B_Out_csv,B_Out_Exp=Bolted_Connection_Shaft(Pais,Shaft_Bolted_Matrix,TrussType,F_Tracao,F_Compressao,GammaM2,Sigma_u,Sigma,GammaM0,Area,Esp,Troco,nos_vento,divisor)
 
 
     #B_Out = np.column_stack((e1_B,p1_B,e2_B,p2_B,t_B,Bolt_B,N_Bolt_B,d_Bolt_B, d_0_B, As_bolt_B, A_bolt_B,alpha_v_Bolt_B,FvRd_B,Ratio_bolt_B,Check_Bolt_B,fu_B,fy_B,alpha_d_end_B,alpha_d_inner_B,k1_edge_B,alpha_b_end_B,alpha_b_inner_B,FbRd_Edge_Inner_B,FbRd_Edge_End_B,FbRd_B,Ratio_Esmag_B,Check_Esmag_B,Anv_block_B,Ant_block_B,Veff1Rd_B,Veff2Rd_B,beta_Cant_B,Anet_B,NuRd_B,Ratio_Block_B,Check_Block_B))
@@ -281,11 +280,11 @@ def main(Aincrease):
 
     #F_Out = np.column_stack((Ext_Per_F,D_between_Bolt_F,t_F,Steel_F,Bolt_F,N_Bolt_F,Bolt_Steel_F,Stiffeners_F,N_Stiff_F,t_Stiff_F,L_Stiff_F,h_Stiff_F,D_Ext_F,D_Bolt_Flange_F,D_int_F,t_Tube_F,aws_F, e1_F,e2_F,alpha_r0_F,d_Bolt_F,Lb_F,leff,alpha_r_F,epsilon_F,fub_F,fyb_F,n_F,m_F,elinha_F,FtRd,Rb_F,R_F,Re_F,k3_F,NT1Rd,NT2Rd,NT3Rd,NT4Rd,BpRd,NTRd,Ratio_F,Check_F))
 
-    Ratio_F,F_Out_csv,F_Out_Exp=Flanged_Bolted_Connection(Shaft_Flange_Matrix,TrussType,F_Tracao,Dim,Esp,Sigma_u,Sigma,GammaM2,GammaM0,Area,nos_vento,divisor)
+    Ratio_F,F_Out_csv,F_Out_Exp=Flanged_Bolted_Connection(Pais,Shaft_Flange_Matrix,TrussType,F_Tracao,Dim,Esp,Sigma_u,Sigma,GammaM2,GammaM0,Area,nos_vento,divisor)
 
     RatioFund,Fund_Out_Geo_Csv,Fund_Out_Ratio_Csv=Foundation_Calc_Basic(Foundation_Matrix,FundMethod,MfundMax,RatioFundCalc,SoilSelfWeight,AllowedSoilTension_SLS,AllowedSoilTension_ULS,Mfund)
 
-    Ratio_Flange_Fund, Flange_Fund_out=Flanged_Foundation_Angle(Flange_Foundation_Angle,TrussType,F_Tracao)
+    Ratio_Flange_Fund, Flange_Fund_out=Flanged_Foundation_Angle(Pais,Flange_Foundation_Angle,TrussType,F_Tracao)
 
 
 

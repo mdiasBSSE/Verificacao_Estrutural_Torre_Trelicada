@@ -423,7 +423,577 @@ def Diagonal_Buckling(Ele,nos_montante,Type_Con,N_bolt_con,Exp_vento,TrussType,T
     return Multy,Multv,eta
 
 
-def Buckling_Function(nEle,Inertiav,Inertiau,Inertiay,Inertiaz,Area,Comprimento_Barra,Sigma,Rigidez,nos_vento,Shape,Travamento,Top_bars,Middle_bars,ExpVento,Dim,Esp,TrussType,nos_montante,Conection_Ele,N_Bolt_Ele,GammaM1,F_Compressao,Size_Profile,Elements_Matrix,NTracRd,Troco):
+def Buckling_Function(Pais,nEle,Inertiav,Inertiau,Inertiay,Inertiaz,Area,Comprimento_Barra,Sigma,Rigidez,nos_vento,Shape,Travamento,Top_bars,Middle_bars,ExpVento,Dim,Esp,TrussType,nos_montante,Conection_Ele,N_Bolt_Ele,GammaM1,F_Compressao,Size_Profile,Elements_Matrix,NTracRd,Troco):
+    if Pais in ["Portugal","Portugal-RSA"]:
+        Ratio_Enc,Enc_Out_csv,Enc_Out_Exp=Buckling_Function_Portugal(nEle,Inertiav,Inertiau,Inertiay,Inertiaz,Area,Comprimento_Barra,Sigma,Rigidez,nos_vento,Shape,Travamento,Top_bars,Middle_bars,ExpVento,Dim,Esp,TrussType,nos_montante,Conection_Ele,N_Bolt_Ele,GammaM1,F_Compressao,Size_Profile,Elements_Matrix,NTracRd,Troco)
+        return Ratio_Enc,Enc_Out_csv,Enc_Out_Exp
+    elif Pais in ["France"]:
+        Ratio_Enc,Enc_Out_csv,Enc_Out_Exp=Buckling_Function_France(nEle,Inertiav,Inertiau,Inertiay,Inertiaz,Area,Comprimento_Barra,Sigma,Rigidez,nos_vento,Shape,Travamento,Top_bars,Middle_bars,ExpVento,Dim,Esp,TrussType,nos_montante,Conection_Ele,N_Bolt_Ele,GammaM1,F_Compressao,Size_Profile,Elements_Matrix,NTracRd,Troco)
+        return Ratio_Enc,Enc_Out_csv,Enc_Out_Exp        
+    elif Pais in ["Spain"]:
+        Ratio_Enc,Enc_Out_csv,Enc_Out_Exp=Buckling_Function_France(nEle,Inertiav,Inertiau,Inertiay,Inertiaz,Area,Comprimento_Barra,Sigma,Rigidez,nos_vento,Shape,Travamento,Top_bars,Middle_bars,ExpVento,Dim,Esp,TrussType,nos_montante,Conection_Ele,N_Bolt_Ele,GammaM1,F_Compressao,Size_Profile,Elements_Matrix,NTracRd,Troco)
+        return Ratio_Enc,Enc_Out_csv,Enc_Out_Exp   
+def Buckling_Function_Portugal(nEle,Inertiav,Inertiau,Inertiay,Inertiaz,Area,Comprimento_Barra,Sigma,Rigidez,nos_vento,Shape,Travamento,Top_bars,Middle_bars,ExpVento,Dim,Esp,TrussType,nos_montante,Conection_Ele,N_Bolt_Ele,GammaM1,F_Compressao,Size_Profile,Elements_Matrix,NTracRd,Troco):
+    Buckling_Curve=np.zeros(nEle+1).astype(str)
+    Class_Enc=np.zeros(nEle+1)
+    Check_Enc=np.zeros(nEle+1).astype(str)
+    Comprimento_Enc=np.zeros(nEle+1)
+    Lambda_Lim=np.zeros(nEle+1)
+
+    Lambda_v=np.zeros(nEle+1)
+    rho_Enc=np.ones(nEle+1)
+    Lambda_u=np.zeros(nEle+1)
+    Lambda_y=np.zeros(nEle+1)
+    Lambda_Barra_p=np.zeros(nEle+1)
+    Lambda_z=np.zeros(nEle+1)
+    Lambda_Ratio=np.zeros(nEle+1) 
+    Lambda_Ratio_v=np.zeros(nEle+1) 
+    Lambda_Ratio_u=np.zeros(nEle+1) 
+    Lambda_Ratio_y=np.zeros(nEle+1) 
+    Lambda_Ratio_z=np.zeros(nEle+1) 
+    Lambda_Enc_eff=np.zeros(nEle+1) 
+    Lambda_Enc_eff_v=np.zeros(nEle+1) 
+    Lambda_Enc_eff_u=np.zeros(nEle+1) 
+    Lambda_Enc_eff_y=np.zeros(nEle+1)
+    Lambda_Enc_eff_z=np.zeros(nEle+1) 
+    Lim_Class=np.zeros(nEle+1) 
+    Ratio_Class=np.zeros(nEle+1) 
+    Lambda_Check=np.zeros(nEle+1).astype(str)
+    alpha_Enc=np.zeros(nEle+1).astype(str)
+    k_Enc=np.ones(nEle+1)
+    Red=np.ones(nEle+1)
+    Bracing=np.ones(nEle+1).astype(str)
+    eta_Enc=np.ones(nEle+1)
+    Aeff=np.ones(nEle+1)
+    ksigma=np.ones(nEle+1)
+    k_v=np.ones(nEle+1)
+    k_u=np.ones(nEle+1)
+    k_y=np.ones(nEle+1)
+    k_z=np.ones(nEle+1)
+    iv=np.ones(nEle+1)
+    iu=np.ones(nEle+1)
+    iy=np.ones(nEle+1)
+    iz=np.ones(nEle+1)
+    iv[1:]=np.sqrt(Inertiav[1:]/Area[1:])
+    iu[1:]=np.sqrt(Inertiau[1:]/Area[1:])
+    iy[1:]=np.sqrt(Inertiay[1:]/Area[1:])
+    iz[1:]=np.sqrt(Inertiaz[1:]/Area[1:])
+    Lambda=Comprimento_Barra/np.min(np.vstack([iv, iu, iz, iy]), axis=0)
+    epsilon=np.ones(nEle+1)
+    Lambda_1=np.ones(nEle+1)
+    epsilon[1:]=np.sqrt(235/(Sigma[1:]*10**-6))
+    Lambda_1[1:]=np.pi*np.sqrt(Rigidez[1:]/Sigma[1:])
+    #####Possivelemente dá para vetorizar isto #####
+    nos_vento_inv=nos_vento[::-1,:]
+    for i in range(1,len(Class_Enc)):
+        if (Shape[i]=="X-Bracing") or (Shape[i]=="Panel Bracing") or ((Shape[i]=="Diamond Bracing") and (Top_bars[i]=="yes") and (Middle_bars[i]=="yes")) or ((Shape[i]=="Diamond Bracing 2") and (Top_bars[i]=="yes") and (Middle_bars[i]=="yes")) or ((Shape[i]=="Alternating Diagonal") and (Top_bars[i]=="yes") and (Middle_bars[i]=="yes")):
+            Travamento[i]="Case b"
+        elif ((Shape[i]=="Diamond Bracing") and ((Top_bars[i]!="yes") or (Middle_bars[i]!="yes"))) or ((Shape[i]=="Diamond Bracing 2") and ((Top_bars[i]!="yes") or (Middle_bars[i]!="yes"))):
+            Travamento[i]="Case a"
+        elif ((Shape[i]=="Alternating Diagonal") and ((Top_bars[i]!="yes") or (Middle_bars[i]!="yes"))):
+            Travamento[i]="Case d"
+        if ExpVento[i]=="Circ":
+            Ratio_Class[i]=Dim[i]/Esp[i]
+            Lim_Class[i]=90*epsilon[i]**2
+            if Dim[i]/Esp[i]<=90*epsilon[i]**2:
+                Class_Enc[i]=3
+            else:
+                Class_Enc[i]=4
+            if TrussType[i]!="Leg":
+                
+                if TrussType[i] in ["Horizontal Bar", "External Manual Bar"]:
+                    Multy,Multv,eta_Enc[i]=Horizontal_Buckling(int(i),nos_montante,Conection_Ele[i],N_Bolt_Ele[i],ExpVento[i],TrussType,Troco)
+                    Comprimento_Enc[i]=np.max([Comprimento_Barra[i]*Multv,Comprimento_Barra[i]*Multy])
+                
+                elif TrussType[i]=="Internal Manual Bar" and ops.eleNodes(int(i))[0] in nos_montante and ops.eleNodes(int(i))[1] in nos_montante:
+                    Comprimento_Enc[i]=Comprimento_Barra[i]*1
+                else:
+                    Multy,Multv,eta_Enc[i]=Diagonal_Buckling(int(i),nos_montante,Conection_Ele[i],N_Bolt_Ele[i],ExpVento[i],TrussType,Troco)
+                    Comprimento_Enc[i]=np.max([Comprimento_Barra[i]*Multv,Comprimento_Barra[i]*Multy])
+                if Conection_Ele[i]=="Yes":
+                    k_Enc[i]=0.7
+                elif Conection_Ele[i]=="No":
+                    k_Enc[i]=0.95
+                Lambda_y[i]=Comprimento_Enc[i]/iy[i]
+
+                Lambda[i]=np.max([Lambda_v[i],Lambda_u[i],Lambda_y[i],Lambda_z[i]])
+                Lambda_Lim[i]=180
+                Lambda_Ratio[i]=Lambda[i]/Lambda_1[i]
+                # if Lambda[i]<=Lambda_Lim[i]:
+                #     Lambda_Check[i]="OK"
+                # else:
+                #     Lambda_Check[i]="KO"
+            elif TrussType[i]=="Leg":
+                L_enc_y,L_enc_v,Bracing[i]=Buckling_Lenght(int(i),Comprimento_Barra[i],TrussType)
+                k_Enc[i]=1
+                Comprimento_Enc[i]=L_enc_y
+
+                Lambda_y[i]=Comprimento_Enc[i]/iy[i]
+
+                Lambda[i]=np.max([Lambda_v[i],Lambda_u[i],Lambda_y[i],Lambda_z[i]])
+                Lambda_Lim[i]=120
+                Lambda_Ratio[i]=Lambda[i]/Lambda_1[i]
+                # if Lambda[i]<=Lambda_Lim[i]:
+                #     Lambda_Check[i]="OK"
+                # else:
+                #     Lambda_Check[i]="KO"
+            Buckling_Curve[i]="c"
+            alpha_Enc[i]=Imp_factor_buckling_curve(Buckling_Curve[i])
+            Red[i]=1
+            Aeff[i]=Area[i]
+            Lambda_Enc_eff[i]=k_Enc[i]*Lambda_Ratio[i]
+        elif ExpVento[i]=="Flat":
+            Ratio_Class[i]=(Dim[i]-2*Esp[i])/Esp[i]
+            Lim_Class[i]=15*epsilon[i]
+            if ((Dim[i]-2*Esp[i])/Esp[i]<=15*epsilon[i]):
+                Class_Enc[i]=3
+            else:
+                Class_Enc[i]=4   
+            ksigma[i]=0.43
+
+            if TrussType[i]!="Leg":
+                if TrussType[i] in ["Horizontal Bar", "External Manual Bar"]:
+                    Multy,Multv,eta_Enc[i]=Horizontal_Buckling(int(i),nos_montante,Conection_Ele[i],N_Bolt_Ele[i],ExpVento[i],TrussType,Troco)
+                    L2_Enc=Comprimento_Barra[i]*Multv
+                    L1_Enc=Comprimento_Barra[i]*Multy
+                elif TrussType[i]=="Internal Manual Bar" and ops.eleNodes(int(i))[0] in nos_montante and ops.eleNodes(int(i))[1] in nos_montante:
+                    L2_Enc=Comprimento_Barra[i]*0.5
+                    L1_Enc=Comprimento_Barra[i]*1
+                    if Conection_Ele[i]=="No" and N_Bolt_Ele[i]==1:
+                        k_Enc[i]=0.9
+                    else:
+                        k_Enc[i]=1
+                else:
+                    Multy,Multv,eta_Enc[i]=Diagonal_Buckling(int(i),nos_montante,Conection_Ele[i],N_Bolt_Ele[i],ExpVento[i],TrussType,Troco)
+                    L2_Enc=Comprimento_Barra[i]*Multv
+                    L1_Enc=Comprimento_Barra[i]*Multy
+                Lambda_Barra_p[i]=((Dim[i]-2*Esp[i])/Esp[i])/(28.4*epsilon[i]*np.sqrt(ksigma[i]))
+                if Class_Enc[i]==4:
+                    if Lambda_Barra_p[i]<=0.748:
+                        rho_Enc[i]=1
+                    else:
+                        rho_Enc[i]=(Lambda_Barra_p[i]-0.188)/(Lambda_Barra_p[i]**2)
+                        if rho_Enc[i]>=1:
+                            rho_Enc[i]=1
+                    Lambda_v[i]=L2_Enc/iv[i]*np.sqrt(rho_Enc[i]) ### 1993-1-1 altera o lambda em casos de classe 4
+                    Lambda_u[i]=L2_Enc/iu[i]*np.sqrt(rho_Enc[i])
+                    Lambda_y[i]=L1_Enc/iy[i]*np.sqrt(rho_Enc[i])
+                    Lambda_z[i]=L1_Enc/iz[i]*np.sqrt(rho_Enc[i])
+                    Lambda[i]=np.max([Lambda_v[i],Lambda_u[i],Lambda_y[i],Lambda_z[i]])
+                    i_Enc_crit=np.argmax([Lambda_v[i],Lambda_u[i],Lambda_y[i],Lambda_z[i]])      
+                else:
+                    Lambda_v[i]=L2_Enc/iv[i]
+                    Lambda_u[i]=L2_Enc/iu[i]
+                    Lambda_y[i]=L1_Enc/iy[i]
+                    Lambda_z[i]=L1_Enc/iz[i]
+                    Lambda[i]=np.max([Lambda_v[i],Lambda_u[i],Lambda_y[i],Lambda_z[i]])
+                    i_Enc_crit=np.argmax([Lambda_v[i],Lambda_u[i],Lambda_y[i],Lambda_z[i]])             
+                Lambda_Lim[i]=180
+                Lambda_Ratio[i]=Lambda[i]/Lambda_1[i]
+                Lambda_Ratio_v[i]=Lambda_v[i]/Lambda_1[i]
+                Lambda_Ratio_u[i]=Lambda_u[i]/Lambda_1[i]
+                Lambda_Ratio_y[i]=Lambda_y[i]/Lambda_1[i]
+                Lambda_Ratio_z[i]=Lambda_z[i]/Lambda_1[i]
+
+                if (Conection_Ele[i]=="No") & (N_Bolt_Ele[i]==1) & (eta_Enc[i]==0.8):
+                    k_v[i]=0.7+0.35/Lambda_Ratio_v[i]
+                    k_y[i]=0.7+0.58/Lambda_Ratio_y[i]
+                    k_z[i]=0.7+0.58/Lambda_Ratio_z[i]
+                    k_u[i]=0.0001
+                else:
+                    k_v[i]=0.7+0.35/Lambda_Ratio_v[i]
+                    k_y[i]=0.7+0.4/Lambda_Ratio_y[i]
+                    k_z[i]=0.7+0.4/Lambda_Ratio_z[i]
+                    k_u[i]=0.0001
+                Lambda_Enc_eff_v[i]=k_v[i]*Lambda_Ratio_v[i]
+                Lambda_Enc_eff_u[i]=k_u[i]*Lambda_Ratio_u[i]
+                Lambda_Enc_eff_y[i]=k_y[i]*Lambda_Ratio_y[i]
+                Lambda_Enc_eff_z[i]=k_z[i]*Lambda_Ratio_z[i]
+                
+                Lambda_Enc_eff[i]=np.max([Lambda_Enc_eff_v[i],Lambda_Enc_eff_u[i],Lambda_Enc_eff_y[i],Lambda_Enc_eff_z[i]])
+                i_Enc_crit=np.argmax([Lambda_Enc_eff_v[i],Lambda_Enc_eff_u[i],Lambda_Enc_eff_y[i],Lambda_Enc_eff_z[i]]) 
+                k_Enc_Aux=np.array([k_v[i],k_u[i],k_y[i],k_z[i]])
+                k_Enc[i]=k_Enc_Aux[i_Enc_crit]
+                if i_Enc_crit in [0,1]:
+                    Comprimento_Enc[i]=L2_Enc
+                else:
+                    Comprimento_Enc[i]=L1_Enc
+            elif TrussType[i]=="Leg":
+                L_enc_y,L_enc_v,Bracing[i]=Buckling_Lenght(int(i),Comprimento_Barra[i],TrussType)
+                Lambda_Barra_p[i]=((Dim[i]-2*Esp[i])/Esp[i])/(28.4*epsilon[i]*np.sqrt(ksigma[i]))
+                if Class_Enc[i]==4:
+                    if Lambda_Barra_p[i]<=0.748:
+                        rho_Enc[i]=1
+                    else:
+                        rho_Enc[i]=(Lambda_Barra_p[i]-0.188)/(Lambda_Barra_p[i]**2)
+                        if rho_Enc[i]>=1:
+                            rho_Enc[i]=1
+                
+                if Bracing[i] in ["Symmetrical"]:
+                    Comprimento_Enc[i]=L_enc_v
+                    if Class_Enc[i]==4:
+                        Lambda_v[i]=Comprimento_Enc[i]/iv[i]*np.sqrt(rho_Enc[i]) 
+                    else:
+                        Lambda_v[i]=Comprimento_Enc[i]/iv[i]
+                    Lambda_Ratio_v[i]=Lambda_v[i]/Lambda_1[i]
+
+                    k_v[i]=0.8+Lambda_Ratio_v[i]/10
+                    if k_v[i]<=0.9:
+                        k_v[i]=0.9
+                    elif k_v[i]>=1.0:
+                        k_v[i]=1.0
+                    Lambda[i]=Lambda_v[i]
+                    Lambda_Ratio[i]=Lambda_Ratio_v[i]
+                    k_Enc[i]=k_v[i]
+                    Lambda_Enc_eff[i]=k_Enc[i]*Lambda_Ratio[i]
+
+                elif Bracing[i] in ["Unsymmetrical"]:    
+                    
+                    L2_Enc=L_enc_v
+                    L1_Enc=L_enc_y
+                    if Class_Enc[i]==4:
+                        Lambda_v[i]= L2_Enc/iv[i]*np.sqrt(rho_Enc[i]) ### 1993-1-1 altera o lambda em casos de classe 4
+                        Lambda_y[i]=L1_Enc/iy[i]*np.sqrt(rho_Enc[i])    
+                    else:   
+                        Lambda_v[i]=L2_Enc/iv[i]
+                        Lambda_y[i]=L1_Enc/iy[i]
+                    Lambda_Ratio_v[i]=Lambda_v[i]/Lambda_1[i]
+                    Lambda_Ratio_y[i]=Lambda_y[i]/Lambda_1[i]
+                    k_v[i]=1.2*(0.8+Lambda_Ratio_v[i]/10)
+                    if k_v[i]<=1.08:
+                        k_v[i]=1.08
+                    elif k_v[i]>=1.20:
+                        k_v[i]=1.20
+                    k_y[i]=1.2*(0.8+Lambda_Ratio_y[i]/10)
+                    if k_y[i]<=1.08:
+                        k_y[i]=1.08
+                    elif k_y[i]>=1.20:
+                        k_y[i]=1.20                    
+                    Lambda_Enc_eff_v[i]=k_v[i]*Lambda_Ratio_v[i]
+                    Lambda_Enc_eff_y[i]=k_y[i]*Lambda_Ratio_y[i]
+                    if Lambda_Enc_eff_v[i]>=Lambda_Enc_eff_y[i]:
+                        Lambda[i]=Lambda_v[i]
+                        Lambda_Ratio[i]=Lambda_Ratio_v[i]
+                        k_Enc[i]=k_v[i]
+                        Lambda_Enc_eff[i]=k_Enc[i]*Lambda_Ratio[i]
+                        Comprimento_Enc[i]=L2_Enc
+                    else:
+                        Lambda[i]=Lambda_y[i]
+                        Lambda_Ratio[i]=Lambda_Ratio_y[i]
+                        k_Enc[i]=k_y[i]
+                        Lambda_Enc_eff[i]=k_Enc[i]*Lambda_Ratio[i]
+                        Comprimento_Enc[i]=L1_Enc  
+
+                Lambda_Lim[i]=120
+                # if Lambda[i]<=Lambda_Lim[i]:
+                #     Lambda_Check[i]="OK"
+                # else:
+                #     Lambda_Check[i]="KO"            
+                    
+            Aeff[i]=rho_Enc[i]*Area[i]
+            Buckling_Curve[i]="b"
+            alpha_Enc[i]=Imp_factor_buckling_curve(Buckling_Curve[i])
+            Red[i]=1
+            if Lambda_Enc_eff[i]*Lambda_1[i]<=Lambda_Lim[i]:
+                Lambda_Check[i]="OK"
+            else:
+                Lambda_Check[i]="KO"
+    alpha_Enc=alpha_Enc.astype(float)
+    Phi_Enc=0.5*(1+alpha_Enc*(Lambda_Enc_eff-0.2)+Lambda_Enc_eff**2)
+    Chi_Enc=1/(Phi_Enc+np.sqrt(Phi_Enc**2-Lambda_Enc_eff**2))
+    Chi_Enc[np.where(Chi_Enc>1)]=1
+
+    NbRd=Chi_Enc*Aeff*Sigma*Red*eta_Enc/GammaM1
+    Ratio_Enc=np.zeros(len(F_Compressao))
+    Ratio_Enc[1:]=np.abs(F_Compressao[1:])/NbRd[1:]
+    Check_Enc[np.where(Ratio_Enc<=1)]="OK"
+    Check_Enc[np.where(Ratio_Enc>1)]="KO"
+    Truss_Out=np.array(["Leg","Diagonal Bar","Horizontal Bar","External Manual Bar","Internal Manual Bar"])
+    Enc_Out_csv=Buckling_Output(Class_Enc,nos_vento,TrussType,Truss_Out,Size_Profile,Elements_Matrix,Lambda_Enc_eff,Lambda_1,NTracRd,NbRd,Troco,Ratio_Enc,F_Compressao)
+    Enc_Out_Exp=Buckling_Exp_Output(Class_Enc,nos_vento,TrussType,Truss_Out,Size_Profile,Elements_Matrix,Lambda_Enc_eff,Lambda_1,NTracRd,NbRd,Troco,Ratio_Enc,F_Compressao,Comprimento_Enc,Ratio_Class,Lim_Class,Lambda_Lim,k_Enc,alpha_Enc,Phi_Enc,Chi_Enc,Aeff,Red,eta_Enc,Lambda_Check)
+    return Ratio_Enc,Enc_Out_csv,Enc_Out_Exp
+
+def Buckling_Function_France(nEle,Inertiav,Inertiau,Inertiay,Inertiaz,Area,Comprimento_Barra,Sigma,Rigidez,nos_vento,Shape,Travamento,Top_bars,Middle_bars,ExpVento,Dim,Esp,TrussType,nos_montante,Conection_Ele,N_Bolt_Ele,GammaM1,F_Compressao,Size_Profile,Elements_Matrix,NTracRd,Troco):
+    Buckling_Curve=np.zeros(nEle+1).astype(str)
+    Class_Enc=np.zeros(nEle+1)
+    Check_Enc=np.zeros(nEle+1).astype(str)
+    Comprimento_Enc=np.zeros(nEle+1)
+    Lambda_Lim=np.zeros(nEle+1)
+
+    Lambda_v=np.zeros(nEle+1)
+    rho_Enc=np.ones(nEle+1)
+    Lambda_u=np.zeros(nEle+1)
+    Lambda_y=np.zeros(nEle+1)
+    Lambda_Barra_p=np.zeros(nEle+1)
+    Lambda_z=np.zeros(nEle+1)
+    Lambda_Ratio=np.zeros(nEle+1) 
+    Lambda_Ratio_v=np.zeros(nEle+1) 
+    Lambda_Ratio_u=np.zeros(nEle+1) 
+    Lambda_Ratio_y=np.zeros(nEle+1) 
+    Lambda_Ratio_z=np.zeros(nEle+1) 
+    Lambda_Enc_eff=np.zeros(nEle+1) 
+    Lambda_Enc_eff_v=np.zeros(nEle+1) 
+    Lambda_Enc_eff_u=np.zeros(nEle+1) 
+    Lambda_Enc_eff_y=np.zeros(nEle+1)
+    Lambda_Enc_eff_z=np.zeros(nEle+1) 
+    Lim_Class=np.zeros(nEle+1) 
+    Ratio_Class=np.zeros(nEle+1) 
+    Lambda_Check=np.zeros(nEle+1).astype(str)
+    alpha_Enc=np.zeros(nEle+1).astype(str)
+    k_Enc=np.ones(nEle+1)
+    Red=np.ones(nEle+1)
+    Bracing=np.ones(nEle+1).astype(str)
+    eta_Enc=np.ones(nEle+1)
+    Aeff=np.ones(nEle+1)
+    ksigma=np.ones(nEle+1)
+    k_v=np.ones(nEle+1)
+    k_u=np.ones(nEle+1)
+    k_y=np.ones(nEle+1)
+    k_z=np.ones(nEle+1)
+    iv=np.ones(nEle+1)
+    iu=np.ones(nEle+1)
+    iy=np.ones(nEle+1)
+    iz=np.ones(nEle+1)
+    iv[1:]=np.sqrt(Inertiav[1:]/Area[1:])
+    iu[1:]=np.sqrt(Inertiau[1:]/Area[1:])
+    iy[1:]=np.sqrt(Inertiay[1:]/Area[1:])
+    iz[1:]=np.sqrt(Inertiaz[1:]/Area[1:])
+    Lambda=Comprimento_Barra/np.min(np.vstack([iv, iu, iz, iy]), axis=0)
+    epsilon=np.ones(nEle+1)
+    Lambda_1=np.ones(nEle+1)
+    epsilon[1:]=np.sqrt(235/(Sigma[1:]*10**-6))
+    Lambda_1[1:]=np.pi*np.sqrt(Rigidez[1:]/Sigma[1:])
+    #####Possivelemente dá para vetorizar isto #####
+    nos_vento_inv=nos_vento[::-1,:]
+    for i in range(1,len(Class_Enc)):
+        if (Shape[i]=="X-Bracing") or (Shape[i]=="Panel Bracing") or ((Shape[i]=="Diamond Bracing") and (Top_bars[i]=="yes") and (Middle_bars[i]=="yes")) or ((Shape[i]=="Diamond Bracing 2") and (Top_bars[i]=="yes") and (Middle_bars[i]=="yes")) or ((Shape[i]=="Alternating Diagonal") and (Top_bars[i]=="yes") and (Middle_bars[i]=="yes")):
+            Travamento[i]="Case b"
+        elif ((Shape[i]=="Diamond Bracing") and ((Top_bars[i]!="yes") or (Middle_bars[i]!="yes"))) or ((Shape[i]=="Diamond Bracing 2") and ((Top_bars[i]!="yes") or (Middle_bars[i]!="yes"))):
+            Travamento[i]="Case a"
+        elif ((Shape[i]=="Alternating Diagonal") and ((Top_bars[i]!="yes") or (Middle_bars[i]!="yes"))):
+            Travamento[i]="Case d"
+        if ExpVento[i]=="Circ":
+            Ratio_Class[i]=Dim[i]/Esp[i]
+            Lim_Class[i]=90*epsilon[i]**2
+            if Dim[i]/Esp[i]<=90*epsilon[i]**2:
+                Class_Enc[i]=3
+            else:
+                Class_Enc[i]=4
+            if TrussType[i]!="Leg":
+                
+                if TrussType[i] in ["Horizontal Bar", "External Manual Bar"]:
+                    Multy,Multv,eta_Enc[i]=Horizontal_Buckling(int(i),nos_montante,Conection_Ele[i],N_Bolt_Ele[i],ExpVento[i],TrussType,Troco)
+                    Comprimento_Enc[i]=np.max([Comprimento_Barra[i]*Multv,Comprimento_Barra[i]*Multy])
+                
+                elif TrussType[i]=="Internal Manual Bar" and ops.eleNodes(int(i))[0] in nos_montante and ops.eleNodes(int(i))[1] in nos_montante:
+                    Comprimento_Enc[i]=Comprimento_Barra[i]*1
+                else:
+                    Multy,Multv,eta_Enc[i]=Diagonal_Buckling(int(i),nos_montante,Conection_Ele[i],N_Bolt_Ele[i],ExpVento[i],TrussType,Troco)
+                    Comprimento_Enc[i]=np.max([Comprimento_Barra[i]*Multv,Comprimento_Barra[i]*Multy])
+                if Conection_Ele[i]=="Yes":
+                    k_Enc[i]=0.7
+                elif Conection_Ele[i]=="No":
+                    k_Enc[i]=0.95
+                Lambda_y[i]=Comprimento_Enc[i]/iy[i]
+
+                Lambda[i]=np.max([Lambda_v[i],Lambda_u[i],Lambda_y[i],Lambda_z[i]])
+                Lambda_Lim[i]=180
+                Lambda_Ratio[i]=Lambda[i]/Lambda_1[i]
+                # if Lambda[i]<=Lambda_Lim[i]:
+                #     Lambda_Check[i]="OK"
+                # else:
+                #     Lambda_Check[i]="KO"
+            elif TrussType[i]=="Leg":
+                L_enc_y,L_enc_v,Bracing[i]=Buckling_Lenght(int(i),Comprimento_Barra[i],TrussType)
+                k_Enc[i]=1
+                Comprimento_Enc[i]=L_enc_y
+
+                Lambda_y[i]=Comprimento_Enc[i]/iy[i]
+
+                Lambda[i]=np.max([Lambda_v[i],Lambda_u[i],Lambda_y[i],Lambda_z[i]])
+                Lambda_Lim[i]=120
+                Lambda_Ratio[i]=Lambda[i]/Lambda_1[i]
+                # if Lambda[i]<=Lambda_Lim[i]:
+                #     Lambda_Check[i]="OK"
+                # else:
+                #     Lambda_Check[i]="KO"
+            Buckling_Curve[i]="c"
+            alpha_Enc[i]=Imp_factor_buckling_curve(Buckling_Curve[i])
+            Red[i]=1
+            Aeff[i]=Area[i]
+            Lambda_Enc_eff[i]=k_Enc[i]*Lambda_Ratio[i]
+        elif ExpVento[i]=="Flat":
+            Ratio_Class[i]=(Dim[i]-2*Esp[i])/Esp[i]
+            Lim_Class[i]=15*epsilon[i]
+            if ((Dim[i]-2*Esp[i])/Esp[i]<=15*epsilon[i]):
+                Class_Enc[i]=3
+            else:
+                Class_Enc[i]=4   
+            ksigma[i]=0.43
+
+            if TrussType[i]!="Leg":
+                if TrussType[i] in ["Horizontal Bar", "External Manual Bar"]:
+                    Multy,Multv,eta_Enc[i]=Horizontal_Buckling(int(i),nos_montante,Conection_Ele[i],N_Bolt_Ele[i],ExpVento[i],TrussType,Troco)
+                    L2_Enc=Comprimento_Barra[i]*Multv
+                    L1_Enc=Comprimento_Barra[i]*Multy
+                elif TrussType[i]=="Internal Manual Bar" and ops.eleNodes(int(i))[0] in nos_montante and ops.eleNodes(int(i))[1] in nos_montante:
+                    L2_Enc=Comprimento_Barra[i]*0.5
+                    L1_Enc=Comprimento_Barra[i]*1
+                    if Conection_Ele[i]=="No" and N_Bolt_Ele[i]==1:
+                        k_Enc[i]=0.9
+                    else:
+                        k_Enc[i]=1
+                else:
+                    Multy,Multv,eta_Enc[i]=Diagonal_Buckling(int(i),nos_montante,Conection_Ele[i],N_Bolt_Ele[i],ExpVento[i],TrussType,Troco)
+                    L2_Enc=Comprimento_Barra[i]*Multv
+                    L1_Enc=Comprimento_Barra[i]*Multy
+                Lambda_Barra_p[i]=((Dim[i]-2*Esp[i])/Esp[i])/(28.4*epsilon[i]*np.sqrt(ksigma[i]))
+                if Class_Enc[i]==4:
+                    if Lambda_Barra_p[i]<=0.748:
+                        rho_Enc[i]=1
+                    else:
+                        rho_Enc[i]=(Lambda_Barra_p[i]-0.188)/(Lambda_Barra_p[i]**2)
+                        if rho_Enc[i]>=1:
+                            rho_Enc[i]=1
+                    Lambda_v[i]=L2_Enc/iv[i]*np.sqrt(rho_Enc[i]) ### 1993-1-1 altera o lambda em casos de classe 4
+                    Lambda_u[i]=L2_Enc/iu[i]*np.sqrt(rho_Enc[i])
+                    Lambda_y[i]=L1_Enc/iy[i]*np.sqrt(rho_Enc[i])
+                    Lambda_z[i]=L1_Enc/iz[i]*np.sqrt(rho_Enc[i])
+                    Lambda[i]=np.max([Lambda_v[i],Lambda_u[i],Lambda_y[i],Lambda_z[i]])
+                    i_Enc_crit=np.argmax([Lambda_v[i],Lambda_u[i],Lambda_y[i],Lambda_z[i]])      
+                else:
+                    Lambda_v[i]=L2_Enc/iv[i]
+                    Lambda_u[i]=L2_Enc/iu[i]
+                    Lambda_y[i]=L1_Enc/iy[i]
+                    Lambda_z[i]=L1_Enc/iz[i]
+                    Lambda[i]=np.max([Lambda_v[i],Lambda_u[i],Lambda_y[i],Lambda_z[i]])
+                    i_Enc_crit=np.argmax([Lambda_v[i],Lambda_u[i],Lambda_y[i],Lambda_z[i]])             
+                Lambda_Lim[i]=180
+                Lambda_Ratio[i]=Lambda[i]/Lambda_1[i]
+                Lambda_Ratio_v[i]=Lambda_v[i]/Lambda_1[i]
+                Lambda_Ratio_u[i]=Lambda_u[i]/Lambda_1[i]
+                Lambda_Ratio_y[i]=Lambda_y[i]/Lambda_1[i]
+                Lambda_Ratio_z[i]=Lambda_z[i]/Lambda_1[i]
+
+                if (Conection_Ele[i]=="No") & (N_Bolt_Ele[i]==1) & (eta_Enc[i]==0.8):
+                    k_v[i]=0.7+0.35/Lambda_Ratio_v[i]
+                    k_y[i]=0.7+0.58/Lambda_Ratio_y[i]
+                    k_z[i]=0.7+0.58/Lambda_Ratio_z[i]
+                    k_u[i]=0.0001
+                else:
+                    k_v[i]=0.7+0.35/Lambda_Ratio_v[i]
+                    k_y[i]=0.7+0.4/Lambda_Ratio_y[i]
+                    k_z[i]=0.7+0.4/Lambda_Ratio_z[i]
+                    k_u[i]=0.0001
+                Lambda_Enc_eff_v[i]=k_v[i]*Lambda_Ratio_v[i]
+                Lambda_Enc_eff_u[i]=k_u[i]*Lambda_Ratio_u[i]
+                Lambda_Enc_eff_y[i]=k_y[i]*Lambda_Ratio_y[i]
+                Lambda_Enc_eff_z[i]=k_z[i]*Lambda_Ratio_z[i]
+                
+                Lambda_Enc_eff[i]=np.max([Lambda_Enc_eff_v[i],Lambda_Enc_eff_u[i],Lambda_Enc_eff_y[i],Lambda_Enc_eff_z[i]])
+                i_Enc_crit=np.argmax([Lambda_Enc_eff_v[i],Lambda_Enc_eff_u[i],Lambda_Enc_eff_y[i],Lambda_Enc_eff_z[i]]) 
+                k_Enc_Aux=np.array([k_v[i],k_u[i],k_y[i],k_z[i]])
+                k_Enc[i]=k_Enc_Aux[i_Enc_crit]
+                if i_Enc_crit in [0,1]:
+                    Comprimento_Enc[i]=L2_Enc
+                else:
+                    Comprimento_Enc[i]=L1_Enc
+            elif TrussType[i]=="Leg":
+                L_enc_y,L_enc_v,Bracing[i]=Buckling_Lenght(int(i),Comprimento_Barra[i],TrussType)
+                Lambda_Barra_p[i]=((Dim[i]-2*Esp[i])/Esp[i])/(28.4*epsilon[i]*np.sqrt(ksigma[i]))
+                if Class_Enc[i]==4:
+                    if Lambda_Barra_p[i]<=0.748:
+                        rho_Enc[i]=1
+                    else:
+                        rho_Enc[i]=(Lambda_Barra_p[i]-0.188)/(Lambda_Barra_p[i]**2)
+                        if rho_Enc[i]>=1:
+                            rho_Enc[i]=1
+                
+                if Bracing[i] in ["Symmetrical"]:
+                    Comprimento_Enc[i]=L_enc_v
+                    if Class_Enc[i]==4:
+                        Lambda_v[i]=Comprimento_Enc[i]/iv[i]*np.sqrt(rho_Enc[i]) 
+                    else:
+                        Lambda_v[i]=Comprimento_Enc[i]/iv[i]
+                    Lambda_Ratio_v[i]=Lambda_v[i]/Lambda_1[i]
+
+                    k_v[i]=0.8+Lambda_Ratio_v[i]/10
+                    if k_v[i]<=0.9:
+                        k_v[i]=0.9
+                    elif k_v[i]>=1.0:
+                        k_v[i]=1.0
+                    Lambda[i]=Lambda_v[i]
+                    Lambda_Ratio[i]=Lambda_Ratio_v[i]
+                    k_Enc[i]=k_v[i]
+                    Lambda_Enc_eff[i]=k_Enc[i]*Lambda_Ratio[i]
+
+                elif Bracing[i] in ["Unsymmetrical"]:    
+                    
+                    L2_Enc=L_enc_v
+                    L1_Enc=L_enc_y
+                    if Class_Enc[i]==4:
+                        Lambda_v[i]= L2_Enc/iv[i]*np.sqrt(rho_Enc[i]) ### 1993-1-1 altera o lambda em casos de classe 4
+                        Lambda_y[i]=L1_Enc/iy[i]*np.sqrt(rho_Enc[i])    
+                    else:   
+                        Lambda_v[i]=L2_Enc/iv[i]
+                        Lambda_y[i]=L1_Enc/iy[i]
+                    Lambda_Ratio_v[i]=Lambda_v[i]/Lambda_1[i]
+                    Lambda_Ratio_y[i]=Lambda_y[i]/Lambda_1[i]
+                    k_v[i]=1.2*(0.8+Lambda_Ratio_v[i]/10)
+                    if k_v[i]<=1.08:
+                        k_v[i]=1.08
+                    elif k_v[i]>=1.20:
+                        k_v[i]=1.20
+                    k_y[i]=1.2*(0.8+Lambda_Ratio_y[i]/10)
+                    if k_y[i]<=1.08:
+                        k_y[i]=1.08
+                    elif k_y[i]>=1.20:
+                        k_y[i]=1.20                    
+                    Lambda_Enc_eff_v[i]=k_v[i]*Lambda_Ratio_v[i]
+                    Lambda_Enc_eff_y[i]=k_y[i]*Lambda_Ratio_y[i]
+                    if Lambda_Enc_eff_v[i]>=Lambda_Enc_eff_y[i]:
+                        Lambda[i]=Lambda_v[i]
+                        Lambda_Ratio[i]=Lambda_Ratio_v[i]
+                        k_Enc[i]=k_v[i]
+                        Lambda_Enc_eff[i]=k_Enc[i]*Lambda_Ratio[i]
+                        Comprimento_Enc[i]=L2_Enc
+                    else:
+                        Lambda[i]=Lambda_y[i]
+                        Lambda_Ratio[i]=Lambda_Ratio_y[i]
+                        k_Enc[i]=k_y[i]
+                        Lambda_Enc_eff[i]=k_Enc[i]*Lambda_Ratio[i]
+                        Comprimento_Enc[i]=L1_Enc  
+
+                Lambda_Lim[i]=120
+                # if Lambda[i]<=Lambda_Lim[i]:
+                #     Lambda_Check[i]="OK"
+                # else:
+                #     Lambda_Check[i]="KO"            
+                    
+            Aeff[i]=rho_Enc[i]*Area[i]
+            Buckling_Curve[i]="b"
+            alpha_Enc[i]=Imp_factor_buckling_curve(Buckling_Curve[i])
+            Red[i]=1
+            if Lambda_Enc_eff[i]*Lambda_1[i]<=Lambda_Lim[i]:
+                Lambda_Check[i]="OK"
+            else:
+                Lambda_Check[i]="KO"
+    alpha_Enc=alpha_Enc.astype(float)
+    Phi_Enc=0.5*(1+alpha_Enc*(Lambda_Enc_eff-0.2)+Lambda_Enc_eff**2)
+    Chi_Enc=1/(Phi_Enc+np.sqrt(Phi_Enc**2-Lambda_Enc_eff**2))
+    Chi_Enc[np.where(Chi_Enc>1)]=1
+
+    NbRd=Chi_Enc*Aeff*Sigma*Red*eta_Enc/GammaM1
+    Ratio_Enc=np.zeros(len(F_Compressao))
+    Ratio_Enc[1:]=np.abs(F_Compressao[1:])/NbRd[1:]
+    Check_Enc[np.where(Ratio_Enc<=1)]="OK"
+    Check_Enc[np.where(Ratio_Enc>1)]="KO"
+    Truss_Out=np.array(["Leg","Diagonal Bar","Horizontal Bar","External Manual Bar","Internal Manual Bar"])
+    Enc_Out_csv=Buckling_Output(Class_Enc,nos_vento,TrussType,Truss_Out,Size_Profile,Elements_Matrix,Lambda_Enc_eff,Lambda_1,NTracRd,NbRd,Troco,Ratio_Enc,F_Compressao)
+    Enc_Out_Exp=Buckling_Exp_Output(Class_Enc,nos_vento,TrussType,Truss_Out,Size_Profile,Elements_Matrix,Lambda_Enc_eff,Lambda_1,NTracRd,NbRd,Troco,Ratio_Enc,F_Compressao,Comprimento_Enc,Ratio_Class,Lim_Class,Lambda_Lim,k_Enc,alpha_Enc,Phi_Enc,Chi_Enc,Aeff,Red,eta_Enc,Lambda_Check)
+    return Ratio_Enc,Enc_Out_csv,Enc_Out_Exp
+
+def Buckling_Function_Spain(nEle,Inertiav,Inertiau,Inertiay,Inertiaz,Area,Comprimento_Barra,Sigma,Rigidez,nos_vento,Shape,Travamento,Top_bars,Middle_bars,ExpVento,Dim,Esp,TrussType,nos_montante,Conection_Ele,N_Bolt_Ele,GammaM1,F_Compressao,Size_Profile,Elements_Matrix,NTracRd,Troco):
     Buckling_Curve=np.zeros(nEle+1).astype(str)
     Class_Enc=np.zeros(nEle+1)
     Check_Enc=np.zeros(nEle+1).astype(str)
