@@ -97,7 +97,7 @@ def ZoneInverse(z0, zmin, vb, Pais):
 
     return None, None
 
-def Zone(Zona,Tipo,Pais):
+def Zone(Zona,Tipo,Pais,Altitude,Dist_Costa):
     if Pais=="Portugal":
         if Zona=="A": #Pag155
             vb=27
@@ -199,10 +199,190 @@ def Zone(Zona,Tipo,Pais):
         elif Tipo=="0":
             z0=0.003
             zmin=1
+    elif Pais=="Italy":
+        Rug=Tipo
+        Tipo=Rug_Italy(Tipo, Zona, Dist_Costa,Altitude)
+        if Tipo=="I":
+            z0=0.01
+            zmin=2
+        elif Tipo=="II":
+            z0=0.05
+            zmin=4
+        elif Tipo=="III":
+            z0=0.1
+            zmin=5
+        elif Tipo=="IV":
+            z0=0.3
+            zmin=8       
+        elif Tipo=="V":
+            z0=0.70
+            zmin=12
+        if Zona=="1":
+            vb=25
+            a0=1000
+            ka_It=0.4
+        elif Zona=="2":
+            vb=25
+            a0=750
+            ka_It=0.45          
+        elif Zona=="3":
+            vb=27
+            a0=500
+            ka_It=0.37
+            
+        elif Zona=="4":
+            vb=28
+            a0=500
+            ka_It=0.36
+        elif Zona=="5":
+            vb=28
+            a0=750
+            ka_It=0.40
+        elif Zona=="6":
+            vb=28
+            a0=500
+            ka_It=0.36
+        elif Zona=="7":
+            vb=28
+            a0=1000
+            ka_It=0.54
+        elif Zona=="8":
+            vb=30
+            a0=1500
+            ka_It=0.50
+        elif Zona=="9":
+            vb=31
+            a0=500
+            ka_It=0.32
+        vb=vb_Italy (Altitude,vb,a0,ka_It)
     if Zona=="-":
         vb=0
     return vb,z0,zmin
 
+def vb_Italy (Altitude,vb,a0,ka_It):
+    if Altitude<=a0:
+        ca=1
+    else:
+        ca=1+ka_It*(Altitude/a0-1)
+    
+    vb=vb*ca
+    return vb
+
+def Rug_Italy (Terrain, Zona, Dist_Costa,Altitude):
+    #Pag 48
+    if Zona in ["1","2","3","4","5"]:
+        if Terrain=="A":
+            if Dist_Costa<=10:
+                Exposure="IV"
+            elif Dist_Costa<=30:
+                Exposure="IV"
+            elif Altitude<=500:
+                Exposure="V"
+            elif Altitude<=750:
+                Exposure="V"
+            else:
+                Exposure="V"
+        elif Terrain=="B":
+            if Dist_Costa<=10:
+                Exposure="III"
+            elif Dist_Costa<=30:
+                Exposure="III"
+            elif Altitude<=500:
+                Exposure="IV"
+            elif Altitude<=750:
+                Exposure="IV"
+            else:
+                Exposure="IV"
+        elif Terrain=="C":
+            if Dist_Costa<=10 and Zona in ["1","2","3","4"]:
+                Exposure="II"
+            elif Dist_Costa<=10 and Zona in ["5"]:
+                Exposure="III"
+            elif Dist_Costa<=30:
+                Exposure="III"
+            elif Altitude<=500:
+                Exposure="III"
+            elif Altitude<=750:
+                Exposure="IV"
+            else:
+                Exposure="IV"                    
+        elif Terrain=="D":
+            if Dist_Costa<=-2:
+                Exposure="I"
+            elif Dist_Costa<=10:
+                Exposure="II"
+            elif Dist_Costa<=30:
+                Exposure="II"
+            elif Altitude<=500:
+                Exposure="II"
+            elif Altitude<=750:
+                Exposure="III"
+            elif Zona=="1":
+                Exposure="IV"
+            else:
+                Exposure="III"                
+    elif Zona=="6":
+        if Terrain=="A":
+            if Dist_Costa<=10:
+                Exposure="III"
+            elif Dist_Costa<=30:
+                Exposure="IV"
+            elif Altitude<=500:
+                Exposure="V"
+            else:
+                Exposure="V"
+        elif Terrain=="B":
+            if Dist_Costa<=10:
+                Exposure="II"
+            elif Dist_Costa<=30:
+                Exposure="III"
+            elif Altitude<=500:
+                Exposure="IV"
+            else:
+                Exposure="IV"
+        elif Terrain=="C":
+            if Dist_Costa<=10:
+                Exposure="II"
+            elif Dist_Costa<=30:
+                Exposure="III"
+            elif Altitude<=500:
+                Exposure="III"
+            else:
+                Exposure="IV"                        
+        elif Terrain=="D":
+            if Dist_Costa<=-2:
+                Exposure="I"
+            elif Dist_Costa<=10:
+                Exposure="I"
+            elif Dist_Costa<=30:
+                Exposure="II"
+            elif Altitude<=500:
+                Exposure="II"
+            else:
+                Exposure="III"
+    elif Zona in ["7","8"]:
+        if Terrain=="A":
+            if Dist_Costa>=0:
+                Exposure="IV"
+        elif Terrain=="B":
+            if Dist_Costa>=0:
+                Exposure="IV"
+        elif Terrain=="C":
+            if Dist_Costa>=0:
+                Exposure="III"          
+        elif Terrain=="C":
+            if Dist_Costa<=-0.5:
+                Exposure="I"   
+            elif Dist_Costa<=0:
+                Exposure="II"
+            else:
+                if Zona in ["7"]:
+                    Exposure="III"
+                else:
+                    Exposure="II"
+    elif Zona in ["9"]:
+        Exposure="I"
+    return Exposure    
 
 def LogDecaiment(cf,rho_ar,vm,n1,me,b):
     deltas=0.05 #DecLog_estrutural torre aço

@@ -67,10 +67,15 @@ def main(Aincrease):
     else:
         rho_ar=1.25
     c0=np.ones(len(zmed))
-    
-    GammaM1=1.0
-    GammaM0=1.0
-    GammaM2=1.25
+
+    if Pais in ["Italy"]:
+        GammaM1=1.05
+        GammaM0=1.05
+        GammaM2=1.25
+    else:
+        GammaM1=1.0
+        GammaM0=1.0
+        GammaM2=1.25
     visco_ar=15*10**-6
     h_torre=np.max(Nodes_Matrix[:,4].astype(float))*10**-3
     Massa_Extra=12 ####Peso extra em percentagem (Chapa, galva, parafusos, etc)

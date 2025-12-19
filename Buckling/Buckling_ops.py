@@ -64,9 +64,8 @@ def Buckling_Lenght(Ele, Length, TrussType):
         # ==========================
         for ele in elementos:
             nA, nB = ops.eleNodes(ele)
-
-            if no in (nA, nB) and TrussType[ele] != "Leg":
-
+            #if no in (nA, nB) and TrussType[ele] != "Leg":
+            if no in (nA, nB):
                 cA = np.array(ops.nodeCoord(nA), dtype=float)
                 cB = np.array(ops.nodeCoord(nB), dtype=float)
                 v = cB - cA
@@ -80,6 +79,9 @@ def Buckling_Lenght(Ele, Length, TrussType):
         # 4) Transformar para coordenadas locais
         #    v_local = R * v_global
         # ==========================
+        # print(Ele)
+        # print(R)
+        # print(Dir_global)
         Dir_local = (R @ Dir_global.T).T
         
 

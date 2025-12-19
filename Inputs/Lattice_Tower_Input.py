@@ -88,12 +88,16 @@ def Structure_txt_read(txt_file):
                 Pais="Portugal-RSA"
                 Terrain=partes[2]
                 vb=float(partes[3])
-                _,z0,zmin=Zone("-",Terrain,Pais)
+                _,z0,zmin=Zone("-",Terrain,Pais,0,0)
                 Classe_Fiabilidade=0
+            if Pais=="Italy":
+                Terrain=partes[2]
+                Zona=partes[3]
+                vb,z0,zmin=Zone(Zona,Terrain,Pais,)
             else:
                 Terrain=partes[2]
                 vb=float(partes[3])
-                _,z0,zmin=Zone("-",Terrain,Pais)
+                _,z0,zmin=Zone("-",Terrain,Pais,0,0)
                 Classe_Fiabilidade=int(partes[5])
     Alt=0
     Gelo="No"

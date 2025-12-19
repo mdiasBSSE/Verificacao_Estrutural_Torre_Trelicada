@@ -22,6 +22,11 @@ def ClasseFiabilidade(Pais,Classe_Fiabilidade):
         Gamma_Variable_Des=1.5
         Gamma_Perm_Fav=1
         Gamma_Variable_Fav=0
+    elif Pais in ["Italy"]:
+        Gamma_Perm_Des=1.35
+        Gamma_Variable_Des=1.5
+        Gamma_Perm_Fav=1
+        Gamma_Variable_Fav=0        
     
     return  Gamma_Perm_Des,Gamma_Variable_Des,Gamma_Perm_Fav,Gamma_Variable_Fav    
 
