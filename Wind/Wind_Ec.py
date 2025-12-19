@@ -382,8 +382,10 @@ def Rug_Italy (Terrain, Zona, Dist_Costa,Altitude):
                     Exposure="II"
     elif Zona in ["9"]:
         Exposure="I"
-    return Exposure    
-
+    try:
+        return Exposure    
+    except:
+        return "--"
 def LogDecaiment(cf,rho_ar,vm,n1,me,b):
     deltas=0.05 #DecLog_estrutural torre aço
     #deltas=0.03 #DecLog_estrutural torre betão

@@ -23,7 +23,7 @@ from Model_Calculation.Load_Creation_Area import Area_Definition,Area_Position_M
 from Output.Output_Lattice_Expanded import Shaft_Wind
 from Output.Output_Lattice_Reduced import Wind_Ice_Out
 from Wind.Wind_Lattice import Elements_Areas
-def Simple_Cases(Ncasoscarga,nos_por_classe,C0_calc,Pais,zmax,Alt,Tipoc0,Alt_col,Lu,Ld,Xtopo,Ac_c0,A500,A1000,rho_ar,Dim,visco_ar,nos_vento,Troco,TrussType,z_vento,ElementosID,ExpVento,Comprimento_Barra,divisor,esp_gelo,Gelo,h_torre,munit,Massa_Extra,todos_nos,nEle,nos_por_elemento,coords,h_vetor,z_grupo,nos_grupo,dh,torre,dalpha,Posicao_Antenna,Massa_Antenna,AreaDirection,equipline,Ant,iStart,rho_gelo,vb,z0,zmin,Calc_Wind_Auto):    
+def Simple_Cases(Ncasoscarga,nos_por_classe,C0_calc,Pais,zmax,Alt,Tipoc0,Alt_col,Lu,Ld,Xtopo,Ac_c0,A500,A1000,rho_ar,Dim,visco_ar,nos_vento,Troco,TrussType,z_vento,ElementosID,ExpVento,Comprimento_Barra,divisor,esp_gelo,Gelo,h_torre,munit,Massa_Extra,todos_nos,nEle,nos_por_elemento,coords,h_vetor,z_grupo,nos_grupo,dh,torre,dalpha,Posicao_Antenna,Massa_Antenna,AreaDirection,equipline,Ant,iStart,rho_gelo,vb,z0,zmin,Calc_Wind_Auto,Zona):    
 
     A_lin_Troco=np.zeros(len(nos_por_classe)+1)
     A_lin_Troco_Cf=np.zeros(len(nos_por_classe)+1)
@@ -283,7 +283,7 @@ def Simple_Cases(Ncasoscarga,nos_por_classe,C0_calc,Pais,zmax,Alt,Tipoc0,Alt_col
     v_top=Velocidade_media(np.array([h_torre+Alt]),vb,z0,zmin,Pais,c0_top)
     #vb,_,_=Zone(Zona,Terrain,Pais)
     q0=1/2*rho_ar*vb**2
-    Wind_Out_Csv,Ice_Out_Csv=Wind_Ice_Out(Pais,z0,vb,zmin,c0_top[0],q0,v_top[0],Pressure_top[0],Gelo,esp_gelo,rho_gelo,Calc_Wind_Auto)
+    Wind_Out_Csv,Ice_Out_Csv=Wind_Ice_Out(Pais,Zona,z0,vb,zmin,c0_top[0],q0,v_top[0],Pressure_top[0],Gelo,esp_gelo,rho_gelo,Calc_Wind_Auto)
     return Desloc,Reactions,Desloc_aux,F,F_axial,Ry,MzVer,F_nos,nos_grupo,z_grupo,divisor,x_Ant,iAnt,F_Total_Ant, FTW_dist,FTW,FTW_lin,FTW_lin_dist,CsCd,cf0f,cf0c,cf0csup,cfs0,cfs,NameCaso,ivento,Massa_nos,Massa_nos_lin,alpha_vector,icombinacao,v_no_maximo,Leg_Type,Massa_Troco,Case_Out_csv,Wind_Out_Csv,Ice_Out_Csv
 
 

@@ -1,0 +1,136 @@
+Bars
+
+Member,Profile,Steel,Slenderness,NtRd,NbRd,Ned,Ratio,Result
+Leg - Shaft 9,Ø 114.3x6.3,S355,50.9,758.8,566.0,31.7,0.06,OK
+Leg - Shaft 8,Ø 114.3x6.3,S355,34.6,758.8,659.4,106.2,0.16,OK
+Leg - Shaft 7,Ø 139.7x8.0,S355,41.8,1175.0,959.6,191.6,0.2,OK
+Leg - Shaft 6,Ø 139.7x8.0,S355,41.8,1175.0,959.6,264.6,0.28,OK
+Leg - Shaft 5,Ø 139.7x8.0,S355,41.8,1175.0,959.6,332.0,0.35,OK
+Leg - Shaft 4,Ø 193.7x8.0,S355,29.6,1656.8,1497.3,398.7,0.27,OK
+Leg - Shaft 3,Ø 193.7x8.0,S355,29.6,1656.8,1497.3,464.8,0.31,OK
+Leg - Shaft 2,Ø 193.7x8.0,S355,29.6,1656.8,1497.3,528.9,0.35,OK
+Leg - Shaft 1,Ø 219.1x10.0,S355,26.3,2332.0,2160.3,570.6,0.26,OK
+Diagonal Bar - Shaft 9,Ø 76.1x5.0,S355,70.0,396.5,234.0,18.0,0.08,OK
+Diagonal Bar - Shaft 8,Ø 76.1x5.0,S355,57.7,396.5,273.8,24.9,0.09,OK
+Diagonal Bar - Shaft 7,Ø 76.1x5.0,S355,78.5,396.5,207.9,20.5,0.1,OK
+Diagonal Bar - Shaft 6,Ø 76.1x5.0,S355,89.9,396.5,176.4,20.6,0.12,OK
+Diagonal Bar - Shaft 5,Ø 76.1x5.0,S355,102.3,396.5,147.8,22.2,0.15,OK
+Diagonal Bar - Shaft 4,Ø 88.9x5.0,S355,97.8,467.9,186.0,24.6,0.13,OK
+Diagonal Bar - Shaft 3,Ø 88.9x5.0,S355,109.1,467.9,158.6,26.7,0.17,OK
+Diagonal Bar - Shaft 2,Ø 88.9x5.0,S355,120.8,467.9,135.6,26.8,0.2,OK
+Diagonal Bar - Shaft 1,Ø 88.9x5.0,S355,78.1,467.9,246.6,28.4,0.12,OK
+Horizontal Bar - Shaft 9,Ø 76.1x5.0,S355,44.4,396.5,315.7,8.5,0.03,OK
+Horizontal Bar - Shaft 8,Ø 76.1x5.0,S355,44.4,396.5,315.7,17.9,0.06,OK
+Horizontal Bar - Shaft 7,Ø 76.1x5.0,S355,44.4,396.5,315.7,17.3,0.05,OK
+Horizontal Bar - Shaft 6,Ø 76.1x5.0,S355,69.4,396.5,235.8,16.2,0.07,OK
+Horizontal Bar - Shaft 5,Ø 76.1x5.0,S355,84.4,396.5,191.1,18.4,0.1,OK
+Horizontal Bar - Shaft 4,Ø 88.9x5.0,S355,84.2,467.9,226.0,21.2,0.09,OK
+Horizontal Bar - Shaft 3,Ø 88.9x5.0,S355,96.9,467.9,188.3,23.8,0.13,OK
+Horizontal Bar - Shaft 2,Ø 88.9x5.0,S355,109.6,467.9,157.5,24.9,0.16,OK
+Horizontal Bar - Shaft 1,Ø 88.9x5.0,S355,113.9,467.9,148.6,26.9,0.18,OK
+
+Connections
+
+Member,Plate thickness,e1,e2,p1,p2,Steel Plate,Number of bolts,Bolts Size,Bolts steel,Ned,NRd,Ratio,Result
+Diagonal Bar - Shaft 9,--,--,--,--,--,--,--,--,--,--,--,--,Welded
+Diagonal Bar - Shaft 8,--,--,--,--,--,--,--,--,--,--,--,--,Welded
+Diagonal Bar - Shaft 7,--,--,--,--,--,--,--,--,--,--,--,--,Welded
+Diagonal Bar - Shaft 6,--,--,--,--,--,--,--,--,--,--,--,--,Welded
+Diagonal Bar - Shaft 5,--,--,--,--,--,--,--,--,--,--,--,--,Welded
+Diagonal Bar - Shaft 4,--,--,--,--,--,--,--,--,--,--,--,--,Welded
+Diagonal Bar - Shaft 3,--,--,--,--,--,--,--,--,--,--,--,--,Welded
+Diagonal Bar - Shaft 2,--,--,--,--,--,--,--,--,--,--,--,--,Welded
+Diagonal Bar - Shaft 1,--,--,--,--,--,--,--,--,--,--,--,--,Welded
+Horizontal Bar - Shaft 9,--,--,--,--,--,--,--,--,--,--,--,--,Welded
+Horizontal Bar - Shaft 8,--,--,--,--,--,--,--,--,--,--,--,--,Welded
+Horizontal Bar - Shaft 7,--,--,--,--,--,--,--,--,--,--,--,--,Welded
+Horizontal Bar - Shaft 6,--,--,--,--,--,--,--,--,--,--,--,--,Welded
+Horizontal Bar - Shaft 5,--,--,--,--,--,--,--,--,--,--,--,--,Welded
+Horizontal Bar - Shaft 4,--,--,--,--,--,--,--,--,--,--,--,--,Welded
+Horizontal Bar - Shaft 3,--,--,--,--,--,--,--,--,--,--,--,--,Welded
+Horizontal Bar - Shaft 2,--,--,--,--,--,--,--,--,--,--,--,--,Welded
+Horizontal Bar - Shaft 1,--,--,--,--,--,--,--,--,--,--,--,--,Welded
+
+Shaft connections - Bolted 
+
+Member,Plate thickness,e1,e2,p1,p2,Number of plates,Steel Plate,Number of bolts,Bolts Size,Bolts steel,NRd,Ned,Ratio,Result
+
+Shaft connections - Flanged
+
+Member,Flange Diameter,Flange thickness,Flange Steel,Bolts Inscription,Number of bolts,Bolts Diameter,Bolts steel,Ned,Nrd,Ratio,Result
+Leg - Shaft 9,--,--,--,--,--,--,--,--,--,--,NA
+Leg - Shaft 8,--,--,--,--,--,--,--,--,--,--,NA
+Leg - Shaft 7,--,--,--,--,--,--,--,--,--,--,NA
+Leg - Shaft 6,--,--,--,--,--,--,--,--,--,--,NA
+Leg - Shaft 5,--,--,--,--,--,--,--,--,--,--,NA
+Leg - Shaft 4,--,--,--,--,--,--,--,--,--,--,NA
+Leg - Shaft 3,--,--,--,--,--,--,--,--,--,--,NA
+Leg - Shaft 2,--,--,--,--,--,--,--,--,--,--,NA
+Leg - Shaft 1,--,--,--,--,--,--,--,--,--,--,NA
+Base Flange,--,--,--,--,--,--,--,--,--,--,NA
+
+Tilt
+
+Case,Degree,Minute,Distance
+SLS - Top,0.301,18.037,147.2
+SLS - 2/3,0.23,13.829,69.8
+ULS - Top,0.481,28.859,235.5
+ULS - 2/3,0.369,22.126,111.7
+SLS - 100 km/h,0.11,6.615,54.0
+SLS - 120 km/h,0.159,9.526,77.7
+
+Basal Efforts
+
+Case,Ned,Ved,Med
+SLS,128.219,54.827,1609.569
+ULS,153.862,87.724,2575.311
+
+Area - Equipments
+
+0.533,1.204,2.4,1.113,0.98,0.129,0.153,0.153,0.173,0.18,0.255,0.214,0.336,0.316,0.092,0.147,0.15,0.48
+
+Area - Linear equipments
+
+Name,Widht,Shape Coefficient,Weight,Start,End
+Other,0.125,1.2,15.0,0.0,50.6
+
+Foundation
+
+Foundation, 
+Slab Width (m),--
+Slab Height (m),--
+Pier Width (m),--
+Pier Height (m),--
+Soil Self-Weight (kN/m3),--
+Allowed Soil Tension (SLS) (Pa),--
+Allowed Soil Tension (ULS) (Pa),--
+
+Ratio Foundation
+
+Ratio Foundation,NA
+
+Wind Load
+
+Wind Load,
+Country,Spain
+vb (m/s),B - 27
+z0,0.3
+zmin,6.0
+Orographie Coefficient,1.0
+q0 (Pa),455.6
+Average Wind speed (top) (m/s),29.83
+Dynamic Wind Pressure (top) (Pa),1315.0
+
+Ice Load
+
+Snow Load,
+Radial ice thickness,0
+Increased volumetric weight of ice (kg/m3),0
+
+Reliability Class,3
+
+Flanged Fundation
+
+Embedded,Flange Widht (mm),Flange Thickness (mm),Flange Steel,Bolt Diameter,Number of bolts,Bolt Steel,Ned (kN),Nrd (kN),Ratio,Check
+--,--,--,--,--,--,--,--,--,--,NA
+

@@ -288,7 +288,22 @@ def Bolted_Connection_Bracing_France(Dig_Hor_Matrix,F_Tracao,F_Compressao,TrussT
 
 def Bolted_Connection_Shaft_France(Shaft_Bolted_Matrix,TrussType,F_Tracao,F_Compressao,GammaM2,Sigma_u,Sigma,GammaM0,Area,Esp,Troco,nos_vento,divisor):
     ID_Bolted=len(Shaft_Bolted_Matrix)
+    alpha_d_end_B_ELE=np.zeros(ID_Bolted+1)
+    alpha_d_inner_B_ELE=np.zeros(ID_Bolted+1)
+    k1_edge_B_ELE=np.zeros(ID_Bolted+1)
+    alpha_b_end_B_ELE=np.zeros(ID_Bolted+1)
+    alpha_b_inner_B_ELE=np.zeros(ID_Bolted+1)
+    fu_B_ELE=np.zeros(ID_Bolted+1)
+    FbRd_Edge_Inner_B_ELE=np.zeros(ID_Bolted+1)
+    FbRd_Edge_End_B_ELE=np.zeros(ID_Bolted+1)
+    k1_inner_B_ELE=np.zeros(ID_Bolted+1)
+    Veff1Rd_B_ELE=np.zeros(ID_Bolted+1)
+    Veff2Rd_B_ELE=np.zeros(ID_Bolted+1)
+    FbRd_B_ELE=np.zeros(ID_Bolted+1)
+    fy_B_ELE=np.zeros(ID_Bolted+1)
+    Anv_block_B_ELE=np.zeros(ID_Bolted+1)
     alpha_v_Bolt_B=np.zeros(ID_Bolted+1)
+    Ant_block_B_ELE=np.zeros(ID_Bolted+1)
     Fele= np.maximum(np.abs(F_Tracao), np.abs(F_Compressao))
     As_bolt_B=np.zeros(ID_Bolted+1)
     A_bolt_B=np.zeros(ID_Bolted+1)
@@ -410,11 +425,11 @@ def Bolted_Connection_Shaft_France(Shaft_Bolted_Matrix,TrussType,F_Tracao,F_Comp
             ##### Verificação corte #######
             if t_B[i]==0:
                 t_B[i]=Esp[int(ELE_B)]
-            else:
-                if t_B[i]*Corte_B[i]>Esp[int(ELE_B)]:
-                    t_B[i]=Esp[int(ELE_B)]
-                else:
-                    t_B[i]=t_B[i]
+            # else:
+            #     if t_B[i]*Corte_B[i]>Esp[int(ELE_B)]:
+            #         t_B[i]=Esp[int(ELE_B)]
+            #     else:
+            #         t_B[i]=t_B[i]
             #if Leg_Type=="Flat" and ExpVento[int(Ele_Lig[i])]=="Flat":
             #    ####Cantoneira-Cantoneira
             #    fu_Lig[i],fy_Lig[i]=Sigma_u[int(Ele_Lig[i])],Sigma[int(Ele_Lig[i])]
@@ -424,24 +439,38 @@ def Bolted_Connection_Shaft_France(Shaft_Bolted_Matrix,TrussType,F_Tracao,F_Comp
                 fu_B[i],fy_B[i]=get_fu_fy(Steel_B[i])
                 fu_B[i]=fu_B[i]*10**6
                 fy_B[i]=fy_B[i]*10**6
+                fu_B_ELE[i]=Sigma_u[int(ELE_B)]
+                fy_B_ELE[i]=Sigma[int(ELE_B)]
             else:
                 fu_B[i]=Sigma_u[int(ELE_B)]
                 fy_B[i]=Sigma[int(ELE_B)]
+                fu_B_ELE[i]=Sigma_u[int(ELE_B)]
+                fy_B_ELE[i]=Sigma[int(ELE_B)]
             if ((p1_B[i]!=0) and (p2_B[i]!=0)):
+                ##CounterPlates
                 alpha_d_end_B[i]=e1_B[i]/(3*d_0_B[i])
                 alpha_d_inner_B[i]=p1_B[i]/(3*d_0_B[i])-1/4
                 k1_edge_B[i]=np.min([2.8*e2_B[i]/d_0_B[i]-1.7,1.4*p2_B[i]/d_0_B[i]-1.7,2.5])
                 k1_inner_B[i]=np.min([1.4*p2_B[i]/d_0_B[i]-1.7,2.5])     
                 alpha_b_end_B[i]=np.min([alpha_d_end_B[i],fub_B[i]/fu_B[i],1.0])
                 alpha_b_inner_B[i]=np.min([alpha_d_inner_B[i],fub_B[i]/fu_B[i],1.0])
-                #Aux=[k1_edge[i]*alpha_b_end[i],k1_edge[i]*alpha_b_inner[i]]
-                #iAux=np.argmin([k1_edge[i]*alpha_b_end[i],k1_edge[i]*alpha_b_inner[i]])
-                #Case_Corte_Name=np.array(["Edge-End","Inner-End"])
-                #Corte_Crit[i]=Case_Corte_Name[iAux]
                 FbRd_Edge_Inner_B[i]=Corte_B[i]*alpha_b_inner_B[i]* k1_edge_B[i]*fu_B[i]*d_Bolt_B[i]*t_B[i]/GammaM2
-                FbRd_Edge_End_B[i]=Corte_B[i]*alpha_b_end_B[i]* k1_edge_B[i]*fu_B[i]*d_Bolt_B[i]*t_B[i]/GammaM2            
-                FbRd_B[i]=2*FbRd_Edge_Inner_B[i]*(N_Bolt_B[i]-2)+FbRd_Edge_End_B[i]*(2)
+                FbRd_Edge_End_B[i]=Corte_B[i]*alpha_b_end_B[i]* k1_edge_B[i]*fu_B[i]*d_Bolt_B[i]*t_B[i]/GammaM2  
+                FbRd_B[i]=2*(FbRd_Edge_Inner_B[i]*(N_Bolt_B[i]-2)+FbRd_Edge_End_B[i]*(2))
+                ###Cantoneira  
+                alpha_d_end_B_ELE[i]=e1_B[i]/(3*d_0_B[i])
+                alpha_d_inner_B_ELE[i]=p1_B[i]/(3*d_0_B[i])-1/4
+                k1_edge_B_ELE[i]=np.min([2.8*e2_B[i]/d_0_B[i]-1.7,1.4*p2_B[i]/d_0_B[i]-1.7,2.5])
+                k1_inner_B_ELE[i]=np.min([1.4*p2_B[i]/d_0_B[i]-1.7,2.5])     
+                alpha_b_end_B_ELE[i]=np.min([alpha_d_end_B_ELE[i],fub_B[i]/fu_B_ELE[i],1.0])
+                alpha_b_inner_B_ELE[i]=np.min([alpha_d_inner_B_ELE[i],fub_B[i]/fu_B_ELE[i],1.0])
+                FbRd_Edge_Inner_B_ELE[i]=alpha_b_inner_B_ELE[i]* k1_edge_B_ELE[i]*fu_B_ELE[i]*d_Bolt_B[i]*Esp[int(ELE_B)]/GammaM2
+                FbRd_Edge_End_B_ELE[i]=alpha_b_end_B_ELE[i]* k1_edge_B_ELE[i]*fu_B_ELE[i]*d_Bolt_B[i]*Esp[int(ELE_B)]/GammaM2  
+                FbRd_B_ELE[i]=2*(FbRd_Edge_Inner_B_ELE[i]*(N_Bolt_B[i]-2)+FbRd_Edge_End_B_ELE[i]*(2))
+                ##Escolhe o minimo
+                FbRd_B[i]=np.min([FbRd_B[i],FbRd_B_ELE[i]])
             elif ((p2_B[i]==0) and (p1_B[i]!=0)):
+                ##CounterPlates
                 alpha_d_end_B[i]=e1_B[i]/(3*d_0_B[i])
                 alpha_d_inner_B[i]=p1_B[i]/(3*d_0_B[i])-1/4
                 k1_edge_B[i]=np.min([2.8*e2_B[i]/d_0_B[i]-1.7,2.5])
@@ -450,24 +479,56 @@ def Bolted_Connection_Shaft_France(Shaft_Bolted_Matrix,TrussType,F_Tracao,F_Comp
                 alpha_b_inner_B[i]=np.min([alpha_d_inner_B[i],fub_B[i]/fu_B[i],1.0])
                 FbRd_Edge_Inner_B[i]=Corte_B[i]*alpha_b_inner_B[i]* k1_edge_B[i]*fu_B[i]*d_Bolt_B[i]*t_B[i]/GammaM2
                 FbRd_Edge_End_B[i]=Corte_B[i]*alpha_b_end_B[i]* k1_edge_B[i]*fu_B[i]*d_Bolt_B[i]*t_B[i]/GammaM2            
-                FbRd_B[i]=2*FbRd_Edge_Inner_B[i]*(N_Bolt_B[i]-1)+FbRd_Edge_End_B[i]*(1)
+                FbRd_B[i]=2*(FbRd_Edge_Inner_B[i]*(N_Bolt_B[i]-1)+FbRd_Edge_End_B[i]*(1))
+                ##Cantoneira
+                alpha_d_end_B_ELE[i]=e1_B[i]/(3*d_0_B[i])
+                alpha_d_inner_B_ELE[i]=p1_B[i]/(3*d_0_B[i])-1/4
+                k1_edge_B_ELE[i]=np.min([2.8*e2_B[i]/d_0_B[i]-1.7,2.5])
+                k1_inner_B_ELE[i]=np.min([2.5])     
+                alpha_b_end_B_ELE[i]=np.min([alpha_d_end_B_ELE[i],fub_B[i]/fu_B_ELE[i],1.0])
+                alpha_b_inner_B_ELE[i]=np.min([alpha_d_inner_B_ELE[i],fub_B[i]/fu_B_ELE[i],1.0])
+                FbRd_Edge_Inner_B_ELE[i]=alpha_b_inner_B_ELE[i]* k1_edge_B_ELE[i]*fu_B_ELE[i]*d_Bolt_B[i]*Esp[int(ELE_B)]/GammaM2
+                FbRd_Edge_End_B_ELE[i]=alpha_b_end_B_ELE[i]* k1_edge_B_ELE[i]*fu_B_ELE[i]*d_Bolt_B[i]*Esp[int(ELE_B)]/GammaM2            
+                FbRd_B_ELE[i]=2*(FbRd_Edge_Inner_B_ELE[i]*(N_Bolt_B[i]-1)+FbRd_Edge_End_B_ELE[i]*(1))
+                ##Escolhe o minimo
+                FbRd_B[i]=np.min([FbRd_B[i],FbRd_B_ELE[i]])
             elif ((p1_B[i]==0) and (p2_B[i]==0)):
+                ##CounterPlates
                 alpha_d_end_B[i]=e1_B[i]/(3*d_0_B[i])
                 k1_edge_B[i]=np.min([2.8*e2_B[i]/d_0_B[i]-1.7,2.5]) 
                 alpha_b_end_B[i]=np.min([alpha_d_end_B[i],fub_B[i]/fu_B[i],1.0])
                 FbRd_Edge_Inner_B[i]=0
                 FbRd_Edge_End_B[i]=Corte_B[i]*alpha_b_end_B[i]* k1_edge_B[i]*fu_B[i]*d_Bolt_B[i]*t_B[i]/GammaM2  
-                FbRd_B[i]=2*FbRd_Edge_End_B[i]*1
+                FbRd_B[i]=2*(FbRd_Edge_End_B[i]*1)
+                #Cantoneira
+                alpha_d_end_B_ELE[i]=e1_B[i]/(3*d_0_B[i])
+                k1_edge_B_ELE[i]=np.min([2.8*e2_B[i]/d_0_B[i]-1.7,2.5]) 
+                alpha_b_end_B_ELE[i]=np.min([alpha_d_end_B_ELE[i],fub_B[i]/fu_B_ELE[i],1.0])
+                FbRd_Edge_Inner_B_ELE[i]=0
+                FbRd_Edge_End_B_ELE[i]=alpha_b_end_B[i]* k1_edge_B[i]*fu_B_ELE[i]*d_Bolt_B[i]*Esp[int(ELE_B)]/GammaM2  
+                FbRd_B_ELE[i]=2*(FbRd_Edge_End_B_ELE[i]*1)
+                ##Escolhe o minimo
+                FbRd_B[i]=np.min([FbRd_B[i],FbRd_B_ELE[i]])
             elif ((p2_B[i]!=0) and (p1_B[i]==0)):
+                ##Counter Plates
                 alpha_d_end_B[i]=e1_B[i]/(3*d_0_B[i])
                 k1_edge_B[i]=np.min([2.8*e2_B[i]/d_0_B[i]-1.7,1.4*p2_B[i]/d_0_B[i]-1.7,2.5])    
                 alpha_b_end_B[i]=np.min([alpha_d_end_B[i],fub_B[i]/fu_B[i],1.0])
                 FbRd_Edge_Inner_B[i]=0
                 FbRd_Edge_End_B[i]=Corte_B[i]*alpha_b_end_B[i]* k1_edge_B[i]*fu_B[i]*d_Bolt_B[i]*t_B[i]/GammaM2 
-                FbRd_B[i]=2*FbRd_Edge_End_B[i]*N_Bolt_B[i]
+                FbRd_B[i]=2*(FbRd_Edge_End_B[i]*N_Bolt_B[i])
+                #Cantoneiras 
+                alpha_d_end_B_ELE[i]=e1_B[i]/(3*d_0_B[i])
+                k1_edge_B_ELE[i]=np.min([2.8*e2_B[i]/d_0_B[i]-1.7,1.4*p2_B[i]/d_0_B[i]-1.7,2.5])    
+                alpha_b_end_B_ELE[i]=np.min([alpha_d_end_B_ELE[i],fub_B[i]/fu_B_ELE[i],1.0])
+                FbRd_Edge_Inner_B_ELE[i]=0
+                FbRd_Edge_End_B_ELE[i]=alpha_b_end_B_ELE[i]* k1_edge_B_ELE[i]*fu_B_ELE[i]*d_Bolt_B[i]*t_B[i]/GammaM2 
+                FbRd_B_ELE[i]=2*(FbRd_Edge_End_B_ELE[i]*N_Bolt_B[i])  
+                ##Escolhe o minimo
+                FbRd_B[i]=np.min([FbRd_B[i],FbRd_B_ELE[i]])              
             Ratio_Esmag_B[i]=F_Ele_B[i]/FbRd_B[i]
         if Calc_Block_B[i]=="Sim":                        
-            ##### Verificação Bloco #######
+            ##### Verificação Bloco ####### Counter Plate
             if p2_B[i]!=0:
                 # if p1_gusset[i]==0:
                 #     Anv_block[i]=t_gusset[i]*(e1_gusset[i]-0.5*d_0[i])
@@ -483,12 +544,37 @@ def Bolted_Connection_Shaft_France(Shaft_Bolted_Matrix,TrussType,F_Tracao,F_Comp
             else:
                 Anv_block_B[i]=0            
                 Ant_block_B[i]=0          
-            Veff1Rd_B[i]=2*Corte_B[i]*fu_B[i]*Ant_block_B[i]/GammaM2+(1/np.sqrt(3))*fy_B[i]*Anv_block_B[i]/GammaM0
-            Veff2Rd_B[i]=2*Corte_B[i]*0.5*fu_B[i]*Ant_block_B[i]/GammaM2+(1/np.sqrt(3))*fy_B[i]*Anv_block_B[i]/GammaM0
+            Veff1Rd_B[i]=2*Corte_B[i]*(fu_B[i]*Ant_block_B[i]/GammaM2+(1/np.sqrt(3))*fy_B[i]*Anv_block_B[i]/GammaM0)
+            #Veff2Rd_B[i]=2*Corte_B[i]*(0.5*fu_B[i]*Ant_block_B[i]/GammaM2+(1/np.sqrt(3))*fy_B[i]*Anv_block_B[i]/GammaM0)
+            Veff2Rd_B[i]=0 #Nos montantes nunca temos cargas excentricas
+            ##### Verificação Bloco ####### Cantoneira
+            if p2_B[i]!=0:
+                # if p1_gusset[i]==0:
+                #     Anv_block[i]=t_gusset[i]*(e1_gusset[i]-0.5*d_0[i])
+                #     Ant_block[i]=t_gusset[i]*(e2_gusset[i]+(N_Bolt_Lig[i]-1)*p2_gusset[i]-((N_Bolt_Lig[i]-0.5)*d_0[i]))
+                # elif p2_gusset[i]==0:
+                #     Anv_block[i]=t_gusset[i]*(e1_gusset[i]+(N_Bolt_Lig[i]-1)*p1_gusset[i]-((N_Bolt_Lig[i]-0.5)*d_0[i]))
+                #     Ant_block[i]=t_gusset[i]*(e2_gusset[i]-0.5*d_0[i])
+                # elif (p1_gusset[i]!=0) and (p1_gusset[i]!=0):
+                #     Anv_block[i]=t_gusset[i]*(e1_gusset[i]+(N_Bolt_Lig[i]/2-1)*p1_gusset[i]-((N_Bolt_Lig[i]/2-0.5)*d_0[i]))            
+                #     Ant_block[i]=t_gusset[i]*(e2_gusset[i]+(N_Bolt_Lig[i]/2-1)*p2_gusset[i]-((N_Bolt_Lig[i]/2-0.5)*d_0[i]))
+                Anv_block_B_ELE[i]= Esp[int(ELE_B)]*(e1_B[i]+ (N_Bolt_B[i]-2)/2*p1_B[i] - (N_Bolt_B[i]/2-0.5)*d_0_B[i])*2
+                Ant_block_B_ELE[i]= Esp[int(ELE_B)]*(p2_B[i]-d_0_B[i])
+            else:
+                Anv_block_B_ELE[i]=0            
+                Ant_block_B_ELE[i]=0          
+            Veff1Rd_B_ELE[i]=2*(fu_B_ELE[i]*Ant_block_B_ELE[i]/GammaM2+(1/np.sqrt(3))*fy_B_ELE[i]*Anv_block_B_ELE[i]/GammaM0)
+            #Veff2Rd_B_ELE[i]=2*(0.5*fu_B_ELE[i]*Ant_block_B_ELE[i]/GammaM2+(1/np.sqrt(3))*fy_B_ELE[i]*Anv_block_B_ELE[i]/GammaM0)
+            Veff2Rd_B_ELE[i]=0 #Nos montantes nunca temos cargas excentricas
+
+            Veff1Rd_B[i]=np.min([Veff1Rd_B[i],Veff1Rd_B_ELE[i]])
+            Veff2Rd_B[i]=np.min([Veff2Rd_B[i],Veff2Rd_B_ELE[i]])
+
         if Calc_Nu_B[i]=="Sim":
             if p2_B[i]==0:
                 if N_Bolt_B[i]==1:
-                    NuRd_B[i]=2.0*(e2_B[i]-0.5*d_0_B[i])*t_B[i]*fu_B[i]/GammaM2
+                    #NuRd_B[i]=2.0*(e2_B[i]-0.5*d_0_B[i])*t_B[i]*fu_B[i]/GammaM2
+                    NuRd_B[i]=0
                 else:
                     if N_Bolt_B[i]==2:
                         if p1_B[i]<=2.5*d_0_B[i]:
@@ -506,7 +592,7 @@ def Bolted_Connection_Shaft_France(Shaft_Bolted_Matrix,TrussType,F_Tracao,F_Comp
                             beta_Cant_B[i]=0.5+(0.7-0.5)/(5*d_0_B[i]-2.5*d_0_B[i])*(p1_B[i]-2.5*d_0_B[i])
                     #Anet_B[i]=2*Dim[int(Ele_Lig[i])]*Esp[int(Ele_Lig[i])]-Esp[int(Ele_Lig[i])]**2-Esp[int(Ele_Lig[i])]*d_0_B[i]
                     Anet_B[i]=Area[int(ELE_B)]-Esp[int(ELE_B)]*d_0_B[i]
-                    #NuRd_B[i]=2*Corte_B[i]*beta_Cant_B[i]*Anet_B[i]*fu_B[i]/GammaM2~
+                    #NuRd_B[i]=2*Corte_B[i]*beta_Cant_B[i]*Anet_B[i]*fu_B[i]/GammaM2
                     NuRd_B[i]=0
             else:
                 NuRd_B[i]=0

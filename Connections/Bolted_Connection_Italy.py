@@ -3,7 +3,7 @@ from Sections_Materials.Section_Properties import get_bolt_props,get_fu_fy,nut_a
 from Output.Output_Lattice_Reduced import Connection_Bracing_Output,Connection_Shaft_Output,Flanged_Shaft_Output
 from Output.Output_Lattice_Expanded import Connection_Bracing_Exp_Output,Connection_Shaft_Exp_Output,Flanged_Shaft_Exp_Output
 from Utilities.Utilities_ops import elementos_do_no_filt
-def Bolted_Connection_Bracing_Spain(Dig_Hor_Matrix,F_Tracao,F_Compressao,TrussType,Dim,GammaM2,ExpVento,Esp,Area,Leg_Type,Sigma_u,Sigma,GammaM0,Troco,nos_vento):    
+def Bolted_Connection_Bracing_Italy(Dig_Hor_Matrix,F_Tracao,F_Compressao,TrussType,Dim,GammaM2,ExpVento,Esp,Area,Leg_Type,Sigma_u,Sigma,GammaM0,Troco,nos_vento):    
     ID_Lig_Bolted=len(Dig_Hor_Matrix)
     alpha_v_Bolt=np.zeros(ID_Lig_Bolted+1)
 
@@ -286,7 +286,7 @@ def Bolted_Connection_Bracing_Spain(Dig_Hor_Matrix,F_Tracao,F_Compressao,TrussTy
                                                 FbRd, Anv_block, Ant_block, Veff1Rd, Veff2Rd, beta_Cant, NuRd)
     return Ratio_Lig,Lig_Out_csv,Lig_Out_Exp
 
-def Bolted_Connection_Shaft_Spain(Shaft_Bolted_Matrix,TrussType,F_Tracao,F_Compressao,GammaM2,Sigma_u,Sigma,GammaM0,Area,Esp,Troco,nos_vento,divisor):
+def Bolted_Connection_Shaft_Italy(Shaft_Bolted_Matrix,TrussType,F_Tracao,F_Compressao,GammaM2,Sigma_u,Sigma,GammaM0,Area,Esp,Troco,nos_vento,divisor):
     ID_Bolted=len(Shaft_Bolted_Matrix)
     alpha_d_end_B_ELE=np.zeros(ID_Bolted+1)
     alpha_d_inner_B_ELE=np.zeros(ID_Bolted+1)
@@ -636,7 +636,7 @@ def Bolted_Connection_Shaft_Spain(Shaft_Bolted_Matrix,TrussType,F_Tracao,F_Compr
                                         )
     return Ratio_Lig_B,B_Out_csv,B_Out_Exp
 
-def Flanged_Bolted_Connection_Spain(Shaft_Flange_Matrix,TrussType,F_Tracao,Dim,Esp,Sigma_u,Sigma,GammaM2,GammaM0,Area,nos_vento,divisor):
+def Flanged_Bolted_Connection_Italy(Shaft_Flange_Matrix,TrussType,F_Tracao,Dim,Esp,Sigma_u,Sigma,GammaM2,GammaM0,Area,nos_vento,divisor):
     if Shaft_Flange_Matrix.size == 0:
         Shaft_Flange_Matrix=np.empty((0,15))
     ID_Flanged=len(Shaft_Flange_Matrix)
@@ -837,7 +837,7 @@ def Flanged_Bolted_Connection_Spain(Shaft_Flange_Matrix,TrussType,F_Tracao,Dim,E
     return Ratio_F,F_Out_csv,F_Out_Exp
 
 
-def Flanged_Foundation_Angle_Spain(Flange_Foundation_Angle,Trusstype,F_tracao):
+def Flanged_Foundation_Angle_Italy(Flange_Foundation_Angle,Trusstype,F_tracao):
 
     if Flange_Foundation_Angle[0,0]=="No" and (Flange_Foundation_Angle[0,1]!="0" and Flange_Foundation_Angle[0,2]!="0" and Flange_Foundation_Angle[0,3]!="0" and Flange_Foundation_Angle[0,4]!="0" and Flange_Foundation_Angle[0,5]!="0"):
        ######################################################Impede de calcular se algum dos parametros necessarios não for introduzido####################

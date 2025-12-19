@@ -55,7 +55,7 @@ def main(Aincrease):
     Travamento=np.zeros(nEle+1).astype(str)
 
 
-    (Pais,vb,z0,zmin,Classe_Fiabilidade,
+    (Pais,Zona,vb,z0,zmin,Classe_Fiabilidade,
         Gelo,Altitude,C0_calc,Tipoc0,
         Alt_col,Lu,Ld,Xtopo,Ac_c0,A500,A1000,Alt,
         FundMethod,MfundMax,RatioFundCalc,
@@ -146,7 +146,7 @@ def main(Aincrease):
                                                                                                     ExpVento,Comprimento_Barra,divisor,0,"Nao",h_torre,munit,
                                                                                                        Massa_Extra,todos_nos,nEle,nos_por_elemento,coords,h_vetor,
                                                                                                     z_grupo,nos_grupo,dh,torre,dalpha,Posicao_Antenna,
-                                                                                                    Massa_Antenna,AreaDirection,equipline,Ant,1,rho_gelo,vb,z0,zmin,Calc_Wind_Auto)
+                                                                                                    Massa_Antenna,AreaDirection,equipline,Ant,1,rho_gelo,vb,z0,zmin,Calc_Wind_Auto,Zona)
     
     N_basal=np.abs(np.sum(F_nos[:4,:,2]))
     if Gelo=="Sim":

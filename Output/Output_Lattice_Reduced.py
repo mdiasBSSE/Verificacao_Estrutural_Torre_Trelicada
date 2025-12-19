@@ -690,20 +690,33 @@ def Lattice_csv_Output(Output_Filename,Enc_Out_csv,Lig_Out_csv,B_Out_csv,F_Out_c
         for linha in Flange_Fund_out:
             f.write(",".join(map(str, linha)) + "\n")
         f.write("\n")
-def Wind_Ice_Out(Pais,z0,vref,zmin,c0_top,q0,v_top,Pressure_top,Gelo,esp_gelo,rho_gelo, Calc_Wind_Auto):
+def Wind_Ice_Out(Pais,Zona,z0,vref,zmin,c0_top,q0,v_top,Pressure_top,Gelo,esp_gelo,rho_gelo, Calc_Wind_Auto):
     if Calc_Wind_Auto=="Yes":
-        Zona,Terreno=ZoneInverse(z0, zmin, vref, Pais)
-        Wind_Out_Csv= np.array([
-            ["Wind Load",""],
-            ["Country",Pais],
-            ["vb (m/s)" , f"{Zona} - {int(vref)}"],
-            ["z0", z0],
-            ["zmin", zmin],
-            ["Orographie Coefficient", c0_top],
-            ["q0 (Pa)",  np.round(q0,1) ],
-            ["Average Wind speed (top) (m/s)", np.round(v_top,2)],
-            ["Dynamic Wind Pressure (top) (Pa)",np.round(Pressure_top)]
-        ], dtype=object)
+        if Pais=="Italy":
+            Wind_Out_Csv= np.array([
+                ["Wind Load",""],
+                ["Country",Pais],
+                ["vb (m/s)" , f"Zone {Zona} - {np.round(vref,2)}"],
+                ["z0", z0],
+                ["zmin", zmin],
+                ["Orographie Coefficient", c0_top],
+                ["q0 (Pa)",  np.round(q0,1) ],
+                ["Average Wind speed (top) (m/s)", np.round(v_top,2)],
+                ["Dynamic Wind Pressure (top) (Pa)",np.round(Pressure_top)]
+            ], dtype=object)
+        else:
+            Zona,Terreno=ZoneInverse(z0, zmin, vref, Pais)
+            Wind_Out_Csv= np.array([
+                ["Wind Load",""],
+                ["Country",Pais],
+                ["vb (m/s)" , f"{Zona} - {int(vref)}"],
+                ["z0", z0],
+                ["zmin", zmin],
+                ["Orographie Coefficient", c0_top],
+                ["q0 (Pa)",  np.round(q0,1) ],
+                ["Average Wind speed (top) (m/s)", np.round(v_top,2)],
+                ["Dynamic Wind Pressure (top) (Pa)",np.round(Pressure_top)]
+            ], dtype=object)
     else:
         if Pais in ["Portugal","Spain","France"]:
             Zona,Terreno=ZoneInverse(z0, zmin, vref, Pais)
@@ -718,6 +731,18 @@ def Wind_Ice_Out(Pais,z0,vref,zmin,c0_top,q0,v_top,Pressure_top,Gelo,esp_gelo,rh
             ["Average Wind speed (top) (m/s)", np.round(v_top,2)],
             ["Dynamic Wind Pressure (top) (Pa)",np.round(Pressure_top)]
         ], dtype=object)
+        elif Pais in ["Italy"]:
+            Wind_Out_Csv= np.array([
+                ["Wind Load",""],
+                ["Country",Pais],
+                ["vb (m/s)" , f"Zone {Zona} - {np.round(vref,2)}"],
+                ["z0", z0],
+                ["zmin", zmin],
+                ["Orographie Coefficient", c0_top],
+                ["q0 (Pa)",  np.round(q0,1) ],
+                ["Average Wind speed (top) (m/s)", np.round(v_top,2)],
+                ["Dynamic Wind Pressure (top) (Pa)",np.round(Pressure_top)]
+            ], dtype=object)
         elif Pais in ["Portugal-RSA"]:
             Zona,Terreno=ZoneInverse(z0, zmin, vref, Pais)
             Wind_Out_Csv= np.array([

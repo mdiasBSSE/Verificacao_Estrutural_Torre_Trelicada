@@ -1,6 +1,6 @@
 import numpy as np
 import csv
-from Wind.Wind_Ec import Zone
+from Wind.Wind_Ec import Zone, ZoneInverse 
 
 def Model_csv_read(Model_csv_file):
     with open(Model_csv_file, newline='', encoding='utf-8') as f:
@@ -79,25 +79,39 @@ def Structure_txt_read(txt_file):
         Pais=partes[0]
         Calc_Wind_Auto=partes[1]
         if Calc_Wind_Auto=="Yes":
-            z0=float(partes[2])
-            zmin=float(partes[3])
-            vb=float(partes[4])
-            Classe_Fiabilidade=int(partes[5])
+            if Pais=="Italy":
+                z0=float(partes[2])
+                zmin=float(partes[3])
+                Zona=float(partes[4])
+                Altitude=float(partes[5])
+                Dist_Costa=float(partes[6])
+                vb,_,_=Zone(Zona,Pais,Altitude,Dist_Costa)
+                Classe_Fiabilidade=0
+            else:
+                z0=float(partes[2])
+                zmin=float(partes[3])
+                vb=float(partes[4])
+                Classe_Fiabilidade=int(partes[5])
+                Zona,_=ZoneInverse(z0, zmin, vb, Pais)
         else:
             if partes[5]=="Portugal-RSA":
                 Pais="Portugal-RSA"
                 Terrain=partes[2]
                 vb=float(partes[3])
-                _,z0,zmin=Zone("-",Terrain,Pais,0,0)
+                Zona,z0,zmin=Zone(vb,Terrain,Pais,0,0)
                 Classe_Fiabilidade=0
             if Pais=="Italy":
                 Terrain=partes[2]
-                Zona=partes[3]
-                vb,z0,zmin=Zone(Zona,Terrain,Pais,)
+                Zona=partes[4]
+                Altitude=float(partes[5])
+                Dist_Costa=float(partes[6])
+                vb,z0,zmin=Zone(Zona,Terrain,Pais,Altitude,Dist_Costa)
+                Classe_Fiabilidade=0
             else:
                 Terrain=partes[2]
                 vb=float(partes[3])
-                _,z0,zmin=Zone("-",Terrain,Pais,0,0)
+                aux,z0,zmin=Zone("-",Terrain,Pais,0,0)
+                Zona,_=ZoneInverse(z0, zmin, vb, Pais)
                 Classe_Fiabilidade=int(partes[5])
     Alt=0
     Gelo="No"
@@ -117,7 +131,7 @@ def Structure_txt_read(txt_file):
     SoilSelfWeight = 0
     AllowedSoilTension_SLS = 0
     AllowedSoilTension_ULS = 0
-    return Pais,vb,z0,zmin,Classe_Fiabilidade,Gelo,Altitude,C0_calc,Tipoc0,Alt_col,Lu,Ld,Xtopo,Ac_c0,A500,A1000,Alt,FundMethod,MfundMax,RatioFundCalc,SoilSelfWeight,AllowedSoilTension_SLS,AllowedSoilTension_ULS,Calc_Wind_Auto
+    return Pais,Zona,vb,z0,zmin,Classe_Fiabilidade,Gelo,Altitude,C0_calc,Tipoc0,Alt_col,Lu,Ld,Xtopo,Ac_c0,A500,A1000,Alt,FundMethod,MfundMax,RatioFundCalc,SoilSelfWeight,AllowedSoilTension_SLS,AllowedSoilTension_ULS,Calc_Wind_Auto
 
 
 def Ant_txt_read(ant_txt_file):
